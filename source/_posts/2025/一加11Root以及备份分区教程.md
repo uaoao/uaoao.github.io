@@ -5,6 +5,7 @@ tags:
   - 一加Oneplus
   - Android
   - Root
+  - ColorOS
   - 教程
 ---
 
@@ -26,7 +27,7 @@ tags:
 
 ## Root 前应当做好的准备工作
 
-1. 一加11（salami）手机一台，ColorOS 14。如果你是 ColorOS 15，请网上查阅有关 Bootloader 的资料，有可能这篇文章不适合你。
+1. 一加11（salami）手机一台，ColorOS 14最新版本。如果你是 ColorOS 15，请网上查阅有关 Bootloader 的资料，有可能这篇文章不适合你。
 2. 数据线若干：C-to-C、C-to-A、USB3、USB2 每种类型都准备一根
 3. 带有 USB2、USB3、Type-C 口的Linux电脑多台（不满足这些接口需求的可以试试多接口类型的拓展坞；Windows也可以，大概）
 4. ColorOS 14 最新版本的全量包 [PHB110_14.0.0.813(CN01) C.59](<https://yun.daxiaamu.com/OnePlus_Roms/%E4%B8%80%E5%8A%A0OnePlus%2011/ColorOS%20PHB110_14.0.0.813(CN01)%20C.59/>) SHA1SUM = cf76cf6ac3c8a87a0ad506f4ab025512227f8f38
@@ -96,6 +97,8 @@ sudo fastboot flashing unlock
 
 参考payload-dumper-go 官方的文档，提取全量包中的payload.bin文件，找到 init_boot.img 后复制到手机里。
 
+注意，全量包必须与你手机的ColorOS系统版本相同！
+
 ## 修补并刷入 init_boot.img 文件
 
 手机开机后，再重新打开开发者选项和USB调试。
@@ -157,3 +160,8 @@ sha1sum PartitionBackup.tar.gz > PartitionBackup.tar.gz.sha1
 ## 恢复某分区
 
 如果之后意外损坏的某重要分区，可以通过`fastboot flash 分区名称 镜像文件`命令来恢复。
+
+## 相关参考资料
+
+- [一加11解锁后无法设置锁屏密码的处理方法：100%成功](https://www.daxiaamu.com/7601/)
+- [ONEPLUS 11 Rooting Guide on Android 14](https://xdaforums.com/t/oneplus-11-rooting-guide-on-android-14.4632983/)
