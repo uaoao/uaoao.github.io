@@ -341,9 +341,9 @@ Connection to 192.168.1.1 closed.
 
 ![OpenWrt挂载overlay分区](images/OpenWrt挂载overlay分区.webp)
 
-5. 然后按板子上的RST按钮再次重启。由于重启到新挂载的`/overlay`分区没有任何数据，所以需要重新执行第一个步骤重新配置网络和安装软件。这次可以直接在 System -> Software 中更新列表并安装软件。其中`kmod-nvme` `block-mount` `kmod-fs-f2fs`必须安装，安装这几个软件时勾选允许冲突覆盖。完成后再次重启。
+5. 然后按板子上的RST按钮再次重启。由于重启到新挂载的`/overlay`分区没有任何数据，所以需要重新执行第一个步骤重新配置网络和安装软件。这次可以直接在 System -> Software 中更新列表并安装软件。其中`kmod-nvme` `block-mount` `kmod-fs-f2fs`必须安装。完成后再次重启。
 
-6. 重启完成后进入 System -> Mount Points 再次设置挂载选项。这次只需把第四步操作的NVME分区Enable就行了。另外还要按下图操作添加SWAP交换分区并保存：
+6. 重启完成后进入 System -> Mount Points 再次设置挂载选项。这次只需按照下图操作添加SWAP交换分区并保存：
 
 ![OpenWrt设置swap分区](images/OpenWrt设置swap分区.webp)
 
@@ -351,12 +351,45 @@ Connection to 192.168.1.1 closed.
 
 ![OpenWrt设置分区成功](images/OpenWrt设置分区成功.webp)
 
+最后，如果你觉得板载8G eMMC中将近7G被浪费了，那么可以拿剩余的7G分成SWAP分区使用。这样的话NVME就全盘用来挂载`/overlay`也行。但是，板载eMMC与NVME相比，哪个I/O性能会更高呢？不管性能如何，板载存储本身就不适合反复I/O，毕竟无法直接插拔替换，损坏了会很麻烦。
+
 ## OpenWrt 固件选择器创建自定义固件
 
-未完待续
+[OpenWrt Firmware Selector](https://firmware-selector.openwrt.org/?version=SNAPSHOT&target=mediatek%2Ffilogic&id=bananapi_bpi-r4) 除了可以下载默认构建的固件外，还可以自定义软件包并下载构建好的固件。以下是官方24.10.1版本默认安装的软件包：
+
+```txt
+base-files ca-bundle dnsmasq dropbear firewall4 fitblk fstools kmod-crypto-hw-safexcel kmod-gpio-button-hotplug kmod-leds-gpio kmod-nft-offload kmod-phy-aquantia libc libgcc libustream-mbedtls logd mtd netifd nftables odhcp6c odhcpd-ipv6only opkg ppp ppp-mod-pppoe procd-ujail uboot-envtools uci uclient-fetch urandom-seed urngd wpad-basic-mbedtls kmod-hwmon-pwmfan kmod-i2c-mux-pca954x kmod-eeprom-at24 kmod-mt7996-firmware kmod-mt7996-233-firmware kmod-rtc-pcf8563 kmod-sfp kmod-usb3 e2fsprogs f2fsck mkf2fs mt7988-wo-firmware luci
+```
+
+以下是我计划替换和增加的软件包：
+
+```txt
+dnsmasq-full    # 提供更全面的DNS和DHCP支持（替换dnsmasq/1.8MiB）
+kmod-nvme       # NVME 固态驱动内核模块（180KiB）
+kmod-fs-f2fs    # F2FS 文件系统内核模块（20KiB）
+lsblk           # 提供 lsblk 命令（1.42MiB）
+block-mount     # 提供 LuCI 挂载设备界面（150KiB）
+gdisk           # 现代 GPT 分区表硬盘分区工具（2.21MiB）
+pciutils        # 提供 lspci 命令（1.8MiB）
+```
+
+加上没有显示的依赖包，总大小估计8MB以内，没有超过SPI-NAND的剩余可用空间大小，够基本安装使用了。其他非必要软件包可以在OpenWrt安装完成之后再装，或者用Sysupgrade固件更新的方式安装包含大量软件包的固件。所以最终安装的软件包如下：
+
+```txt
+base-files ca-bundle dropbear firewall4 fitblk fstools kmod-crypto-hw-safexcel kmod-gpio-button-hotplug kmod-leds-gpio kmod-nft-offload kmod-phy-aquantia libc libgcc libustream-mbedtls logd mtd netifd nftables odhcp6c odhcpd-ipv6only opkg ppp ppp-mod-pppoe procd-ujail uboot-envtools uci uclient-fetch urandom-seed urngd wpad-basic-mbedtls kmod-hwmon-pwmfan kmod-i2c-mux-pca954x kmod-eeprom-at24 kmod-mt7996-firmware kmod-mt7996-233-firmware kmod-rtc-pcf8563 kmod-sfp kmod-usb3 e2fsprogs f2fsck mkf2fs mt7988-wo-firmware luci dnsmasq-full kmod-nvme kmod-fs-f2fs lsblk block-mount gdisk pciutils
+```
+
+除了软件包外，还有初始化脚本可以修改。点空白文本框右下角的齿轮会自动生成一份模板。由于我使用猫棒配置PPPoE联网，联网之后需要安装其他软件进一步配置，所以这个脚本没什么用，删除留空白就行。
+
+最后点击 REQUEST BUILD 就会开始在服务器上构建，成功后在下面的Custom Downloads 中会列出所有可供下载的文件，选择需要的下载即可。
+
+## 最后
+
+与 BPI-R4 相关的 OpenWrt 心得基本上就这些，还有一些折腾系统本身的这里就不展开讲了，之后可能会专门写几篇讲系统本身的折腾心得。本文到此为止。
 
 ## 相关参考链接
 
 - [某运营商光猫内置反诈插件](https://www.quji.org/archives/7223)
 - [Banana Pi BPI-R4 Wiki](https://wiki.banana-pi.org/Banana_Pi_BPI-R4)
 - [【BPI-R4】and SFP](https://forum.banana-pi.org/t/bpi-r4-and-sfp/16945/215)
+- [The OpenWrt Flash Layout](https://openwrt.org/docs/techref/flash.layout)
