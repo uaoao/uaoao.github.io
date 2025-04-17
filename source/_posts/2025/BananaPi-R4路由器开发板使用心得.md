@@ -79,7 +79,7 @@ sudo dd if=openwrt-24.10.1-mediatek-filogic-bananapi_bpi-r4-sdcard.img of=/dev/s
 - 绿色线TX，插板子的RX针
 - 白色线RX，插板子的TX针
 
-5. TF卡写入系统镜像文件后插在BPI-R4上，把板子侧边的切换开关打在A1B1的位置，然后插电开机。
+5. TF卡写入系统镜像文件后插在BPI-R4上，把板子侧边的切换开关SW3打在A1B1的位置，往上拨是0；往下拨是1。然后插电开机。
 
 | SW3  | A   | B   |
 | ---- | --- | --- |
@@ -111,6 +111,247 @@ sudo screen /dev/ttyUSB0 115200
 然后在 General Settings 中填写 PAP/CHAP 账号和密码，也就是你宽带的账号和密码。在Firewall Settings中防火墙区域选择WAN区域。保存重启路由器，LAN口连上电脑就可以正常上网了。
 
 ## 安装OpenWrt到板载SPI-NAND和eMMC
+
+在操作之前，你应该已经知道了BPI-R4这块板子本身包含两个存储器。一个是128MB的SPI-NAND；另一个则是8GB的eMMC。当插入TF卡时，板载eMMC会被屏蔽，而SPI-NAND和TF卡作为块设备被识别到。当然，这其中不包括M.2插槽的固态硬盘和外接USB存储，这些外部设备目前只有Linux内核启动并载入相应模块后才能被识别，U-Boot启动状态目前无法识别。
+
+1. 首先你需要将OpenWrt镜像刷入TF卡并插入BPI-R4，并且用ft232串口线连接板子和电脑。
+
+2. 将SW3开关切换到SD模式，也就是A1B1位置，插电开机，电脑终端用`screen`命令进入系统。
+
+3. 先让系统默认状态启动一遍，保证能正常开机进入OpenWrt网站。然后按板子上的RST重启按钮重启进入U-Boot的启动菜单，并快速按电脑键盘的上下键防止跳过，类似进入UEFI选项的感觉。内容大概是这样的：
+
+```txt
+        ( ( ( OpenWrt ) ) )  [SD card]       U-Boot 2024.10-OpenWrt-r28597-0425664679 (Apr 13 2025 - 16:38:32 +0000)
+
+      1. Run default boot command.
+      2. Boot system via TFTP.
+      3. Boot production system from SD card.
+      4. Boot recovery system from SD card.
+      5. Load production system via TFTP then write to SD card.
+      6. Load recovery system via TFTP then write to SD card.
+      7. Install bootloader, recovery and production to NAND.
+      8. Reboot.
+      9. Reset all settings to factory defaults.
+      0. Exit
+
+
+  Press UP/DOWN to move, ENTER to select, ESC to quit
+```
+
+4. 注意力右上角方括号内容是`SD card`模式。如果你的终端能显示颜色，那么选项7应该是红色字体。按键盘上下键选择第七个选项，也就是安装Bootloader、Recovery和系统本身到NAND中。
+
+5. 安装完成后按键盘RETURN键回到菜单。此时已经将OpenWrt系统安装到板载的SPI-NAND中了。
+
+其实板子出厂自带的OpenWrt系统就在SPI-NAND中，但是可能无法开机进入系统，原因未知。至少我的OEM系统会启动失败。毕竟BPI公司的产品优势只有硬件看起来还不错，软件生态真是垃圾。一个产品的定位无论是面向开发者还是普通消费者，产品本身、产品生态和售后服务都应当做好，否则这个产品只能称之为半成品和工业垃圾。
+
+6. 将开发板上的SW3开关切换到NAND模式（A0B1），之后按RST按钮重启到SPI-NAND的U-Boot选择菜单，并快速按上下键防止超时跳过。此时我们可以看到右上角方括号内显示的是`SPI-NAND`。按上下键选择选项9，安装Bootloader、Recovery和系统本身到eMMC中。
+
+这个步骤不移除TF卡其实也没关系，不会影响SPI-NAND中的系统安装到板载eMMC中。可能是启动到板载SPI-NAND或eMMC中的系统时，电路层面屏蔽了TF卡的存在。因为当你插着TF卡启动到板载系统中并且用`lsblk`命令（系统默认没有，需要手动安装），你会发现识别到`mmcblk0`的大小就是板载eMMC的大小。这意味着你无法通过板载系统反向安装到TF卡内。
+
+7. 安装完成后按键盘RETURN键回到菜单。此时已经将OpenWrt系统安装到板载的eMMC中。
+
+8. 将板子上SW3开关切换到A1B0，也就是eMMC模式。按RST重启，直接进入OpenWrt系统就可以了。
+
+## 使用M.2 NVME固态硬盘挂载 /overlay 分区和交换分区
+
+BPI-R4只支持NVME协议的M.2接口的固态硬盘。你可以进入板载系统给M.2固态分区并挂载，但是你无法在板载系统中给TF卡分区。原因前面已经说了，这个章节就只简单讲下如何将`/overlay`分区挂载到M.2固态硬盘上。将其他块设备的分区挂载到`/overlay`分区下也是类似的操作。**给设备分区会删除所有数据，请操作前备份！**
+
+1. 将BPI-R4的LAN口与电脑连接，电脑输入命令`ssh root@192.168.1.1`SSH连接进入OpenWrt的SHELL环境。按照之前的教程联网后，安装所需的内核模块和工具（你可以在网页中安装软件，但最后还是需要用命令分区，除非在插入NVME固态前已经弄好了）：
+
+```bash
+opkg update
+opkg install kmod-nvme gdisk lsblk kmod-fs-f2fs block-mount
+```
+
+`gdisk`与传统的`fdisk`类似，只不过`fdisk`专门用于MBR分区。在现代操作系统中，MBR分区将被逐渐淘汰，取而代之的则是GPT分区。`gdisk`正是专门为GPT分区的设备打造，而且使用方式与`fdisk`类似。
+
+我打算将分区格式化为F2FS系统所以需要安装`kmod-fs-f2fs`文件系统模块。如果你需要其他类型的文件系统，安装对应模块即可。
+
+2. 输入命令`lsblk`查看当前的分区表，确认是否有一个以`nvme`开头的TYPE是disk的块设备。如果没有，就检查一下你的固态硬盘是否插好、是否损坏（也有可能不兼容）。我这里显示的设备名称是`nvme0n1`，那么接下来就用`gdisk`将这个硬盘分区。以下是操作记录：
+
+```txt
+root@OpenWrt:~# lsblk
+NAME        MAJ:MIN RM   SIZE RO TYPE MOUNTPOINTS
+mtdblock0    31:0    0     2M  1 disk
+mtdblock1    31:1    0   126M  0 disk
+mmcblk0     179:0    0  59.5G  0 disk
+├─mmcblk0p1 179:1    0     4M  0 part
+├─mmcblk0p2 179:2    0   512K  0 part
+├─mmcblk0p3 179:3    0     2M  0 part
+├─mmcblk0p4 179:4    0     4M  0 part
+├─mmcblk0p5 179:5    0    32M  0 part
+├─mmcblk0p6 179:6    0    20M  0 part
+└─mmcblk0p7 179:7    0   448M  0 part
+ubiblock0_4 254:0    0  16.2M  0 disk
+fit0        259:0    0  10.7M  1 disk /rom
+fitrw       259:1    0 431.9M  0 disk /overlay
+nvme0n1     259:2    0 119.2G  0 disk
+
+
+root@OpenWrt:~# gdisk /dev/nvme0n1
+GPT fdisk (gdisk) version 1.0.10
+
+Partition table scan:
+  MBR: protective
+  BSD: not present
+  APM: not present
+  GPT: present
+
+Found valid GPT with protective MBR; using GPT.
+
+Command (? for help): ?
+b	back up GPT data to a file
+c	change a partition's name
+d	delete a partition
+i	show detailed information on a partition
+l	list known partition types
+n	add a new partition
+o	create a new empty GUID partition table (GPT)
+p	print the partition table
+q	quit without saving changes
+r	recovery and transformation options (experts only)
+s	sort partitions
+t	change a partition's type code
+v	verify disk
+w	write table to disk and exit
+x	extra functionality (experts only)
+?	print this menu
+
+Command (? for help): o
+This option deletes all partitions and creates a new protective MBR.
+Proceed? (Y/N): y
+
+Command (? for help): n
+Partition number (1-128, default 1): 1
+First sector (34-250069646, default = 2048) or {+-}size{KMGTP}:
+Last sector (2048-250069646, default = 250068991) or {+-}size{KMGTP}: +2G
+Current type is 8300 (Linux filesystem)
+Hex code or GUID (L to show codes, Enter = 8300): L
+Type search string, or <Enter> to show all codes: swap
+8200 Linux swap                          a502 FreeBSD swap
+a582 Midnight BSD swap                   a901 NetBSD swap
+bf02 Solaris swap
+Hex code or GUID (L to show codes, Enter = 8300): 8200
+Changed type of partition to 'Linux swap'
+
+Command (? for help): n
+Partition number (2-128, default 2): 2
+First sector (34-250069646, default = 4196352) or {+-}size{KMGTP}:
+Last sector (4196352-250069646, default = 250068991) or {+-}size{KMGTP}:
+Current type is 8300 (Linux filesystem)
+Hex code or GUID (L to show codes, Enter = 8300):
+Changed type of partition to 'Linux filesystem'
+
+Command (? for help): p
+Disk /dev/nvme0n1: 250069680 sectors, 119.2 GiB
+Model: LITEON CA3-8D128-HP
+Sector size (logical/physical): 512/512 bytes
+Disk identifier (GUID): 806EE748-FC39-487B-BB07-FE0F2D03E47E
+Partition table holds up to 128 entries
+Main partition table begins at sector 2 and ends at sector 33
+First usable sector is 34, last usable sector is 250069646
+Partitions will be aligned on 2048-sector boundaries
+Total free space is 2669 sectors (1.3 MiB)
+
+Number  Start (sector)    End (sector)  Size       Code  Name
+   1            2048         4196351   2.0 GiB     8200  Linux swap
+   2         4196352       250068991   117.2 GiB   8300  Linux filesystem
+
+Command (? for help): w
+
+Final checks complete. About to write GPT data. THIS WILL OVERWRITE EXISTING
+PARTITIONS!!
+
+Do you want to proceed? (Y/N): y
+OK; writing new GUID partition table (GPT) to /dev/nvme0n1.
+The operation has completed successfully.
+
+
+root@OpenWrt:~# lsblk
+NAME        MAJ:MIN RM   SIZE RO TYPE MOUNTPOINTS
+mtdblock0    31:0    0     2M  1 disk
+mtdblock1    31:1    0   126M  0 disk
+mmcblk0     179:0    0  59.5G  0 disk
+├─mmcblk0p1 179:1    0     4M  0 part
+├─mmcblk0p2 179:2    0   512K  0 part
+├─mmcblk0p3 179:3    0     2M  0 part
+├─mmcblk0p4 179:4    0     4M  0 part
+├─mmcblk0p5 179:5    0    32M  0 part
+├─mmcblk0p6 179:6    0    20M  0 part
+└─mmcblk0p7 179:7    0   448M  0 part
+ubiblock0_4 254:0    0  16.2M  0 disk
+fit0        259:0    0  10.7M  1 disk /rom
+fitrw       259:1    0 431.9M  0 disk /overlay
+nvme0n1     259:2    0 119.2G  0 disk
+├─nvme0n1p1 259:3    0     2G  0 part
+└─nvme0n1p2 259:4    0 117.2G  0 part
+```
+
+这里使用了64GB TF卡中的系统来分区，所以`mmcblk0`的大小是59.5G。固态硬盘则是120G。我为固态硬盘重建了GPT分区表，并划分了2GB交换分区，其余空间作为挂载`/overlay`的数据分区。
+
+3. 分区完成后，需要格式化一种文件系统才能使用。以下是操作记录：
+
+```txt
+root@OpenWrt:~# lsblk /dev/nvme0n1
+NAME        MAJ:MIN RM   SIZE RO TYPE MOUNTPOINTS
+nvme0n1     259:2    0 119.2G  0 disk
+├─nvme0n1p1 259:3    0     2G  0 part
+└─nvme0n1p2 259:4    0 117.2G  0 part
+
+
+root@OpenWrt:~# mkswap /dev/nvme0n1p1
+Setting up swapspace version 1, size = 2147479552 bytes
+
+
+root@OpenWrt:~# mkfs.f2fs /dev/nvme0n1p2
+
+    F2FS-tools: mkfs.f2fs Ver: 1.16.0 (2023-04-11)
+
+Info: Disable heap-based policy
+Info: Debug level = 0
+Info: Trim is enabled
+Info: Segments per section = 1
+Info: Sections per zone = 1
+Info: sector size = 512
+Info: total sectors = 245872640 (120055 MB)
+Info: zone aligned segment0 blkaddr: 512
+Info: format version with
+  "Linux version 6.6.86 (builder@buildhost) (aarch64-openwrt-linux-musl-gcc (OpenWrt GCC 13.3.0 r28597-0425664679) 13.3.0, GNU ld (GNU Binutils) 2.42) #0 SMP Sun Apr 13 16:38:32 2025"
+Info: [/dev/nvme0n1p2] Discarding device
+Info: This device doesn't support BLKSECDISCARD
+Info: Discarded 120055 MB
+Info: Overprovision ratio = 0.420%
+Info: Overprovision segments = 252 (GC reserved = 245)
+Info: format successful
+
+
+root@OpenWrt:~# lsblk -f /dev/nvme0n1
+NAME        FSTYPE FSVER LABEL UUID                                 FSAVAIL FSUSE% MOUNTPOINTS
+nvme0n1
+├─nvme0n1p1 swap
+└─nvme0n1p2 f2fs               c52e4b65-4458-44c4-b8b6-81652385c921
+
+
+root@OpenWrt:~# reboot
+root@OpenWrt:~# Connection to 192.168.1.1 closed by remote host.
+Connection to 192.168.1.1 closed.
+```
+
+4. 重启完成后，打开OpenWrt网站，进入 System -> Mount Points 设置挂载选项，如图所示：
+
+![OpenWrt挂载overlay分区](images/OpenWrt挂载overlay分区.webp)
+
+5. 然后按板子上的RST按钮再次重启。由于重启到新挂载的`/overlay`分区没有任何数据，所以需要重新执行第一个步骤重新配置网络和安装软件。这次可以直接在 System -> Software 中更新列表并安装软件。其中`kmod-nvme` `block-mount` `kmod-fs-f2fs`必须安装，安装这几个软件时勾选允许冲突覆盖。完成后再次重启。
+
+6. 重启完成后进入 System -> Mount Points 再次设置挂载选项。这次只需把第四步操作的NVME分区Enable就行了。另外还要按下图操作添加SWAP交换分区并保存：
+
+![OpenWrt设置swap分区](images/OpenWrt设置swap分区.webp)
+
+7. 再次重启系统确保完全生效。如图所示，SWAP 和 Storage 都成功生效：
+
+![OpenWrt设置分区成功](images/OpenWrt设置分区成功.webp)
+
+## OpenWrt 固件选择器创建自定义固件
 
 未完待续
 
