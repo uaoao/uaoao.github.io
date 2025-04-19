@@ -393,3 +393,4 @@ base-files ca-bundle dropbear firewall4 fitblk fstools kmod-crypto-hw-safexcel k
 - [Banana Pi BPI-R4 Wiki](https://wiki.banana-pi.org/Banana_Pi_BPI-R4)
 - [【BPI-R4】and SFP](https://forum.banana-pi.org/t/bpi-r4-and-sfp/16945/215)
 - [The OpenWrt Flash Layout](https://openwrt.org/docs/techref/flash.layout)
+- [【原】使用BPI-R4开发板实现5G上网、Wi-Fi AP、文件共享和Docker服务](https://www.cnblogs.com/think8848/p/17993286)
