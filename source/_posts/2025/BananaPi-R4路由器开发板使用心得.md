@@ -81,12 +81,14 @@ sudo dd if=openwrt-24.10.1-mediatek-filogic-bananapi_bpi-r4-sdcard.img of=/dev/s
 
 5. TF卡写入系统镜像文件后插在BPI-R4上，把板子侧边的切换开关SW3打在A1B1的位置，往上拨是0；往下拨是1。然后插电开机。
 
-| SW3  | A   | B   |
+```txt
+| SW3  |  A  |  B  |
 | ---- | --- | --- |
-| NAND | 0   | 1   |
-| eMMC | 1   | 0   |
-| SD   | 1   | 1   |
-| Halt | 0   | 0   |
+| NAND |  0  |  1  |
+| eMMC |  1  |  0  |
+| SD   |  1  |  1  |
+| Halt |  0  |  0  |
+```
 
 6. 安装使用命令`screen`来与板子通信，电脑终端会快速输出大量启动信息，然后启动输出内核日志。
 
