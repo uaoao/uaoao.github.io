@@ -3,9 +3,9 @@ menu:
   全部文章: /archives
   标签: /tags
   关于: /about
-  # Github:
-  #   url: https://github.com/klugjo/hexo-theme-clean-blog
-  #   icon: github
+  Github:
+    url: https://github.com/uaoao
+    icon: github
 
 # Title on top left of menu. Leave empty to use main blog title
 menu_title: UAOAO
@@ -35,7 +35,7 @@ google_analytics:
 addthis:
 
 # set your own favicon
-favicon:
+favicon: /images/favicon.jpg
 
 # Social Accounts
 twitter_url:
