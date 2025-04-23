@@ -28,6 +28,17 @@ comments:
     comment_count: 5
     comment_colorscheme: light
 
+# TOC
+toc:
+  maxdepth: 3
+  class: toc
+  slugify: transliteration
+  decodeEntities: false
+  anchor:
+    position: after
+    symbol: "####"
+    style: header-anchor
+
 # Google Analytics Tracking ID
 google_analytics:
 

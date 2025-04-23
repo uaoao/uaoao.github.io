@@ -1,0 +1,6 @@
+<% if(item.toc != false) { %>
+    <div id="toc">
+        <strong clas="sidebar-title"> CONTENTS </strong>
+        <%- toc(item.content, {list_number: false}) %>
+    </div>
+<% } %>
