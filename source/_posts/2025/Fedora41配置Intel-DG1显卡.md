@@ -1,5 +1,5 @@
 ---
-title: Fedora41配置Intel-DG1显卡
+title: Fedora42配置Intel-DG1显卡
 date: 2025-04-22
 tags:
   - Fedroa
@@ -22,11 +22,11 @@ tags:
 
 按照卖家的说法，这个显卡需要比较新的主板，而且要在主板上开启 Resizable Bar 和 Above 4G 功能，同时系统硬盘的分区表必须是GPT。这些功能在我的主板上都默认开启，所以理应可以正常使用。
 
-结果怎么，开机后插在I卡上的两个显示器都不亮，重置了BIOS再开机也不行，弄得我一度怀疑这卡是不是坏了（主显示器可以亮，因为核显能正常用）。在网上查了大量资料，最后得出一个假设：Linux 6.13 内核可能不支持这张卡。用`lspci -v`命令可以看到内核识别到了这张卡，但是没有驱动；用`dmesg`命令查不到与显卡有关的报错。网上也有人用这张卡装Linux系统，他们自己编译内核。
+结果怎么，开机后插在I卡上的两个显示器都不亮，重置了BIOS再开机也不行，弄得我一度怀疑这卡是不是坏了（主显示器可以亮，因为核显能正常用）。在网上查了大量资料，最后得出一个假设：Linux 6.14 内核可能不支持这张卡。用`lspci -v`命令可以看到内核识别到了这张卡，但是没有驱动；用`dmesg`命令查不到与显卡有关的报错。网上也有人用这张卡装Linux系统，他们自己编译内核。
 
 于是我用一个空硬盘装了Windows10。刚装系统时I卡不会点亮，装完系统后更新驱动，两个接在I卡上的显示器就正常点亮了。
 
-后来查资料发现一篇发表在这个月2号的文章说Intel DG1 显卡 Linux 驱动模块终于移除了实验性标志。。。我靠，这GPU是2021年生产的，直到现在才移除实验性标志？？？真是服了牙膏厂。好在一些资料表明这张I卡的 `xe` 和 `i915` 内核模块只是在实验性状态，并非完全不支持，而`xe`模块早在Linux 6.8内核中就被引入。接下来就开始配置让这张Intel DG1显卡在 Fedora 41 SliverBlue 上亮起来吧。
+后来查资料发现一篇发表在这个月2号的文章说Intel DG1 显卡 Linux 驱动模块终于移除了实验性标志。。。我靠，这GPU是2021年生产的，直到现在才移除实验性标志？？？真是服了牙膏厂。好在一些资料表明这张I卡的 `xe` 和 `i915` 内核模块只是在实验性状态，并非完全不支持，而`xe`模块早在Linux 6.8内核中就被引入。接下来就开始配置让这张Intel DG1显卡在 Fedora 42 SliverBlue 上亮起来吧。
 
 一些参考资料我放在文章底部了，有需要可以看看。
 
@@ -63,7 +63,7 @@ sudo rpm-ostree kargs
 reboot
 ```
 
-我使用的操作系统是 Fedora 41 SliverBlue。Fedora SliverBlue从第41代开始，把内核启动参数与GRUB本身的设置分开了，内核启动参数现在只能由`rpm-ostree`管理，而GRUB本身的设置（比如启动后GRUB菜单延时）需要用GRUB本身的命令去配置。
+我使用的操作系统是 Fedora 42 SliverBlue。Fedora SliverBlue 从第 41 代开始，把内核启动参数与 GRUB 本身的设置分开了，内核启动参数现在只能由`rpm-ostree`管理，而 GRUB 本身的设置（比如启动后 GRUB 菜单延时）需要用 GRUB 本身的命令去配置。
 
 如果你用的不是像 Fedora SliverBlue 这种不可变发行版，那么可以用以下命令修改启动参数：
 
@@ -80,7 +80,7 @@ cat /etc/default/grub | grep GRUB_CMDLINE_LINUX_DEFAULT
 grub-mkconfig -o /boot/grub2/grub.cfg
 ```
 
-我没有验证过Fedora SliverBlue以外的发行版的配置是否成功，所以在执行前，最好在文章下面参考资料里多查一查。
+我没有验证过 Fedora SliverBlue 以外的发行版的配置是否成功，所以在执行前，最好在文章下面参考资料里多查一查。
 
 另外如果你看了文章下面的参考资料，他们可能会这样设置：`i915.force_probe=!4908` 其实这个参数没有必要。如果你的I卡能开箱即用`i915` 或 `xe` 模块，就不太可能会看到这篇文章。
 
@@ -102,7 +102,7 @@ sudo ls -l /var/lib/gdm/.config/monitors.xml
 
 ## 结语
 
-`i915` 与 `xe` 模块的区别：`xe`是 Intel 近几年新开发的内核模块，主要是支持比较新的显卡或核显；而 `i915` 据说有20多年历史了，就我使用感受来说，这个模块的支持程度比 `xe` 好一点，如果你喜欢用 [Resources](https://flathub.org/apps/net.nokyan.Resources)、[Mission Center](https://flathub.org/apps/io.missioncenter.MissionCenter)、[CPU-X](https://flathub.org/apps/io.github.thetumultuousunicornofdarkness.cpu-x) 之类的系统资源监视器，`i915` 模块能提供更多I卡的状态信息。但是在PCIe连接速率上，用`lspci -vvv`可以发现，两者都是PCIe1.0 x1 （正常情况下Windows10中则是PCIe4.0 x8）。总之两者对I卡的支持都很差。
+`i915` 与 `xe` 模块的区别：`xe`是 Intel 近几年新开发的内核模块，主要是支持比较新的显卡或核显；而 `i915` 据说有 20 多年历史了，就我使用感受来说，这个模块的支持程度比 `xe` 好一点，如果你喜欢用 [Resources](https://flathub.org/apps/net.nokyan.Resources)、[Mission Center](https://flathub.org/apps/io.missioncenter.MissionCenter)、[CPU-X](https://flathub.org/apps/io.github.thetumultuousunicornofdarkness.cpu-x) 之类的系统资源监视器，`i915` 模块能提供更多I卡的状态信息。但是在PCIe连接速率上，用`lspci -vvv`可以发现，两者都是PCIe1.0 x1 （正常情况下Windows10中则是PCIe4.0 x8）。总之两者对I卡的支持都很差。
 
 对于硬件解码之类是否支持，这个我还没研究，就我使用感觉而言，Linux系统插上这个卡后只是通过PCIe将AMD核显渲染的画面复制给I卡显示，并非两个显示器的成像都由I卡渲染，有点类似于显示接口扩展的感觉。。。
 
