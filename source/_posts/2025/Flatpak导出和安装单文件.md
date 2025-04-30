@@ -34,7 +34,7 @@ flatpak build-bundle /var/lib/flatpak/repo ~/Downloads/io.github.Fndroid.clash_f
 然后计算哈希值：
 
 ```bash
-sha1sum ~/Downloads/io.github.Fndroid.clash_for_windows.flatpak.sha1 > ~/Downloads/io.github.Fndroid.clash_for_windows.flatpak.sha1.sha1
+sha1sum ~/Downloads/io.github.Fndroid.clash_for_windows.flatpak.sha1 > ~/Downloads/io.github.Fndroid.clash_for_windows.flatpak.sha1
 ```
 
 如果你遇到以下报错，说明使用的分支不正确。Flatpak默认使用 `master` 分支导出，但我们安装的软件一般是使用 `stable` 分支：
