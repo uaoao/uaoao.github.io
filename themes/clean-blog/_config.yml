@@ -27,6 +27,8 @@ comments:
     appid:
     comment_count: 5
     comment_colorscheme: light
+  # Github Discussion
+  giscus: true
 
 # TOC
 toc:

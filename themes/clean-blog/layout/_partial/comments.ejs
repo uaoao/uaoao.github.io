@@ -22,3 +22,24 @@
 
     <div class="fb-comments" data-href="<%= url %>" data-num-posts="<%= theme.comments.facebook.comment_count %>" data-width="100%" data-colorscheme="<%= theme.comments.facebook.comment_colorscheme %>"></div>
 <% } %>
+
+<% if(page.comments && theme.comments && theme.comments.giscus) { %>
+    <hr />
+    <h3><%- __('comment')%>:</h3>
+    <script src="https://giscus.app/client.js"
+        data-repo="uaoao/uaoao.github.io"
+        data-repo-id="R_kgDOI7apxA"
+        data-category="Announcements"
+        data-category-id="DIC_kwDOI7apxM4Cqate"
+        data-mapping="pathname"
+        data-strict="0"
+        data-reactions-enabled="1"
+        data-emit-metadata="0"
+        data-input-position="bottom"
+        data-theme="preferred_color_scheme"
+        data-lang="zh-CN"
+        data-loading="lazy"
+        crossorigin="anonymous"
+        async>
+    </script>
+<% } %>
