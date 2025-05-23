@@ -9,8 +9,8 @@ description:
 keywords:
   - 博客
 author: uaoao
-language: zh-CN
-timezone: Asia/Shanghai
+language: zh-Hans
+timezone:
 
 # URL
 ## Set your site url here. For example, if you use GitHub Page, set url as 'https://username.github.io/project'
