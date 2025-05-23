@@ -1,6 +1,7 @@
 ---
 title: 备忘录
 type: notes
+cover: img/notes-cover.jpg
 ---
 
 # Linux 配置

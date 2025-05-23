@@ -1,7 +1,7 @@
 # Header
 menu:
   备忘录: notes
-  全部文章: /archives
+  # 全部文章: /archives
   标签: tags
   关于: about
   Github:
@@ -12,9 +12,11 @@ menu:
 menu_title: UAOAO
 
 # URL of the Home page image
-index_cover: img/home-cover.jpg
+index_cover: img/index-cover.jpg
 tags_cover: img/tags-cover.jpg
-archives_cover: img/archives-cover.jpg
+about_cover: img/about-cover.jpg
+notes_cover: img/notes-cover.jpg
+#archives_cover: img/archives-cover.jpg
 
 # Default post title
 default_post_title: Untitled
