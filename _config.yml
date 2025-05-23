@@ -5,12 +5,12 @@
 # Site
 title: uaoao 博客
 subtitle: "漫步在遥远的旧时"
-description: ""
+description:
 keywords:
   - 博客
 author: uaoao
 language: zh-CN
-timezone: "Asia/Shanghai"
+timezone: Asia/Shanghai
 
 # URL
 ## Set your site url here. For example, if you use GitHub Page, set url as 'https://username.github.io/project'
@@ -38,7 +38,7 @@ titlecase: false # Transform title into titlecase
 external_link:
   enable: true # Open external links in new tab
   field: site # Apply to the whole site
-  exclude: ""
+  exclude: []
 filename_case: 0
 render_drafts: false
 post_asset_folder: false
