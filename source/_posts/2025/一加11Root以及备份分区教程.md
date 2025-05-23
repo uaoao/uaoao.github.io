@@ -7,6 +7,7 @@ tags:
   - Root
   - ColorOS
   - 教程
+  - 2025年
 ---
 
 ## 获取 Root 的目的

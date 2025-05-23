@@ -6,6 +6,7 @@ tags:
   - OpenWrt
   - Linux
   - 配置
+  - 2025年
 ---
 
 ## 安装
