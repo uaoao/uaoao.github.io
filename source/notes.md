@@ -58,3 +58,12 @@ install -dD $HOME/.cache $HOME/Public
 nohup /usr/bin/python3 -m http.server 8888 -d $HOME/Public >>$HOME/.cache/pyserver.log 2>&1 &
 ```
 
+# Openwrt
+
+## 软件安装记录 TODO
+
+- luci-app-cloudflared
+- ddns-scripts-cloudflare (require curl ca-bundle)
+- luci-app-ddns (require bind-host)
+- bind-host
+/etc/ssl/certs/ca-certificates.crt
