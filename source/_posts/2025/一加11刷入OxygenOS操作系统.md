@@ -6,6 +6,7 @@ tags:
   - 刷机
   - Android
   - OxygenOS
+  - ColorOS
   - 教程
   - 2025年
 ---
