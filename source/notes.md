@@ -189,7 +189,7 @@ services:
       INIT_MEMORY: "512M"
       MAX_MEMORY: "4G"
       TYPE: "VANILLA"
-      MOTD: "Welcome to mc6.wagada.cc"
+      MOTD: "Welcome to Minecraft"
       DIFFICULTY: "hard"
       MAX_PLAYERS: 40
       FORCE_GAMEMODE: true
