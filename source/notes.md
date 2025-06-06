@@ -123,20 +123,38 @@ base-files ca-bundle dropbear firewall4 fitblk fstools kmod-crypto-hw-safexcel k
 dnsmasq-full kmod-nvme kmod-fs-f2fs lsblk block-mount gdisk pciutils
 ```
 
-### 常见文件系统
+### 常用文件系统
 
-```txt
-kmod-fs-btrfs kmod-fs-exfat kmod-fs-ext4 kmod-fs-vfat kmod-fs-xfs kmod-fs-squashfs kmod-fs-ntfs3
-```
+- kmod-fs-btrfs
+- kmod-fs-exfat
+- kmod-fs-ext4
+- kmod-fs-vfat
+- kmod-fs-xfs
+- kmod-fs-squashfs
+- kmod-fs-ntfs3
 
-### 其他 TODO
+### Cloudflare DDNS
+
+- ddns-scripts-cloudflare
+- luci-app-ddns
+- bind-host
+
+### Cloudflare Zero Trust Tunnels
 
 - luci-app-cloudflared
-- ddns-scripts-cloudflare (require curl ca-bundle)
-- luci-app-ddns (require bind-host)
-- bind-host
-/etc/ssl/certs/ca-certificates.crt
 
+### Docker
+
+- luci-app-dockerman
+- kmod-macvlan
+
+### DNS Over Https
+
+- luci-app-https-dns-proxy
+
+### 其他
+
+- zstd
 
 # Android App 配置
 
