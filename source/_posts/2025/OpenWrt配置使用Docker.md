@@ -109,7 +109,7 @@ Accept: */*
 
 可以看到，OpenWrt 本机可以正常访问容器中的 IPv6 地址。
 
-3. 获取 OpenWrt lan 接口的IPv6地址（比如 `2407：342b:2af1:cb42::1`），然后在局域网 lan 中用一台电脑执行 `curl http://[2407：342b:2af1:cb42::1]:80`，执行成功，结果如下：
+3. 获取 OpenWrt lan 接口的IPv6地址（比如 `2407:342b:2af1:cb42::1`），然后在局域网 lan 中用一台电脑执行 `curl http://[2407:342b:2af1:cb42::1]:80`，执行成功，结果如下：
 
 ```txt
 Hostname: 9d5447adacfd
@@ -120,7 +120,7 @@ IP: 2001:db8:1::242:ac11:3
 IP: fe80::42:acff:fe11:3
 RemoteAddr: [2001:db8:1::1]:44902
 GET / HTTP/1.1
-Host: [2407：342b:2af1:cb42::1]
+Host: [2407:342b:2af1:cb42::1]
 User-Agent: curl/8.11.1
 Accept: */*
 ```
