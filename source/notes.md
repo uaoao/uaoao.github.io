@@ -146,7 +146,6 @@ dnsmasq-full kmod-nvme kmod-fs-f2fs lsblk block-mount gdisk pciutils
 ### Docker
 
 - luci-app-dockerman
-- kmod-macvlan
 
 ### DNS Over Https
 
@@ -155,6 +154,7 @@ dnsmasq-full kmod-nvme kmod-fs-f2fs lsblk block-mount gdisk pciutils
 ### 其他
 
 - zstd
+- vim-fuller
 
 # Android App 配置
 

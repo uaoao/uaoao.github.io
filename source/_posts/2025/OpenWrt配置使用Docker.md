@@ -21,21 +21,22 @@ reboot
 
 ## 配置镜像服务器
 
-由于众所周知的原因，某些地区无法直接访问Docker Hub，所以需要配置镜像服务器。而曾经某些高校和企业提供的镜像服务器也由于某些不可抗力因素停止服务。我这里提供几个截至2025年4月可用的镜像服务器配置和可用的订阅，不保证永久可用：
+由于众所周知的原因，某些地区无法直接访问Docker Hub，所以需要配置镜像服务器。而曾经某些高校和企业提供的镜像服务器也由于某些不可抗力因素停止服务。我这里提供几个截至2025年6月可用的镜像服务器配置和可用的订阅，不保证永久可用。
 
-- 在`/etc/config/dockerd`中配置镜像服务器（或者网页 Docker -> Configuration 配置）：
+在添加配置之前，先尝试用浏览器打开网站，看是否能正常访问。
+
+- 在`/etc/config/dockerd`中配置镜像服务器，**注意缩进整齐**（或者网页 Docker -> Configuration 配置）：
 
 ```txt
-	list registry_mirrors 'https://aicarbon.xyz'
-	list registry_mirrors 'https://docker.zhai.cm'
-	list registry_mirrors 'https://dytt.online'
-	list registry_mirrors 'https://lispy.org'
-	list registry_mirrors 'https://docker.xiaogenban1993.com'
-	list registry_mirrors 'https://docker.yomansunter.com'
-	list registry_mirrors 'https://666860.xyz'
-	list registry_mirrors 'https://a.ussh.net'
-	list registry_mirrors 'https://docker.1ms.run'
-	list registry_mirrors 'https://docker.mybacc.com'
+list registry_mirrors 'https://lispy.org'
+list registry_mirrors 'https://docker.xiaogenban1993.com'
+list registry_mirrors 'https://docker.yomansunter.com'
+list registry_mirrors 'https://666860.xyz'
+list registry_mirrors 'https://a.ussh.net'
+list registry_mirrors 'https://docker.1ms.run'
+list registry_mirrors 'https://dytt.online'
+list registry_mirrors 'https://docker.1panel.live'
+list registry_mirrors 'https://dockerproxy.com'
 ```
 
 - 订阅网站：
@@ -45,11 +46,11 @@ reboot
 
 ## 配置 OpenWrt 防火墙允许 wan 区域转发进入 docker0
 
-**如果不配置防火墙，Docker 容器内部就无法访问互联网！！！**
+**由于OpenWrt的安全策略，如果不配置防火墙，用默认 bridge 网卡的容器内部就无法访问互联网！！！**
 
 1. 登陆 OpenWrt 管理网站，打开 Network —— Firewall —— General Settings 页面，点击编辑 Zones 栏目的 `docker => REJECT` 这一条。
 
-2. 在 Allow forward to destination zones 这里勾选 wan 区域，然后保存并应用，如图所示：
+2. 在 Allow forward to destination zones 这里勾选 wan 区域，然后保存并应用，配置效果类似 lan 区域。如图所示：
 
 ![OpenWrt配置使用Docker-防火墙](images/OpenWrt配置使用Docker-防火墙.webp)
 
@@ -59,7 +60,11 @@ reboot
 docker run --rm library/busybox:latest ping -c 4 www.bilibili.com
 ```
 
+> 注意：这个操作只能让默认 bridge 网卡上的容器访问互联网。如果你使用 Docker Compose 创建容器，或者创建一个自定义的Docker网卡，这些情况下容器内部都无法访问互联网，需要手动修改`iptable/nftable`来转发流量。这样做很麻烦而且非常不安全。如果你不知道自己执行的命令修改了什么东西，就**不要执行**。
+
 ## 默认桥接网卡启用 IPv6
+
+> 注意：如果你使用 host 模式的反向代理容器（比如Caddy或Nginx），反向代理会将IPv6请求转向IPv4容器内部访问，无需按本节内容配置 IPv6。本文中的IPv6地址是文档专用地址，无法真正联网，仅用于开启IPv6端口。
 
 通常情况下，家庭网络的IPv6前缀在宽带重新拨号后会改变，而且目前 Docker 仍未支持前缀委派自动生成公网IPv6，因此这里的方法仅适用于容器内部不用向互联网发起纯IPv6请求的情况。因为这个方法配置的IPv6地址不是真正的公网IPv6地址，无法访问外部IPv6服务器。当然，容器内部可以正常请求互联网中IPv4地址（配置方法见上一节）。
 
@@ -174,6 +179,20 @@ Upgrade-Insecure-Requests: 1
 
 可以看到，OpenWrt 能自动识别静态地址 `2001:db8:1::1` 并且互联网 wan 中的设备能也能通过 IPv6 访问到 Docker 容器中的网站。
 
+## 修改 LuCI 管理页面的端口
+
+默认安装 OpenWrt 时会启用`80`和`443`端口用于登陆 LuCI 网页管理界面。当我们需要反向代理来使用这两个端口时，就需要将 LuCI 的端口改到其他位置。这里提供修改的方法。
+
+1. SSH 进入 OpenWrt。编辑 `/etc/config/uhttpd` 文件中 `config uhttpd 'main'` 这个项目中的配置，修改端口到大于1024的端口，比如`2000/2001`，如下所示，**注意缩进整齐**：
+
+```txt
+list listen_http '0.0.0.0:2000'
+list listen_http '[::]:2000'
+list listen_https '0.0.0.0:2001'
+list listen_https '[::]:2001'
+```
+
+2. 执行 `/etc/init.d/uhttpd restart` 重启 LuCI 管理页面的服务器，以后通过`2000/2001`端口登陆即可。
 
 ## 相关参考网址
 

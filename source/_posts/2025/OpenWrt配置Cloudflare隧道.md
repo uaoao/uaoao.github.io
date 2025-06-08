@@ -2,7 +2,7 @@
 title: OpenWrt配置Cloudflare隧道
 date: 2025-5-27
 tags:
-  - Openwrt
+  - OpenWrt
   - 2025年
   - 配置
   - Cloudflare
