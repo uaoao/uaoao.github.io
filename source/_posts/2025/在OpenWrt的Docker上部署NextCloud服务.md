@@ -72,18 +72,18 @@ docker run \
     --name nextcloud-mysql \
     --network bridge \
     --restart unless-stopped \
-    -v /root/nextcloud/mysql:/var/lib/mysql \
     -e TZ=Asia/Shanghai \
     -e MYSQL_DATABASE=nextcloud \
     -e MYSQL_ROOT_PASSWORD=change_me \
+    -v /root/nextcloud/mysql:/var/lib/mysql \
     -d library/mysql:latest
 ```
 
 ### 部署 NextCloud 容器
 
-这里使用的是 [linuxserver/nextcloud](https://hub.docker.com/r/linuxserver/nextcloud)。这个容器比 [library/nextcloud](https://hub.docker.com/_/nextcloud/) 安全性更强，内置 NGINX，默认提供HTTPS。
+这里使用的是 [linuxserver/nextcloud](https://hub.docker.com/r/linuxserver/nextcloud)。这个容器比 [library/nextcloud](https://hub.docker.com/_/nextcloud/) 安全性更强，内置 NGINX，许多配置已经写好了，还默认提供自签证书。
 
-复制以下内容保存并执行，部署 Nextcloud。
+复制以下内容保存并执行，部署 Nextcloud。其中 `-v /mnt:/mnt:ro` 的作用是便于读取操作系统挂载的外部设备。为了防止误操作删除数据，这里就设置成只读。
 
 ```bash
 #!/bin/sh
@@ -92,12 +92,12 @@ docker run \
 	--name nextcloud \
 	--network bridge \
 	--restart unless-stopped \
-	-p 2020:443 \
 	--dns 223.6.6.6 \
 	--dns 223.5.5.5 \
 	-e TZ=Asia/Shanghai \
 	-v /root/nextcloud/data:/data \
 	-v /root/nextcloud/config:/config \
+	-v /mnt:/mnt:ro \
 	-d linuxserver/nextcloud:latest
 ```
 
@@ -122,19 +122,15 @@ docker run \
 
 ### 部署 Caddy 容器
 
-先创建 `/root/caddy/Caddyfile` 文件，将以下内容保存，域名和端口替换成自己的。我不熟悉配置反向代理，所以这里就简单地配置必要部分。
+先创建 `/root/caddy/Caddyfile` 文件，将以下内容保存，域名和端口替换成自己的。我不熟悉配置反向代理，所以这里就照葫芦画瓢简单地配置必要部分。`nextcloudcf.example.com` 这个域名本身就是被代理的状态，因此不必写在配置里。
 
 ```txt
 nextcloud.example.com:80 {
 	redir * https://nextcloud.example.com:443 301
 }
 
-nextcloudcf.example.com:80 {
-	redir * https://nextcloudcf.example.com:443 301
-}
-
-nextcloud.example.com:443 nextcloudcf.example.com:443 {
-	reverse_proxy https://localhost:2020 {
+nextcloud.example.com:443 {
+	reverse_proxy https://172.17.0.3:443 {
 		transport http {
 			tls
 			tls_insecure_skip_verify
@@ -172,15 +168,37 @@ docker run \
 
 3. 安装应用页面可以跳过，也可以安装好使用。
 
-我第一次部署的时候可以正常安装应用，后面不知怎么总是显示网络异常。光是排查这个问题就非费了大量时间，添加了自定义DNS，OpenWrt系统因此重置过，登陆进容器内部用 `curl https://nextcloud.com` 能正常获取数据，但是网页端依旧网络异常。网上找到一篇文章似乎说明可能是 nextcloud 的问题：[Log flooded with "dns_get_record(): A temporary server error occurred"](https://github.com/nextcloud/server/issues/34205)。安装应用估计没法使用了，挺失望的。
+我第一次部署的时候可以正常安装应用，后面不知怎么总是显示网络异常。光是排查这个问题就非费了大量时间，添加了自定义DNS，OpenWrt系统因此重置过，登陆进容器内部用 `curl https://nextcloud.com` 能正常获取数据，但是网页端依旧网络异常。后来查了大量资料才发现是进入应用商店会请求一个 20MB 的文本文件，所以超时了。建议直接在配置文件中添加 `'appstoreenabled' => false,` 以禁用商店，手动添加应用。
 
-4. 当首次用某个域名登陆并配置好数据库后，该域名将被设置为唯一可以访问的域名，但是我们有两个域名都需要访问。编辑 `/root/nextcloud/config/www/nextcloud/config/config.php`，如下所示找到 `trusted_domains` 这个参数，添加第二个域名。
+4. 当首次用某个域名登陆并配置好数据库后，该域名将被设置为唯一可以访问的域名，但是我们有两个域名都需要访问。编辑 `/root/nextcloud/config/www/nextcloud/config/config.php`，如下所示找到 `trusted_domains` 这个参数，添加第二个域名。其他配置参考了官方反向代理的文档。
 
 ```txt
-  'trusted_domains' => 
+  'appstoreenabled' => false,
+  'trusted_domains' =>
   array (
     0 => 'nextcloud.example.com',
     1 => 'nextcloudcf.example.com',
+  ),
+  'trusted_proxies' =>
+  array (
+    0 => '172.17.0.1',
+  ),
+  'forwarded_for_headers' => 'HTTP_X_FORWARDED_FOR',
+  'overwriteprotocol' => 'https',
+  'enable_previews' => true,
+  'enabledPreviewProviders' =>
+  array (
+    'OC\Preview\PNG',
+    'OC\Preview\JPEG',
+    'OC\Preview\GIF',
+    'OC\Preview\BMP',
+    'OC\Preview\XBitmap',
+    'OC\Preview\MP3',
+    'OC\Preview\TXT',
+    'OC\Preview\MarkDown',
+    'OC\Preview\OpenDocument',
+    'OC\Preview\Krita',
+    'OC\Preview\HEIC',
   ),
 ```
 
