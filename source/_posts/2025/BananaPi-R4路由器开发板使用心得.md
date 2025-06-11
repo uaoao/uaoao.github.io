@@ -303,7 +303,7 @@ nvme0n1     259:2    0 119.2G  0 disk
 └─nvme0n1p2 259:4    0 117.2G  0 part
 
 
-root@OpenWrt:~# mkswap /dev/nvme0n1p1
+root@OpenWrt:~# mkswap -L SWAP /dev/nvme0n1p1
 Setting up swapspace version 1, size = 2147479552 bytes
 
 
