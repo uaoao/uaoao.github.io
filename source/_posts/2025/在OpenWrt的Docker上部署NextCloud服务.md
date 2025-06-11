@@ -52,8 +52,11 @@ SFTPGo支持的功能除了1和6。AList支持的功能除了1、3、6、7。Fil
 
 - 一个可用的长期域名，比如 `example.com`
 - DDNS 绑定 IPv6 域名，比如 `nextcloud.example.com`（参考 [OpenWrt配置Cloudflare-DDNS服务](https://uaoao.github.io/2025/5/31/OpenWrt%E9%85%8D%E7%BD%AECloudflare-DDNS%E6%9C%8D%E5%8A%A1.html)
-- Cloudflare Tunnel 内网穿透绑定域名，比如 `nextcloudcf.example.com`（参考 [OpenWrt配置Cloudflare隧道](https://uaoao.github.io/2025/5/27/OpenWrt%E9%85%8D%E7%BD%AECloudflare%E9%9A%A7%E9%81%93.html)）
+- Cloudflare Tunnel 内网穿透绑定域名，比如 `nctun.example.com`（参考 [OpenWrt配置Cloudflare隧道](https://uaoao.github.io/2025/5/27/OpenWrt%E9%85%8D%E7%BD%AECloudflare%E9%9A%A7%E9%81%93.html)）
+- Cloudflare Proxy 模式绑定域名，比如 `nextcloud.cf.example.com`，支持用户访问IPv4转IPv6。注意，Cloudflare的SSL/TLS加密模式应当设置为**Full**，否则浏览器会显示重定向次数过多的错误。
 - Docker 配置完（参考 [OpenWrt配置使用Docker](https://uaoao.github.io/2025/4/18/OpenWrt配置使用Docker.html)）
+
+> 注意：Cloudflare 代理的网站在文件传输上有100MB 限制，超过限制会临时中断连接。幸好这方面NextCloud网页端能自动断点续传，客户端没测试过不清楚。
 
 ### 部署 MySQL 容器
 
@@ -122,14 +125,19 @@ docker run \
 
 ### 部署 Caddy 容器
 
-先创建 `/root/caddy/Caddyfile` 文件，将以下内容保存，域名和端口替换成自己的。我不熟悉配置反向代理，所以这里就照葫芦画瓢简单地配置必要部分。`nextcloudcf.example.com` 这个域名本身就是被代理的状态，因此不必写在配置里。
+先创建 `/root/caddy/Caddyfile` 文件，将以下内容保存，域名和端口替换成自己的。我不熟悉配置反向代理，所以这里就照葫芦画瓢简单地配置必要部分。`nctun.example.com` 这个域名本身就是被代理的状态，因此不必写在配置里。
 
 ```txt
-nextcloud.example.com:80 {
-	redir * https://nextcloud.example.com:443 301
+nextcloud.cf.example.com {
+	reverse_proxy https://172.17.0.3:443 {
+		transport http {
+			tls
+			tls_insecure_skip_verify
+		}
+	}
 }
 
-nextcloud.example.com:443 {
+nextcloud.example.com {
 	reverse_proxy https://172.17.0.3:443 {
 		transport http {
 			tls
@@ -162,7 +170,7 @@ docker run \
 
 ## 配置 NextCloud 服务
 
-1. 用浏览器打开网站 `https://nextcloud.example.com` 或者 `https://nextcloudcf.example.com`。如果加载失败，请检查 Caddy 日志。
+1. 用浏览器打开网站 `https://nextcloud.example.com` 或者 `https://nextcloud.cf.example.com` 或者 `https://nctun.example.com`。如果加载失败，请检查 Caddy 日志（`nextcloud.example.com`是IPv6域名，客户端必须有IPv6才能访问）。
 
 2. 填写注册管理员账号和密码，在下方选择 MySQL 数据库，填写账号、密码、MySQL容器内部的IP地址、数据库名称。然后点击安装。
 
@@ -177,7 +185,8 @@ docker run \
   'trusted_domains' =>
   array (
     0 => 'nextcloud.example.com',
-    1 => 'nextcloudcf.example.com',
+    1 => 'nctun.example.com',
+    2 => 'nextcloud.cf.example.com',
   ),
   'trusted_proxies' =>
   array (

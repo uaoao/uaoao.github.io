@@ -111,7 +111,75 @@ if [ "$is_ok" == 'Y' -o "$is_ok" == 'y' ]; then
 fi
 ```
 
-# Openwrt
+# OpenWrt
+
+## OpenWrt 用户自定义启动脚本
+
+```bash
+# OpenWrt 自定义启动脚本
+# 将脚本粘贴在以下位置：
+# Web Luci -- System -- Startup -- Local Startup
+
+###################################
+######### 脚本变量设置 ############
+###################################
+# 自定义脚本执行日志存放位置
+user_log_path=/tmp/boot_script.log
+# 脚本版本号
+user_script_ver="v1.0"
+
+###################################
+######### 脚本开始执行 ############
+###################################
+sleep 60s
+echo -e "[$(date +%Y/%m/%d) $(date +%H:%M:%S)] INFO:\tUser boot script ${user_script_ver} start!" >> $user_log_path
+
+###################################
+######### 联网状态检查 ############
+###################################
+# 读取以2开头的公网IPv6地址
+# 如果地址不存在，则尝试重启网络，并且再次尝试检查网络状态
+# 依赖 ip 命令
+
+echo -e "[$(date +%Y/%m/%d) $(date +%H:%M:%S)] INFO:\tNetwork check start!" >> $user_log_path
+/etc/init.d/network status >> $user_log_path 2>&1
+user_net_loop=0
+
+while [[ "$(ip a | awk '/inet6 2/ {print $0}')" == "" ]]
+do
+    if [[ $user_net_loop == "3" ]]
+    then
+        echo -e "[$(date +%Y/%m/%d) $(date +%H:%M:%S)] ERROR:\tCanot resume network over 3 times!" >> $user_log_path
+        break
+    fi
+
+    echo -e "[$(date +%Y/%m/%d) $(date +%H:%M:%S)] ERROR:\tNetwork Error!" >> $user_log_path
+    echo -e "[$(date +%Y/%m/%d) $(date +%H:%M:%S)] WARNING:\tRestart network..." >> $user_log_path
+    user_net_loop=$((${user_net_loop}+1))
+    /etc/init.d/network restart >> $user_log_path 2>&1
+    echo -e "[$(date +%Y/%m/%d) $(date +%H:%M:%S)] INFO:\tNetwork restart finishd!" >> $user_log_path
+    sleep 60s
+    /etc/init.d/network status >> $user_log_path 2>&1
+done
+
+echo -e "[$(date +%Y/%m/%d) $(date +%H:%M:%S)] INFO:\tNetwork check finishd!" >> $user_log_path
+echo >> $user_log_path
+unset user_net_loop
+
+
+###### 此处编写自定义内容  #########
+
+
+###################################
+######### 脚本执行完成 ############
+###################################
+echo -e "[$(date +%Y/%m/%d) $(date +%H:%M:%S)] INFO:\tUser boot script ${user_script_ver} finishd!" >> $user_log_path
+echo >> $user_log_path
+unset user_log_path
+unset user_script_ver
+exit 0
+
+```
 
 ## 软件安装记录
 
@@ -155,6 +223,8 @@ dnsmasq-full kmod-nvme kmod-fs-f2fs lsblk block-mount gdisk pciutils
 
 - zstd
 - vim-fuller
+- gzip
+- zoneinfo-all
 
 # Android App 配置
 

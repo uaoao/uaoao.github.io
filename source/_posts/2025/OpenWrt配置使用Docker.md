@@ -75,6 +75,8 @@ option ipv6 'true'
 option fixed_cidr_v6 '2001:db8:1::/64'
 ```
 
+> 提示：官方配置文件见 [Github](https://github.com/openwrt/packages/blob/master/utils/dockerd/files/etc/config/dockerd)。建议先用官方配置覆盖后再自行配置。
+
 2. 保存并重启路由器，再次 SSH 连接进入 OpenWrt。执行命令 `ip addr` 可以看到 `docker0` 这个接口的 `inet6` 新增了上面配置的地址：
 
 ```txt
