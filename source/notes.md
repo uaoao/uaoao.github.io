@@ -13,12 +13,14 @@ cover: img/notes-cover.jpg
 ```txt
 HandleLidSwitch=ignore
 HandleLidSwitchExternalPower=ignore
+
 ```
 
 2. 编辑 `/etc/UPower/UPower.conf` 文件，如下：
 
 ```txt
 IgnoreLid=true
+
 ```
 
 # Bash 脚本
@@ -38,6 +40,7 @@ LOCAL_PATH=$HOME/NetDisk
 
 install -dm755 $LOCAL_PATH
 /usr/bin/sshfs -o reconnect,ServerAliveInterval=15,ServerAliveCountMax=3,IdentityFile="$KEY_FILE",idmap=user,uid=$(id -u),gid=$(id -g),default_permissions -C -p $PORT ${USER}@${HOST}:$REMOTE_PATH $LOCAL_PATH
+
 ```
 
 ## tbox.sh
@@ -47,6 +50,7 @@ install -dm755 $LOCAL_PATH
 
 install -dm700 $HOME/TboxHome
 /usr/bin/toolbox run env HOME=$HOME/TboxHome bash
+
 ```
 
 ## pyserverd.sh
@@ -56,6 +60,7 @@ install -dm700 $HOME/TboxHome
 
 install -dD $HOME/.cache $HOME/Public
 nohup /usr/bin/python3 -m http.server 8888 -d $HOME/Public >>$HOME/.cache/pyserver.log 2>&1 &
+
 ```
 
 ## mount_hdd.sh
@@ -68,6 +73,7 @@ if [ -e /dev/sda1 ]; then
 else
 	echo "ERROR: HDD does't exist!"
 fi
+
 ```
 
 ## add_netdisk_user.sh
@@ -109,6 +115,7 @@ if [ "$is_ok" == 'Y' -o "$is_ok" == 'y' ]; then
         ls -alh .ssh/
     fi
 fi
+
 ```
 
 # OpenWrt
@@ -189,42 +196,147 @@ exit 0
 base-files ca-bundle dropbear firewall4 fitblk fstools kmod-crypto-hw-safexcel kmod-gpio-button-hotplug kmod-leds-gpio kmod-nft-offload kmod-phy-aquantia libc libgcc libustream-mbedtls logd mtd netifd nftables odhcp6c odhcpd-ipv6only opkg ppp ppp-mod-pppoe procd-ujail uboot-envtools uci uclient-fetch urandom-seed urngd wpad-basic-mbedtls kmod-hwmon-pwmfan kmod-i2c-mux-pca954x kmod-eeprom-at24 kmod-mt7996-firmware kmod-mt7996-233-firmware kmod-rtc-pcf8563 kmod-sfp kmod-usb3 e2fsprogs f2fsck mkf2fs mt7988-wo-firmware luci
 
 dnsmasq-full kmod-nvme kmod-fs-f2fs lsblk block-mount gdisk pciutils
+
 ```
 
-### 常用文件系统
+### 常用文件系统相关内核模块
 
-- kmod-fs-btrfs
-- kmod-fs-exfat
-- kmod-fs-ext4
-- kmod-fs-vfat
-- kmod-fs-xfs
-- kmod-fs-squashfs
-- kmod-fs-ntfs3
+```txt
+kmod-fs-f2fs
+kmod-fs-btrfs
+kmod-fs-exfat
+kmod-fs-ext4
+kmod-fs-vfat
+kmod-fs-xfs
+kmod-fs-squashfs
+kmod-fs-ntfs3
+kmod-fs-isofs
+kmod-fuse
+
+```
 
 ### Cloudflare DDNS
 
-- ddns-scripts-cloudflare
-- luci-app-ddns
-- bind-host
+```txt
+ddns-scripts-cloudflare
+luci-app-ddns
+bind-host
+
+```
 
 ### Cloudflare Zero Trust Tunnels
 
-- luci-app-cloudflared
+```txt
+luci-app-cloudflared
+
+```
 
 ### Docker
 
-- luci-app-dockerman
+```txt
+luci-app-dockerman
+
+```
 
 ### DNS Over Https
 
-- luci-app-https-dns-proxy
+```txt
+luci-app-https-dns-proxy
 
-### 其他
+```
 
-- zstd
-- vim-fuller
-- gzip
-- zoneinfo-all
+### Nikki
+
+- 先从 [feed.sh](https://github.com/nikkinikki-org/OpenWrt-nikki/blob/main/feed.sh) 中复制脚本内容，在 OpenWrt 中保存成文件并执行，然后安装软件。
+
+> 可能与【DNS Over Https】功能相冲突。
+
+```txt
+luci-app-nikki
+
+```
+
+### NUT
+
+```txt
+luci-app-nut
+usbutils
+nut-driver-usbhid-ups
+
+```
+
+### Statistics
+
+```txt
+luci-app-statistics
+collectd-mod-thermal
+
+```
+
+### WatchCat
+
+定时 Ping，监控联网状态并触发重启。
+
+```txt
+luci-app-watchcat
+
+```
+
+### USB / NVME 相关内核模块
+
+#### 基础驱动模块
+
+```txt
+kmod-nvme
+kmod-usb2
+kmod-usb3
+kmod-usbmon         # USB 性能监视
+kmod-usb-hid        # HID 输入设备
+kmod-usb-wdm        # USB 无线设备
+kmod-usb-net        # USB 转网卡
+kmod-usb-serial     # USB 转串口
+kmod-usb-storage    # USB 转储存
+
+```
+
+#### 硬件特定驱动模块
+
+```txt
+kmod-usb-storage-extras
+kmod-usb-storage-uas
+kmod-usb-serial-simple
+kmod-usb-net-asix-ax88179  # USB HUB 网卡
+kmod-usb-net-cdc-ncm       # USB HUB 网卡
+kmod-usb-net-rndis         # 手机网络共享转 USB
+
+```
+
+### 杂项
+
+```txt
+lsblk
+usbutils
+pciutils
+nvme-cli
+gdisk fdisk
+mount-utils
+afuse
+curl
+tree
+zstd
+gzip
+ca-certificates
+vim-fuller
+zoneinfo-all
+
+f2fs-tools
+dosfstools
+exfat-mkfs
+squashfs-tools-mksquashfs
+swap-utils
+xfs-mkfs
+
+```
 
 # Android App 配置
 
@@ -236,6 +348,7 @@ dnsmasq-full kmod-nvme kmod-fs-f2fs lsblk block-mount gdisk pciutils
 ```bash
 adb shell "settings put global captive_portal_http_url http://connect.rom.miui.com/generate_204"
 adb shell "settings put global captive_portal_https_url https://connect.rom.miui.com/generate_204"
+
 ```
 
 # Docker Compose
@@ -253,6 +366,7 @@ services:
     tty: true
     stdin_open: true
     restart: unless-stopped
+
 ```
 
 ## minecraft server compose.yml
@@ -314,5 +428,17 @@ services:
       RWA_RCON_PASSWORD: "1j9fR7_#9~Vs"
       RWA_RCON_PORT: 25575
     restart: unless-stopped
+
 ```
 
+# DNS
+
+## AliDNS
+
+```txt
+https://dns.alidns.com/dns-query
+223.6.6.6
+223.5.5.5
+2400:3200:baba::1
+2400:3200::1
+```
