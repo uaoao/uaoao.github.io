@@ -336,6 +336,11 @@ squashfs-tools-mksquashfs
 swap-utils
 xfs-mkfs
 
+coreutils-md5sum
+coreutils-sha1sum
+coreutils-sha256sum
+coreutils-sha512sum
+
 ```
 
 # Android App 配置
@@ -442,3 +447,32 @@ https://dns.alidns.com/dns-query
 2400:3200:baba::1
 2400:3200::1
 ```
+
+# NextCloud
+
+## 精选插件
+
+- Music
+- Team folders
+- Bookmarks
+- Draw.io
+- Link editor
+- Checksum
+- Metadata
+- External sites
+- Share Review
+- Talk
+- News
+- iFrame Widget
+- Contacts
+- Mail
+- EPUB Viewer
+- Announcement center
+- Tables
+- Cookbook
+- Notes
+- Two-Factor Email
+- Two-Factor Admin Support
+- Memories
+- User migration
+
