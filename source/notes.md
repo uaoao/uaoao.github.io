@@ -211,7 +211,6 @@ kmod-fs-xfs
 kmod-fs-squashfs
 kmod-fs-ntfs3
 kmod-fs-isofs
-kmod-fuse
 
 ```
 
@@ -247,7 +246,7 @@ luci-app-https-dns-proxy
 
 ### Nikki
 
-- 先从 [feed.sh](https://github.com/nikkinikki-org/OpenWrt-nikki/blob/main/feed.sh) 中复制脚本内容，在 OpenWrt 中保存成文件并执行，然后安装软件。
+先从 [feed.sh](https://github.com/nikkinikki-org/OpenWrt-nikki/blob/main/feed.sh) 中复制脚本内容，在 OpenWrt 中保存成文件并执行，然后安装软件。
 
 > 可能与【DNS Over Https】功能相冲突。
 
@@ -256,7 +255,7 @@ luci-app-nikki
 
 ```
 
-### NUT
+### NUT (APC-UPS)
 
 ```txt
 luci-app-nut
@@ -280,6 +279,14 @@ collectd-mod-thermal
 ```txt
 luci-app-watchcat
 
+```
+
+### SFTP
+
+让【Dropbear】支持包括 `scp` 以及 mDNS 服务宣告功能的 SFTP 服务。无需额外设置，即装即用。
+
+```txt
+openssh-sftp-avahi-service
 ```
 
 ### USB / NVME 相关内核模块
@@ -320,7 +327,6 @@ pciutils
 nvme-cli
 gdisk fdisk
 mount-utils
-afuse
 curl
 tree
 zstd
