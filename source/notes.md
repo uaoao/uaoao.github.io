@@ -769,6 +769,7 @@ gzip
 ca-certificates
 vim-fuller
 zoneinfo-all
+diffutils
 
 f2fs-tools
 dosfstools
