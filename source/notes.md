@@ -23,6 +23,13 @@ IgnoreLid=true
 
 ```
 
+## GNOME 多显示器登陆配置
+
+```bash
+sudo cp /home/me/.config/monitors.xml /var/lib/gdm/.config/monitors.xml
+
+```
+
 # Bash 脚本
 
 ## vi
