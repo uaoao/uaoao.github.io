@@ -835,8 +835,9 @@ adb shell "settings put global captive_portal_https_url https://connect.rom.miui
 - 【Termux】
 - 【Unciv】类《文明5》开源游戏
 - 【VLC】
-- 【Loop Habit Tracker】
+- 【Loop Habit Tracker】 习惯记录、提醒
 - 【ZipXtract】解压工具
+- 【Barcode Scanner】条码和二维码扫描/生成条码和二维码
 
 # Docker Compose
 
