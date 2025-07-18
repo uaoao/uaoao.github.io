@@ -53,7 +53,6 @@ Rime没有GUI配置界面，只能通过组合键启动候选词形式的菜单�
 1. 执行以下命令，安装方案【雾凇拼音】
 
 ```bash
-rm -r ~/.config/ibus/rime
 git clone git@github.com:iDvel/rime-ice.git ~/.config/ibus/rime --depth 1
 
 ```
