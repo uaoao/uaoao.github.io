@@ -1,6 +1,6 @@
 ---
 title: Fedora42配置Rime输入法
-date: 2025-6-18
+date: 2025-7-18
 tags:
   - Linux
   - 2025年
