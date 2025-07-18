@@ -42,7 +42,7 @@ tags:
 
 右侧网卡底部的硅脂片没有显示出来，除了网卡底部有硅脂片，网卡与主板之间的缝隙也含了一块硅脂片。导热硅脂片的具体宽高需要购买整块硅脂片（建议两片100\*50mm）后用小刀切成符合的大小，比较麻烦，这里就不再详细说明了。
 
-![BPI-R4散热方案](images/BPI-R4散热方案.webp)
+![BPI-R4散热方案](images/2025/BPI-R4散热方案.webp)
 
 如果没有这套组合，长时间运行时内部温度会达到80摄氏度以上。尤其是固态硬盘和无线网卡，是造成高温的主要原因。加上这套组合后，内部温度可以稳定在40～50摄氏度左右。
 
@@ -110,7 +110,7 @@ sudo screen /dev/ttyUSB0 115200
 
 将猫棒插在SFP WAN口后，需要进入OpenWrt的网络接口配置界面删除默认的 DHCP WAN 口并添加 PPPoE 协议的新接口，如图所示选择 eth2 物理接口（我已经配置好了所以图中不同）。
 
-![OpenWrt设置PPPoE](images/OpenWrt设置PPPoE.webp)
+![OpenWrt设置PPPoE](images/2025/OpenWrt设置PPPoE.webp)
 
 然后在 General Settings 中填写 PAP/CHAP 账号和密码，也就是你宽带的账号和密码。在Firewall Settings中防火墙区域选择WAN区域。保存重启路由器，LAN口连上电脑就可以正常上网了。
 
@@ -343,17 +343,17 @@ Connection to 192.168.1.1 closed.
 
 4. 重启完成后，打开OpenWrt网站，进入 System -> Mount Points 设置挂载选项，如图所示：
 
-![OpenWrt挂载overlay分区](images/OpenWrt挂载overlay分区.webp)
+![OpenWrt挂载overlay分区](images/2025/OpenWrt挂载overlay分区.webp)
 
 5. 然后按板子上的RST按钮再次重启。由于重启到新挂载的`/overlay`分区没有任何数据，所以需要重新执行第一个步骤重新配置网络和安装软件。这次可以直接在 System -> Software 中更新列表并安装软件。其中`kmod-nvme` `block-mount` `kmod-fs-f2fs`必须安装。完成后再次重启。
 
 6. 重启完成后进入 System -> Mount Points 再次设置挂载选项。这次只需按照下图操作添加SWAP交换分区并保存：
 
-![OpenWrt设置swap分区](images/OpenWrt设置swap分区.webp)
+![OpenWrt设置swap分区](images/2025/OpenWrt设置swap分区.webp)
 
 7. 再次重启系统确保完全生效。如图所示，SWAP 和 Storage 都成功生效：
 
-![OpenWrt设置分区成功](images/OpenWrt设置分区成功.webp)
+![OpenWrt设置分区成功](images/2025/OpenWrt设置分区成功.webp)
 
 最后，如果你觉得板载8G eMMC中将近7G被浪费了，那么可以拿剩余的7G分成SWAP分区使用。这样的话NVME就全盘用来挂载`/overlay`也行。但是，板载eMMC与NVME相比，哪个I/O性能会更高呢？不管性能如何，板载存储本身就不适合反复I/O，毕竟无法直接插拔替换，损坏了会很麻烦。
 

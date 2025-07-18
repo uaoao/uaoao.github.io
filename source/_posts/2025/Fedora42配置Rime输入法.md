@@ -38,7 +38,7 @@ sudo dnf install ibus-rime librime-lua
 
 3. 点击桌面右上角输入法图标，切换到 Chinese(Rime)，也可以按组合键【Win+Space】切换。
 
-![Fedora42配置Rime输入法.webp](images/Fedora42配置Rime输入法.webp)
+![Fedora42配置Rime输入法.webp](images/2025/Fedora42配置Rime输入法.webp)
 
 图上显示【自然码双拼】是因为我已经配置好了才写博客，刚安装启用显示的是繁体【维护】。
 

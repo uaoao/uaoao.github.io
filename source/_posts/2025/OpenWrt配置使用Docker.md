@@ -52,7 +52,7 @@ list registry_mirrors 'https://dockerproxy.com'
 
 2. 在 Allow forward to destination zones 这里勾选 wan 区域，然后保存并应用，配置效果类似 lan 区域。如图所示：
 
-![OpenWrt配置使用Docker-防火墙](images/OpenWrt配置使用Docker-防火墙.webp)
+![OpenWrt配置使用Docker-防火墙](images/2025/OpenWrt配置使用Docker-防火墙.webp)
 
 3. 执行以下命令，测试容器是否能访问互联网：
 
