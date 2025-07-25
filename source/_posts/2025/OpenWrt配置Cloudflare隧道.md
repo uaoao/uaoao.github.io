@@ -5,6 +5,7 @@ tags:
   - OpenWrt
   - 2025年
   - 配置
+  - 教程
   - Cloudflare
   - Linux
 ---

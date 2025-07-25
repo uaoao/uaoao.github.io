@@ -8,6 +8,7 @@ tags:
   - APC-UPS
   - NUT
   - 配置
+  - 教程
 ---
 
 

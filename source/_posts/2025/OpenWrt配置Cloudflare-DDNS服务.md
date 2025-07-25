@@ -4,6 +4,7 @@ date: 2025-5-31
 tags:
   - 2025年
   - 配置
+  - 教程
   - Cloudflare
   - OpenWrt
   - Linux
