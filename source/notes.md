@@ -16,7 +16,7 @@ HandleLidSwitchExternalPower=ignore
 
 ```
 
-> 如果是 OSTree 系统，则需从 `/usr/lib/systemd/logind.conf` 复制一份到 `/usr/local/lib/systemd/logind.conf` 再编辑。
+> 如果是 OSTree 系统，则需从 `/usr/lib/systemd/logind.conf` 复制一份到 `/etc/systemd/logind.conf` 再编辑。
 
 2. 编辑 `/etc/UPower/UPower.conf` 文件，如下：
 
