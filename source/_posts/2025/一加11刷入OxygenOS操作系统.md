@@ -2,13 +2,16 @@
 title: 一加11刷入OxygenOS操作系统
 date: 2025-4-8
 tags:
-  - 一加Oneplus
-  - 刷机
-  - Android
-  - OxygenOS
-  - ColorOS
-  - 教程
-  - 2025年
+  - 年份-2025
+  - 阶段-自由
+  - 文体-配置教程
+  - 篇幅-中长篇
+  - 主题-技术知识
+  - 主题-Oneplus 一加
+  - 主题-Android 安卓
+  - 主题-刷机
+  - 主题-OxygenOS
+  - 主题-ColorOS
 ---
 
 ## 刷机的缘由

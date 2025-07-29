@@ -2,14 +2,16 @@
 title: BananaPi-R4路由器开发板使用心得
 date: 2025-4-16
 tags:
-  - BananaPi-R4(BPI-R4)
-  - OpenWrt
-  - 开发板
-  - 路由器
-  - 心得
-  - 配置
-  - Linux
-  - 2025年
+  - 年份-2025
+  - 阶段-自由
+  - 文体-配置教程
+  - 篇幅-中长篇
+  - 主题-技术知识
+  - 主题-BananaPi-R4(BPI-R4)
+  - 主题-OpenWrt
+  - 主题-开发板
+  - 主题-路由器
+  - 主题-Linux
 ---
 
 ## 购买原因

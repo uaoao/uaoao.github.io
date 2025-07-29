@@ -2,12 +2,15 @@
 title: 一加11Root以及备份分区教程
 date: 2025-4-7
 tags:
-  - 一加Oneplus
-  - Android
-  - Root
-  - ColorOS
-  - 教程
-  - 2025年
+  - 年份-2025
+  - 阶段-自由
+  - 文体-配置教程
+  - 篇幅-中长篇
+  - 主题-技术知识
+  - 主题-Oneplus 一加
+  - 主题-Android 安卓
+  - 主题-Root
+  - 主题-ColorOS
 ---
 
 ## 获取 Root 的目的

@@ -2,11 +2,14 @@
 title: OpenWrt配置使用Docker
 date: 2025-04-18
 tags:
-  - Docker
-  - OpenWrt
-  - Linux
-  - 配置
-  - 2025年
+  - 年份-2025
+  - 阶段-自由
+  - 文体-配置教程
+  - 篇幅-中长篇
+  - 主题-技术知识
+  - 主题-Docker
+  - 主题-OpenWrt
+  - 主题-Linux
 ---
 
 ## 安装

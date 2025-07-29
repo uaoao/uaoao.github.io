@@ -2,16 +2,17 @@
 title: 在OpenWrt的Docker上部署NextCloud服务
 date: 2025-6-8
 tags:
-  - 2025年
-  - OpenWrt
-  - Docker
-  - NextCloud
-  - 建站
-  - 配置
-  - 教程
-  - Linux
+  - 年份-2025
+  - 阶段-自由
+  - 文体-配置教程
+  - 篇幅-中长篇
+  - 主题-技术知识
+  - 主题-OpenWrt
+  - 主题-Linux
+  - 主题-Docker
+  - 主题-建站
+  - 主题-NextCloud
 ---
-
 
 ## 前言
 

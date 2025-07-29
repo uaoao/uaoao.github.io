@@ -2,13 +2,15 @@
 title: OpenWrt配置NUT管理APC-UPS
 date: 2025-6-13
 tags:
-  - 2025年
-  - OpenWrt
-  - Linux
-  - APC-UPS
-  - NUT
-  - 配置
-  - 教程
+  - 年份-2025
+  - 阶段-自由
+  - 文体-配置教程
+  - 篇幅-中长篇
+  - 主题-技术知识
+  - 主题-OpenWrt
+  - 主题-Linux
+  - 主题-APC UPS
+  - 主题-NUT
 ---
 
 

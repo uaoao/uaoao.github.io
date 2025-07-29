@@ -2,13 +2,19 @@
 title: Fedora42配置Intel-DG1显卡
 date: 2025-04-22
 tags:
-  - Fedroa
-  - Linux
-  - 驱动
-  - 显卡
-  - 配置
-  - 2025年
+  - 年份-2025
+  - 阶段-自由
+  - 文体-配置教程
+  - 篇幅-中长篇
+  - 主题-技术知识
+  - 主题-Fedora
+  - 主题-Linux
+  - 主题-Intel DG1
+  - 主题-驱动
+  - 主题-显卡
 ---
+
+> 获悉，Intel DG1 显卡将在 Linux 6.17 内核中默认启用。[来源](https://www.phoronix.com/news/Intel-DG1-Enabled-Linux-6.17)
 
 ## 前言
 

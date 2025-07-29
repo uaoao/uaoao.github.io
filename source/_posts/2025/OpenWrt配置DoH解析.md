@@ -2,12 +2,14 @@
 title: OpenWrt配置DoH解析
 date: 2025-04-24
 tags:
-  - OpenWrt
-  - Linux
-  - DoH
-  - 配置
-  - 教程
-  - 2025年
+  - 年份-2025
+  - 阶段-自由
+  - 文体-配置教程
+  - 篇幅-中长篇
+  - 主题-技术知识
+  - 主题-OpenWrt
+  - 主题-Linux
+  - 主题-DoH
 ---
 
 ## 前言
