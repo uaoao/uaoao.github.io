@@ -32,7 +32,7 @@ sudo cp $HOME/.config/monitors.xml /var/lib/gdm/.config/monitors.xml
 
 ```
 
-## GNOME 桌面配置 ThinkPad USB TrackPoint 键盘
+## GNOME 桌面配置 ThinkPad USB 键盘
 
 1. 安装 `dmitry.goloshubov` 作者的 GNOME 扩展。[下载链接](https://extensions.gnome.org/extension/3939/fnlock-switch-thinkpad-compact-usb-keyboard/)
 2. 创建`udev`规则文件 `/usr/local/lib/udev/rules.d/61-thinkpad-keyboard.rules`，添加以下内容：
@@ -54,7 +54,7 @@ EOF
 
 ```
 
-## 笔记本配置内置键盘与 ThinkPad USB 键盘 切换
+## 笔记本配置内置键盘与 ThinkPad USB 键盘切换
 
 1. 使用 `sudo libinput list-devices` 获取内置键盘【AT Translated Set 2 keyboard】的 `Kernel` 设备路径，例如 `/dev/input/event3`
 2. 执行`sudo udevadm monitor --environment --udev`，然后插入外接 ThinkPad USB 键盘，终端将立即显示插拔事件的变量。获取外接键盘的 `ID_MODEL`变量，例如 `ID_MODEL=ThinkPad_Compact_USB_Keyboard_with_TrackPoint`
