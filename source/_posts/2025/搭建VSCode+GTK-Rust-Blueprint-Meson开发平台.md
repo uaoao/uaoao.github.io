@@ -127,10 +127,28 @@ Email: uaoao@github.io
 5. Meson (作者：mesonbuild)
 6. rust-analyzer (作者：The Rust Programming Language)
 
+## 添加 VSCode 文件和搜索排除项
+
+> 一定要配置，不然 CPU 和 IO 占用直接拉爆！！！！
+
+在 VSCode 设置中搜索关键字 `exclude`。找到【Files: Exclude】和【Search: Exclude】选项，添加`**/.flatpak`。
+
+如果使用全局 `settings.json` 来设置，相当于加入以下内容：
+
+```js
+    "search.exclude": {
+        "**/_build": true,
+        "**/target": true,
+        "**/*.flatpak": true
+    },
+    "files.exclude": {
+        "**/.flatpak": true
+    }
+```
 
 ## 构建并运行 Hello World 项目
 
-用 `code` 打开 `hello_world` 文件夹，会有通知提示是否进行构建和重启 Rust 语法分析器，也会有提示错误，如果是提示以下内容，可以暂时忽略不管：
+用 `code` 打开 `hello_world` 文件夹，会有通知提示是否进行构建（不要点YES）和重启 Rust 语法分析器，也会有提示错误，如果是提示以下内容，可以暂时忽略不管：
 
 ```txt
 Failed to load RustAnalyzer integration:
