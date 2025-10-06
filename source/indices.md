@@ -1,7 +1,7 @@
 ---
 title: 基础索引
 type: indices
-cover: img/tags-cover.jpg
+cover: img/indices.webp
 ---
 
 ## 系列索引

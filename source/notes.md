@@ -1,7 +1,7 @@
 ---
 title: 备忘录
 type: notes
-cover: img/notes-cover.jpg
+cover: img/notes.webp
 ---
 
 # Linux 配置

@@ -1,7 +1,7 @@
 ---
 title: 阅读史
 type: books
-cover: img/notes-cover.jpg
+cover: img/books.webp
 ---
 
 ## 说明

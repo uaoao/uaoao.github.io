@@ -1,5 +1,5 @@
 ---
 title: 标签/分类
 type: tags
-cover: img/tags-cover.jpg
+cover: img/tags.webp
 ---

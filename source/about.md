@@ -2,7 +2,7 @@
 title: 关于UAOAO
 type: about
 date: 2025-1-30
-cover: img/about-cover.jpg
+cover: img/about.webp
 ---
 
 ## 一个活在互联网边缘的线粒体
