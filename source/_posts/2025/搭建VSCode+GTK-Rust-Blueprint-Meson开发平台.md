@@ -93,6 +93,7 @@ sudo dnf install \
 3. 将镜像文件移动到 `~/TboxHome/.local/bin/` 目录中，并赋予755可执行权限。
 4. 进入容器，执行命令 `code` 打开VSCode。
 
+> 或者按照 [官方文档](https://code.visualstudio.com/docs/setup/linux#_rhel-fedora-and-centos-based-distributions) 添加软件仓库，用包管理器安装。
 
 ## 使用模板代码创建项目
 
@@ -127,6 +128,7 @@ Email: uaoao@github.io
 5. Meson (作者：mesonbuild)
 6. rust-analyzer (作者：The Rust Programming Language)
 
+
 ## 添加 VSCode 文件和搜索排除项
 
 > 一定要配置，不然 CPU 和 IO 占用直接拉爆！！！！
@@ -139,12 +141,16 @@ Email: uaoao@github.io
     "search.exclude": {
         "**/_build": true,
         "**/target": true,
-        "**/*.flatpak": true
+        "**/.flatpak": true,
+        "**/.gnome-builder": true,
+        "**/.cargo": true
     },
     "files.exclude": {
-        "**/.flatpak": true
+        "**/.flatpak": true,
+        "**/.gnome-builder": true
     }
 ```
+
 
 ## 构建并运行 Hello World 项目
 
@@ -342,6 +348,7 @@ ShortcutsWindow help_overlay {
 6. 执行 `tbox` 进入容器shell
 
 > 可以安装 [Pods](https://flathub.org/en/apps/com.github.marhkb.Pods) 方便管理所有Podman容器。
+
 
 ## 相关参考链接
 
