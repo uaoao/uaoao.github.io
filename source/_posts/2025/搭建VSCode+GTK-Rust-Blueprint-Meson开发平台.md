@@ -77,7 +77,7 @@ flatpak install flathub \
 ```bash
 sudo dnf install \
   flatpak-builder \
-  rust-gtk4-devel \
+  default-fonts-cjk \
   rust-libadwaita-devel \
   blueprint-compiler
 
@@ -94,6 +94,40 @@ sudo dnf install \
 4. 进入容器，执行命令 `code` 打开VSCode。
 
 > 或者按照 [官方文档](https://code.visualstudio.com/docs/setup/linux#_rhel-fedora-and-centos-based-distributions) 添加软件仓库，用包管理器安装。
+
+
+## VSCode 安装必要插件
+
+1. EditorConfig for VS Code (作者：EditorConfig)
+2. Even Better TOML (作者：tamasfe)
+3. Flatpak (作者：Bilal Elmoussaoui)
+4. Gtk Blueprint (作者：Bodil Stokke)
+5. Meson (作者：mesonbuild)
+6. rust-analyzer (作者：The Rust Programming Language)
+
+
+## 添加 VSCode 文件和搜索排除项
+
+> **必须配置**，不然 CPU 和 IO 占用直接拉爆！！！！
+
+在 VSCode 设置中搜索关键字 `exclude`。找到【Files: Exclude】和【Search: Exclude】选项，添加`**/.flatpak`。
+
+如果使用全局 `settings.json` 来设置，相当于加入以下内容：
+
+```js
+    "search.exclude": {
+        "**/_build": true,
+        "**/target": true,
+        "**/.flatpak": true,
+        "**/.gnome-builder": true,
+        "**/.cargo": true
+    },
+    "files.exclude": {
+        "**/.flatpak": true,
+        "**/.gnome-builder": true
+    }
+```
+
 
 ## 使用模板代码创建项目
 
@@ -119,39 +153,6 @@ Email: uaoao@github.io
 最好将模板代码做一次 Git 提交，方便项目配置出错时排查错误。
 
 
-## VSCode 安装必要插件
-
-1. EditorConfig for VS Code (作者：EditorConfig)
-2. Even Better TOML (作者：tamasfe)
-3. Flatpak (作者：Bilal Elmoussaoui)
-4. Gtk Blueprint (作者：Bodil Stokke)
-5. Meson (作者：mesonbuild)
-6. rust-analyzer (作者：The Rust Programming Language)
-
-
-## 添加 VSCode 文件和搜索排除项
-
-> 一定要配置，不然 CPU 和 IO 占用直接拉爆！！！！
-
-在 VSCode 设置中搜索关键字 `exclude`。找到【Files: Exclude】和【Search: Exclude】选项，添加`**/.flatpak`。
-
-如果使用全局 `settings.json` 来设置，相当于加入以下内容：
-
-```js
-    "search.exclude": {
-        "**/_build": true,
-        "**/target": true,
-        "**/.flatpak": true,
-        "**/.gnome-builder": true,
-        "**/.cargo": true
-    },
-    "files.exclude": {
-        "**/.flatpak": true,
-        "**/.gnome-builder": true
-    }
-```
-
-
 ## 构建并运行 Hello World 项目
 
 用 `code` 打开 `hello_world` 文件夹，会有通知提示是否进行构建（不要点YES）和重启 Rust 语法分析器，也会有提示错误，如果是提示以下内容，可以暂时忽略不管：
@@ -163,7 +164,7 @@ CodeExpectedError: Unable to write to Workspace Settings because rust-analyzer.f
 
 ```
 
-如果是提示缺少 Flatpak SDK，则按照要求用 `flatpak` 安装后，重启 VSCode 即可。
+如果是提示缺少 Flatpak SDK，则按照要求用 `flatpak` 安装后，重启 VSCode 即可；如果 `main.rs` 报错提示 `mod config` 不存在，不必担心，第一次构建项目时将自动生成。
 
 编辑 `meson_option.txt`，将 `value: 'default',` 改成 `development` 并保存。打开 `build-aux/com.example.HelloWorld.Devel.json`，如图所示，点击 **右上角** 的三角形运行（运行中显示红色方形）。
 
