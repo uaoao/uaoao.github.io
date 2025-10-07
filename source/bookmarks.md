@@ -5,14 +5,25 @@ cover: img/bookmarks.webp
 ---
 
 
-# 文档
+# 通识文档
+
+## Wiki 百科
+
+- [維基語錄 - 自由的名人名言](https://zh.wikiquote.org/wiki/Wikiquote:%E9%A6%96%E9%A1%B5)
+- [默沙东诊疗手册](https://www.msdmanuals.cn/)
+
+
+
+
+
+# 编程文档
 
 ## 代码库文档
 
 ### Rust 代码库文档
 
 - [Crate std](https://doc.rust-lang.org/std/index.html)
-- [Crate libadwaita](https://docs.rs/libadwaita/latest/libadwaita/)
+- [Crate libadwaita](https://world.pages.gitlab.gnome.org/Rust/libadwaita-rs/stable/latest/docs/libadwaita/index.html)
 
 ## 教程
 
@@ -36,6 +47,19 @@ cover: img/bookmarks.webp
 - [OpenGL 中文教程（C）](https://learnopengl-cn.github.io/)
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
 # 浏览器
 
 ## 网页脚本
@@ -49,6 +73,24 @@ cover: img/bookmarks.webp
 - [AI Image Generator](https://image-generator.com/ai-image-generator)
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 # ARM 设备
 
 ## 智能手机
@@ -56,4 +98,52 @@ cover: img/bookmarks.webp
 ### Android 刷机
 
 - [UO Wiki 刷机百科](https://wiki.uotan.cn/index.php?title=%E9%A6%96%E9%A1%B5)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# 应用软件
+
+## 应用商店/下载站
+
+- [Uptodown](https://cn.uptodown.com/)
+- [SourceForge](https://sourceforge.net/)
+- [Flathub](https://flathub.org/)
+
+
+
+
+
+
+
+
+
+
+
+
+
+# Unix 操作系统
+
+## Arch Linux
+
+- [Archlinux](https://archlinux.org/)
+
+## Debian Linux
+
+- [Debian Linux](https://www.debian.org/)
+
+
+
+
 
