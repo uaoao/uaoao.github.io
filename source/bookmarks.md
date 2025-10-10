@@ -11,7 +11,7 @@ cover: img/bookmarks.webp
 
 - [維基語錄 - 自由的名人名言](https://zh.wikiquote.org/wiki/Wikiquote:%E9%A6%96%E9%A1%B5)
 - [默沙东诊疗手册](https://www.msdmanuals.cn/)
-
+- [Paper Airplane Designs](https://www.foldnfly.com/)
 
 
 
@@ -20,10 +20,12 @@ cover: img/bookmarks.webp
 
 ## 代码库文档
 
-### Rust 代码库文档
+- [GNOME Gtk4](https://docs.gtk.org/gtk4/index.html)
 
-- [Crate std](https://doc.rust-lang.org/std/index.html)
-- [Crate libadwaita](https://world.pages.gitlab.gnome.org/Rust/libadwaita-rs/stable/latest/docs/libadwaita/index.html)
+### Rust Crate 代码库文档
+
+- [std](https://doc.rust-lang.org/std/index.html)
+- [libadwaita](https://world.pages.gitlab.gnome.org/Rust/libadwaita-rs/stable/latest/docs/libadwaita/index.html)
 
 ## 教程
 
@@ -31,7 +33,10 @@ cover: img/bookmarks.webp
 
 ### 软件开发
 
+- [GNOME Developer Documentation](https://developer.gnome.org/documentation/index.html)
+- [GNOME Human Interface Guidelines](https://developer.gnome.org/hig/index.html)
 - [基于 Rust 和 GTK 4 的 GUI 开发](https://mario-hero.github.io/gtk-book-zh_cn/)
+    - [GUI development with Rust and GTK 4](https://gtk-rs.org/gtk4-rs/stable/latest/book/)
 - [Meson 构建系统](https://mesonbuild.cn/index.html)
 - [Flatpak Documentation](https://docs.flatpak.org/en/latest/index.html)
 
@@ -66,14 +71,36 @@ cover: img/bookmarks.webp
 
 - [Audio and Video Enhancement](https://greasyfork.org/en/scripts/381682-%E9%9F%B3%E8%A7%86%E9%A2%91%E5%A2%9E%E5%BC%BA%E8%84%9A%E6%9C%AC-%E6%97%A0%E6%9E%81%E8%B0%83%E9%80%9F-%E5%80%8D%E9%80%9F%E5%BF%AB%E5%AD%A6-%E5%BF%AB%E4%B9%90%E5%88%B7%E5%89%A7-%E8%A7%86%E9%A2%91%E4%B8%8B%E8%BD%BD-%E7%94%BB%E9%9D%A2%E6%88%AA%E5%9B%BE%E7%AD%89-%E9%80%82%E7%94%A8%E5%A4%A7%E9%83%A8%E5%88%86%E7%BD%91%E7%AB%99)
 
-## 在线工具
 
-### 图片生成
+
+
+
+
+
+
+
+
+
+
+
+
+# 在线工具
+
+
+## 趣味工具
+
+- [三题故事标题生成器](https://cn.shindanmaker.com/998229)
+- [福音戰士標題生成器](https://lab.magiconch.com/eva-title/)
+- [喵语翻译](https://www.miao-lang.com/)
+- [接頭霸王](https://kyaru-connect.ayaya.tw/)
+- [狗屁不通文章生成器](https://suulnnka.github.io/BullshitGenerator/index.html)
+- [神奇海螺试验场](https://lab.magiconch.com/)
+- [petpet generator](https://benisland.neocities.org/petpet/)
+
+## 图片生成/修改
 
 - [AI Image Generator](https://image-generator.com/ai-image-generator)
-
-
-
+- [waifu2x](https://www.waifu2x.net/index.zh-CN.html) 【使用卷积神经网络对动漫风格的图片进行放大操作（支持照片）】
 
 
 
@@ -146,4 +173,12 @@ cover: img/bookmarks.webp
 
 
 
+
+
+
+# 神奇趣站
+
+- [FakeUpdate](https://fakeupdate.net/)
+- [Touch Pianist](https://touchpianist.com/)
+- [AIDN](https://aidn.jp/)
 
