@@ -108,6 +108,14 @@ cover: img/bookmarks.webp
 
 # 在线工具
 
+- [Flow](https://app.flowoss.com/) 【网页电子书阅读器，可离线】
+- [双拼练习 @ BlueSky](https://api.ihint.me/shuang/)
+- [简明字帖](https://www.babawar.com/)
+- [VSCode](https://vscode.dev/)
+- [GitHub 加速下载](https://github.ur1.fun/)
+- [Crontab](https://crontab.guru/)
+- [漢典](https://www.zdic.net/)
+- [MicroBlock | 听力数字专练](https://microblock.cc/learn/number)
 
 ## 趣味工具
 
@@ -121,8 +129,10 @@ cover: img/bookmarks.webp
 - [JSFuck](https://jsfuck.com/)
 - [食用手册](https://cook.yunyoujun.cn/)
 - [框框大学](https://www.kkdaxue.com/)
-- [Good First Issues](https://goodfirstissues.com/)
 - [萌国ICP备案](https://icp.gov.moe/)
+- [加 密 通 信](https://jiamitongxin.dovahkiin.top/)
+- [我的世界史莱姆区块查找](https://mclt.cn/)
+- [亲戚关系计算器](https://passer-by.com/relationship/)
 
 ## 图片生成/修改
 
@@ -151,6 +161,18 @@ cover: img/bookmarks.webp
 - [字幕库(zimuku)](https://zimuku.org/)
 
 
+## 文件共享
+
+- [Lsky Pro](https://lsky.ry.mk/)
+- [Telegraph](https://telegra.ph/)
+- [Ufile.io](https://ufile.io/)
+- [微信文件传输助手网页版](https://filehelper.weixin.qq.com/)
+
+
+## 数据分析
+
+- [Good First Issues](https://goodfirstissues.com/)
+- [Star Charts](https://starchart.cc/)
 
 
 # ARM 设备
@@ -240,10 +262,11 @@ cover: img/bookmarks.webp
 - [The Sphere](https://whenistheweekend.com/theSphere.html)
 - [电子木鱼](https://fish.leixf.cn/)
 - [Random Nina(*/ω＼*)🖕](https://iserinina.com/)
-
-
-
-
+- [在线 DOS 游戏](https://dos.zczc.cz/)
+- [Flash 保存计划](https://flash.zczc.cz/)
+- [Life Restart](https://liferestart.syaro.io/)
+- [Run 3 - Free Online Games](https://run-3.click/)
+- [VIM Adventures](https://vim-adventures.com/)
 
 
 
