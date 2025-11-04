@@ -38,7 +38,7 @@ sudo cp $HOME/.config/monitors.xml /var/lib/gdm/.config/monitors.xml
 2. 创建 udev 规则文件 `/usr/local/lib/udev/rules.d/61-thinkpad-keyboard.rules`，添加以下内容：
 
 ```txt
-SUBSYSTEM=="input", DRIVERS=="lenovo", RUN += "/bin/sh -c 'FILE=$(find /sys/devices/ -name fn_lock 2>/dev/null); test -f $FILE && chmod 666 $FILE && ln -f -s $FILE /dev/fnlock-switch'"
+SUBSYSTEM=="input", DRIVERS=="lenovo", RUN+="/bin/sh -c 'FILE=$(find /sys/devices/ -name fn_lock 2>/dev/null); test -f $FILE && chmod 666 $FILE && ln -f -s $FILE /dev/fnlock-switch'"
 
 ```
 
@@ -61,15 +61,25 @@ EOF
 3. 创建 udev 规则文件 `/usr/local/lib/udev/rules.d/62-keyboard-switch.rules`，添加以下内容：（**注意部分内容修改成你系统中显示的结果**）
 
 ```txt
-ACTION=="add", ENV{ID_MODEL}=="ThinkPad_Compact_USB_Keyboard_with_TrackPoint", RUN+="/bin/sh -c 'udevadm trigger --action=remove /dev/input/event3'"
+ACTION=="add", ENV{ID_MODEL}=="ThinkPad_Compact_USB_Keyboard_with_TrackPoint", RUN+="/usr/sbin/udevadm trigger --action=remove /dev/input/event3"
 
-ACTION=="remove", ENV{ID_MODEL}=="ThinkPad_Compact_USB_Keyboard_with_TrackPoint", RUN+="/bin/sh -c 'udevadm trigger --action=add /dev/input/event3'"
+ACTION=="remove", ENV{ID_MODEL}=="ThinkPad_Compact_USB_Keyboard_with_TrackPoint", RUN+="/usr/sbin/udevadm trigger --action=add /dev/input/event3"
 
 ```
 
 4. 执行 `sudo udevadm control --reload && sudo udevadm trigger` 加载配置文件。
 
 - [参考链接](https://www.linuxquestions.org/questions/linux-desktop-74/udev-not-doing-remove-rules-841733/#post4146764)
+
+## Fedora SliverBlue 系统自带 Firefox 添加 OpenH264 解码支持
+
+正常情况下新安装的 SliverBlue 不包含 OpenH264 解码器，Firefox 在某些视频网站无法播放视频。执行以下命令，然后在 Firefox 插件页面启用 OpenH264。
+
+```bash
+sudo rpm-ostree override remove noopenh264 --install openh264 --install mozilla-openh264
+reboot
+
+```
 
 # Bash 脚本
 
@@ -526,17 +536,20 @@ install -dm755 $LOCAL_PATH
 
 ```
 
-## tbox.sh
+## tbox
 
 ```bash
 #!/usr/bin/bash
 
-install -dm700 $HOME/TboxHome
-/usr/bin/toolbox run env HOME=$HOME/TboxHome bash
+if [ $# == 0 ]; then
+    toolbox run env HOME=$HOME/TboxHome bash
+else
+    toolbox run env HOME=$HOME/TboxHome bash -c "$*"
+fi
 
 ```
 
-## pyserverd.sh
+## pyserverd
 
 ```bash
 #!/usr/bin/bash
