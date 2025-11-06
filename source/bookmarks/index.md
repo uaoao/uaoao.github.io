@@ -129,6 +129,8 @@ cover: img/bookmarks.webp
 - [射手网(伪)](https://assrt.net/)
 - [SubHD](https://subhd.tv/)
 - [字幕库(zimuku)](https://zimuku.org/)
+- [Anime字幕论坛](https://bbs.acgrip.com/)
+- [分享交流下载字幕平台 SubHD](https://subhd.tv/)
 
 
 ## 文件共享
@@ -147,18 +149,16 @@ cover: img/bookmarks.webp
 
 # ARM 设备
 
+## 树莓派
+
+- [树莓派引脚定义](https://pinout.vvzero.com/)
+- [Almalinux RPI 安装教程](https://wiki.almalinux.org/documentation/raspberry-pi.html#installation-steps)
+
 ## 智能手机
 
 ### Android 刷机
 
 - [UO Wiki 刷机百科](https://wiki.uotan.cn/index.php?title=%E9%A6%96%E9%A1%B5)
-
-
-
-
-
-
-
 
 
 
