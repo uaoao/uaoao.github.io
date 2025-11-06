@@ -2,6 +2,7 @@
 title: 基础索引
 type: indices
 cover: img/indices.webp
+comments: false
 ---
 
 ## 系列索引
