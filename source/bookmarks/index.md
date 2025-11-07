@@ -9,24 +9,18 @@ cover: img/bookmarks.webp
 - [HTTPS与TLS实现原理相关文章合集](HTTPS与TLS实现原理相关文章合集)
 - [浏览器油猴插件脚本](浏览器油猴插件脚本)
 - [趣味工具](趣味工具)
-- [神奇趣站](神奇趣站)
+- [神奇网站](神奇网站)
 - [关注的个人博客](关注的个人博客)
 - [视频字幕下载](视频字幕下载)
+- [通识文档和百科](通识文档和百科)
+- [线上社交讨论](线上社交讨论)
+- [Rust-Crate代码库文档](Rust-Crate代码库文档)
+- [Rust编程语言教程](Rust编程语言教程)
 
-# 通识文档
 
-## Wiki 百科
+# 游戏百科
 
-- [維基語錄 - 自由的名人名言](https://zh.wikiquote.org/wiki/Wikiquote:%E9%A6%96%E9%A1%B5)
-- [默沙东诊疗手册](https://www.msdmanuals.cn/)
-- [Paper Airplane Designs](https://www.foldnfly.com/)
 - [中文 Minecraft Wiki](https://zh.minecraft.wiki/)
-- [wikiHow](https://zh.wikihow.com/%E9%A6%96%E9%A1%B5)
-
-
-
-
-
 
 # 技术文档
 
@@ -37,16 +31,9 @@ cover: img/bookmarks.webp
 
 - [GNOME Gtk4](https://docs.gtk.org/gtk4/index.html)
 
-### Rust Crate 代码库文档
-
-- [std](https://doc.rust-lang.org/std/index.html)
-- [libadwaita](https://world.pages.gitlab.gnome.org/Rust/libadwaita-rs/stable/latest/docs/libadwaita/index.html)
-- [gtk4](https://gtk-rs.org/gtk4-rs/stable/latest/docs/gtk4/)
-- [gio](https://gtk-rs.org/gtk-rs-core/stable/latest/docs/gio/index.html)
-- [glib](https://gtk-rs.org/gtk-rs-core/stable/latest/docs/glib/index.html)
 
 
-## 教程
+## 通用技术教程
 
 - [Hello 算法](https://www.hello-algo.com/chapter_preface/)
 - [Docker — 从入门到实践](https://yeasy.gitbook.io/docker_practice)
@@ -61,29 +48,10 @@ cover: img/bookmarks.webp
 - [Meson 构建系统](https://mesonbuild.cn/index.html)
 - [Flatpak Documentation](https://docs.flatpak.org/en/latest/index.html)
 
-### Rust 教程
-
-- [Rust 程序设计语言](https://kaisery.github.io/trpl-zh-cn/title-page.html)
-- [Rust 设计模式](https://chuxiuhong.com/chuxiuhong-rust-patterns-zh/)
-- [Rust 秘典（死灵书）](https://nomicon.purewhite.io/)
-
 ### 图形编程 教程
 
 - [Vulkan 教程（Rust）](https://vk.7dg.tech/)
 - [OpenGL 中文教程（C）](https://learnopengl-cn.github.io/)
-
-
-
-
-
-
-# 在线社区
-
-## 聊天室
-
-- [DOLLARS 聊天室](https://drrr.com/)
-- [hack.chat](https://hack.chat/)
-
 
 
 
@@ -94,16 +62,17 @@ cover: img/bookmarks.webp
 - [Flow](https://app.flowoss.com/) 【网页电子书阅读器，可离线】
 - [双拼练习 @ BlueSky](https://api.ihint.me/shuang/)
 - [简明字帖](https://www.babawar.com/)
-- [VSCode](https://vscode.dev/)
+- [网页版VSCode](https://vscode.dev/)
 - [GitHub 加速下载](https://github.ur1.fun/)
 - [Crontab](https://crontab.guru/)
-- [漢典](https://www.zdic.net/)
 - [MicroBlock | 听力数字专练](https://microblock.cc/learn/number)
 - [Browsing Experience Security Check](https://www.cloudflare.com/ssl/encrypted-sni/)
 - [食用手册](https://cook.yunyoujun.cn/)
+- [树莓派引脚定义](https://pinout.vvzero.com/)
+- [漢典](https://www.zdic.net/)
 
 
-## 图片生成/修改
+## 图像生成和修改
 
 - [AI Image Generator](https://image-generator.com/ai-image-generator)
 - [waifu2x](https://www.waifu2x.net/index.zh-CN.html) 【使用卷积神经网络对动漫风格的图片进行放大操作（支持照片）】
@@ -117,11 +86,6 @@ cover: img/bookmarks.webp
 ## 网址导航
 
 - [小白学术 SCI Great](https://www.sssam.com/)
-
-## 速查手册
-
-- [树莓派引脚定义](https://pinout.vvzero.com/)
-
 
 
 ## 文件共享
@@ -154,10 +118,6 @@ cover: img/bookmarks.webp
 
 
 
-
-
-
-
 # 应用软件
 
 ## 工具
@@ -177,26 +137,10 @@ cover: img/bookmarks.webp
 
 
 
-
-
-
-
-
 # Unix 操作系统
 
-## Arch Linux
-
 - [Archlinux](https://archlinux.org/)
-
-## Debian Linux
-
 - [Debian Linux](https://www.debian.org/)
-
-
-
-
-
-
 
 
 
