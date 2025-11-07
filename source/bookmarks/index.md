@@ -11,6 +11,7 @@ cover: img/bookmarks.webp
 - [趣味工具](趣味工具)
 - [神奇趣站](神奇趣站)
 - [关注的个人博客](关注的个人博客)
+- [视频字幕下载](视频字幕下载)
 
 # 通识文档
 
@@ -121,14 +122,6 @@ cover: img/bookmarks.webp
 
 - [树莓派引脚定义](https://pinout.vvzero.com/)
 
-
-## 视频字幕
-
-- [射手网(伪)](https://assrt.net/)
-- [SubHD](https://subhd.tv/)
-- [字幕库(zimuku)](https://zimuku.org/)
-- [Anime字幕论坛](https://bbs.acgrip.com/)
-- [分享交流下载字幕平台 SubHD](https://subhd.tv/)
 
 
 ## 文件共享
