@@ -1,5 +1,5 @@
 ---
-title: 在Fedora上配置Cloudflare的私人DoT
+title: 为Fedora43配置Cloudflare的私人DoT
 date: 2025-11-6
 tags:
   - 年份-2025
