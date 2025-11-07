@@ -10,8 +10,8 @@ cover: img/bookmarks.webp
 - [浏览器油猴插件脚本](subjects/浏览器油猴插件脚本)
 - [趣味工具](subjects/趣味工具)
 - [神奇趣站](subjects/神奇趣站)
+- [关注的个人博客](subjects/关注的个人博客)
 - [](subjects/) TODO
-- [](subjects/)
 - [](subjects/)
 
 # 通识文档
