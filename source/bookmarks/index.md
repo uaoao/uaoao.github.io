@@ -2,6 +2,7 @@
 title: 网络书签
 type: bookmarks
 cover: img/bookmarks.webp
+comments: false
 ---
 
 # 特定主题合集

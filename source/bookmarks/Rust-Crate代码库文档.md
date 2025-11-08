@@ -2,6 +2,7 @@
 title: Rust-Crate代码库文档
 type: bookmarks
 cover: img/bookmarks.webp
+comments: false
 ---
 
 - [std](https://doc.rust-lang.org/std/index.html)

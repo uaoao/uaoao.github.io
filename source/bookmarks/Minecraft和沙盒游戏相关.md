@@ -2,6 +2,7 @@
 title: Minecraft和沙盒游戏相关
 type: bookmarks
 cover: img/bookmarks.webp
+comments: false
 ---
 
 - [中文 Minecraft Wiki](https://zh.minecraft.wiki/)
