@@ -16,11 +16,8 @@ cover: img/bookmarks.webp
 - [线上社交讨论](线上社交讨论)
 - [Rust-Crate代码库文档](Rust-Crate代码库文档)
 - [Rust编程语言教程](Rust编程语言教程)
+- [Minecraft和沙盒游戏相关](Minecraft和沙盒游戏相关)
 
-
-# 游戏百科
-
-- [中文 Minecraft Wiki](https://zh.minecraft.wiki/)
 
 # 技术文档
 
@@ -30,8 +27,6 @@ cover: img/bookmarks.webp
 ## 代码库文档
 
 - [GNOME Gtk4](https://docs.gtk.org/gtk4/index.html)
-
-
 
 ## 通用技术教程
 
@@ -53,10 +48,6 @@ cover: img/bookmarks.webp
 - [Vulkan 教程（Rust）](https://vk.7dg.tech/)
 - [OpenGL 中文教程（C）](https://learnopengl-cn.github.io/)
 
-
-
-
-
 # 在线工具
 
 - [Flow](https://app.flowoss.com/) 【网页电子书阅读器，可离线】
@@ -77,16 +68,13 @@ cover: img/bookmarks.webp
 - [AI Image Generator](https://image-generator.com/ai-image-generator)
 - [waifu2x](https://www.waifu2x.net/index.zh-CN.html) 【使用卷积神经网络对动漫风格的图片进行放大操作（支持照片）】
 
-
 ## 大语言模型
 
 - [ChatGPT 镜像网址](https://www.sssam.com/tool/chatgpt/)
 
-
 ## 网址导航
 
 - [小白学术 SCI Great](https://www.sssam.com/)
-
 
 ## 文件共享
 
@@ -95,12 +83,10 @@ cover: img/bookmarks.webp
 - [Ufile.io](https://ufile.io/)
 - [微信文件传输助手网页版](https://filehelper.weixin.qq.com/)
 
-
 ## 数据分析
 
 - [Good First Issues](https://goodfirstissues.com/)
 - [Star Charts](https://starchart.cc/)
-
 
 # ARM 设备
 
@@ -114,9 +100,6 @@ cover: img/bookmarks.webp
 ### Android 刷机
 
 - [UO Wiki 刷机百科](https://wiki.uotan.cn/index.php?title=%E9%A6%96%E9%A1%B5)
-
-
-
 
 # 应用软件
 
@@ -134,16 +117,10 @@ cover: img/bookmarks.webp
 
 - [Navi III](https://navi3.sourceforge.net/)
 
-
-
-
 # Unix 操作系统
 
 - [Archlinux](https://archlinux.org/)
 - [Debian Linux](https://www.debian.org/)
-
-
-
 
 # 某国特色权威网
 
