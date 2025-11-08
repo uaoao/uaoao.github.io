@@ -14,6 +14,8 @@ comments: false
 - [BSL Shaders - Customization - Minecraft - CurseForge](https://www.curseforge.com/minecraft/shaders/bsl-shaders)
 - [The NeoForged project](https://neoforged.net/)
 - [喵窝 | NyaaCat 社区](https://nyaa.cat/)
+- [Hello Minecraft! Launcher](https://hmcl.huangyuhui.net/)
+- [MCreator - The Best Minecraft Mod Maker Ever](https://mcreator.net/)
 
 ## 沙盒游戏相关项目
 
@@ -26,4 +28,6 @@ comments: false
 - [WebMC](https://goro.top/WebMC/)
 - [Minecraft Classic](https://classic.minecraft.net/)
 - [我的世界（网页版） | MinecraftWeb](https://wzh656.github.io/MinecraftWeb/index.html)
+- [Ethertia | 以太效应](https://ethertia.com/)
+    - [Elytra Programming Language](https://elytra.dev/)
 

@@ -18,12 +18,13 @@ comments: false
 - [Rust-Crate代码库文档](Rust-Crate代码库文档)
 - [Rust编程语言教程](Rust编程语言教程)
 - [Minecraft和沙盒游戏相关](Minecraft和沙盒游戏相关)
+- [关注的软件项目](关注的软件项目)
 
 
 # 技术文档
 
 - [Cloudflare Zero Trust](https://developers.cloudflare.com/cloudflare-one/)
-- [Minecraft Server on Docker (Java Edition)](https://docker-minecraft-server.readthedocs.io/en/latest/)
+- [The Official YAML Web Site](https://yaml.org/)
 
 ## 代码库文档
 
@@ -62,6 +63,7 @@ comments: false
 - [食用手册](https://cook.yunyoujun.cn/)
 - [树莓派引脚定义](https://pinout.vvzero.com/)
 - [漢典](https://www.zdic.net/)
+- [prompts.chat — awesome AI prompts](https://prompts.chat/)
 
 
 ## 图像生成和修改
