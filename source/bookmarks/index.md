@@ -19,6 +19,8 @@ comments: false
 - [Rust编程语言教程](Rust编程语言教程)
 - [Minecraft和沙盒游戏相关](Minecraft和沙盒游戏相关)
 - [关注的软件项目](关注的软件项目)
+- [在线工具](在线工具)
+- [Unix操作系统](Unix操作系统)
 
 
 # 技术文档
@@ -50,46 +52,6 @@ comments: false
 - [Vulkan 教程（Rust）](https://vk.7dg.tech/)
 - [OpenGL 中文教程（C）](https://learnopengl-cn.github.io/)
 
-# 在线工具
-
-- [Flow](https://app.flowoss.com/) 【网页电子书阅读器，可离线】
-- [双拼练习 @ BlueSky](https://api.ihint.me/shuang/)
-- [简明字帖](https://www.babawar.com/)
-- [网页版VSCode](https://vscode.dev/)
-- [GitHub 加速下载](https://github.ur1.fun/)
-- [Crontab](https://crontab.guru/)
-- [MicroBlock | 听力数字专练](https://microblock.cc/learn/number)
-- [Browsing Experience Security Check](https://www.cloudflare.com/ssl/encrypted-sni/)
-- [食用手册](https://cook.yunyoujun.cn/)
-- [树莓派引脚定义](https://pinout.vvzero.com/)
-- [漢典](https://www.zdic.net/)
-- [prompts.chat — awesome AI prompts](https://prompts.chat/)
-
-
-## 图像生成和修改
-
-- [AI Image Generator](https://image-generator.com/ai-image-generator)
-- [waifu2x](https://www.waifu2x.net/index.zh-CN.html) 【使用卷积神经网络对动漫风格的图片进行放大操作（支持照片）】
-
-## 大语言模型
-
-- [ChatGPT 镜像网址](https://www.sssam.com/tool/chatgpt/)
-
-## 网址导航
-
-- [小白学术 SCI Great](https://www.sssam.com/)
-
-## 文件共享
-
-- [Lsky Pro](https://lsky.ry.mk/)
-- [Telegraph](https://telegra.ph/)
-- [Ufile.io](https://ufile.io/)
-- [微信文件传输助手网页版](https://filehelper.weixin.qq.com/)
-
-## 数据分析
-
-- [Good First Issues](https://goodfirstissues.com/)
-- [Star Charts](https://starchart.cc/)
 
 # ARM 设备
 
@@ -106,27 +68,18 @@ comments: false
 
 # 应用软件
 
-## 工具
-
-- [v2rayA](https://v2raya.org/en/)
-
 ## 应用商店/下载站
 
 - [Uptodown](https://cn.uptodown.com/)
 - [SourceForge](https://sourceforge.net/)
 - [Flathub](https://flathub.org/)
 
-## 游戏
-
-- [Navi III](https://navi3.sourceforge.net/)
-
-# Unix 操作系统
-
-- [Archlinux](https://archlinux.org/)
-- [Debian Linux](https://www.debian.org/)
 
 # 某国特色权威网
 
 - [学信网](https://www.chsi.com.cn/)
 - [智慧团建](https://zhtj.youth.cn/zhtj/)
 
+# 服务
+
+- [Mail - Outlook](https://outlook.live.com/mail/)

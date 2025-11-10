@@ -16,6 +16,7 @@ comments: false
 - [喵窝 | NyaaCat 社区](https://nyaa.cat/)
 - [Hello Minecraft! Launcher](https://hmcl.huangyuhui.net/)
 - [MCreator - The Best Minecraft Mod Maker Ever](https://mcreator.net/)
+- [我的世界史莱姆区块查找](https://mclt.cn/)
 
 ## 沙盒游戏相关项目
 
