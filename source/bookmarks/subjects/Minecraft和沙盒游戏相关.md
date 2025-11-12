@@ -5,7 +5,8 @@ cover: img/bookmarks.webp
 comments: false
 ---
 
-- [中文 Minecraft Wiki](https://zh.minecraft.wiki/)
+- [Minecraft Wiki](https://minecraft.wiki/)
+    - [中文 Minecraft Wiki](https://zh.minecraft.wiki/)
 - [Minecraft(我的世界)苦力怕论坛——我的世界基岩版，我的世界资源网，我的世界玩家论坛，我的世界手机版、基岩版论坛](https://klpbbs.com/)
 - [itzg/minecraft-server - Docker Image | Docker Hub](https://hub.docker.com/r/itzg/minecraft-server)
     - [Minecraft Server on Docker (Java Edition)](https://docker-minecraft-server.readthedocs.io/en/latest/)
