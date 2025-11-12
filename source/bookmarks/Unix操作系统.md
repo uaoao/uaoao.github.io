@@ -6,6 +6,8 @@ comments: false
 ---
 
 - [Archlinux](https://archlinux.org/)
+    - [ArchWiki](https://wiki.archlinux.org/title/Main_page)
+    - [Arch Linux 中文](https://www.archlinuxcn.org/)
     - [Arch Linux 中文论坛](https://forum.archlinuxcn.org/)
 - [Debian Linux](https://www.debian.org/)
     - [Debian 中文社区](https://debiancn.org/)
@@ -20,8 +22,11 @@ comments: false
 - [Armbian – Linux for ARM development boards](https://www.armbian.com/)
 - [Fedora Linux | The Fedora Project](https://fedoraproject.org/)
     - [Fedora Discussion - Fedora Project community discussion happens here!](https://discussion.fedoraproject.org/)
+    - [Fedora Documentation :: Fedora Docs](https://docs.fedoraproject.org/en-US/docs/)
+    - [Fedora Project Wiki](https://fedoraproject.org/wiki/Fedora_Project_Wiki)
 - [The FreeBSD Project](https://www.freebsd.org/)
 - [openSUSE - Free Linux operating systems for desktops, servers and containers](https://www.opensuse.org/)
+    - [openSUSE 中文 Wiki](https://zh.opensuse.org/%E9%A6%96%E9%A1%B5)
 - [postmarketOS // real Linux distribution for phones](https://postmarketos.org/)
 - [Rocky Linux](https://rockylinux.org/)
 - [Enterprise Open Source and Linux | Ubuntu](https://ubuntu.com/)
