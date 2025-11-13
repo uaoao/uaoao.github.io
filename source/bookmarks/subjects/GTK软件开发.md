@@ -13,4 +13,6 @@ comments: false
 - [Meson 构建系统](https://mesonbuild.cn/index.html)
 - [Flatpak Documentation](https://docs.flatpak.org/en/latest/index.html)
 - [GTK4 for Graphical User Interfaces](https://ssalewski.de/gtkprogramming.html)
+- [Blueprint documentation](https://gnome.pages.gitlab.gnome.org/blueprint-compiler/index.html)
+- [Unlocking the GNOME stack for Rust – gtk-rs](https://gtk-rs.org/)
 

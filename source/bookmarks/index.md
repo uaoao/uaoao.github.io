@@ -27,20 +27,26 @@ comments: false
 - [Rust编程语言教程](subjects/Rust编程语言教程)
 - [GTK软件开发](subjects/GTK软件开发)
 
-## 代码库文档
 
-- [介绍 · Excelize 简体字文档](https://xuri.me/excelize/zh-hans/)
-- [pīnyīn (v4) - pinyin, 中文拼音解决方案](https://pinyin.js.org/index.html)
+# 软件包索引
+
+- [Home - src.fedoraproject.org](https://src.fedoraproject.org/)
+- [PyPI · The Python Package Index](https://pypi.org/)
+- [UUP dump](https://uupdump.net/)
+- [Docs.rs](https://docs.rs/)
+- [crates.io: Rust Package Registry](https://crates.io/)
+- [Lib.rs — home for Rust crates // Lib.rs](https://lib.rs/)
+- [Fedora Copr Project List](https://copr.fedorainfracloud.org/)
+
+# 杂志周刊新闻
 
 # ARM 设备
-
 ## 树莓派
 
 - [树莓派引脚定义](https://pinout.vvzero.com/)
 - [Almalinux RPI 安装教程](https://wiki.almalinux.org/documentation/raspberry-pi.html#installation-steps)
 
 ## 智能手机
-
 ### Android Only
 
 - [UO Wiki 刷机百科](https://wiki.uotan.cn/index.php?title=%E9%A6%96%E9%A1%B5)
@@ -51,7 +57,6 @@ comments: false
 ### AOSP 操作系统 TODO
 
 # 应用软件
-
 ## 应用商店/下载站
 
 - [SourceForge](https://sourceforge.net/)
