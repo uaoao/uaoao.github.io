@@ -178,4 +178,6 @@ cloudflare.com: 2606:4700::6810:84e5           -- link: enp0s25
 - [在 Firefox 上设置 DoH 和 ESNI/ECH，完成加密浏览的最后一块拼图](https://blog.outv.im/2020/firefox-doh-ech-esni/)
 - [Cheetsheet：启用ECH](https://blog.outv.im/2025/enabling-ech/)
 - [Enabling DNS over TLS on Fedora 42 with systemd-resolved](https://beesley.tech/enabling-dns-over-tls-on-fedora-42-with-systemd-resolved/)
+- [测试了一下使用 DNS ECS 优化分流的效果](https://linux.do/t/topic/573762)
+- [【更新】OAIFree 这个域名换了个方式跟大家见面](https://linux.do/t/topic/1150121)
 
