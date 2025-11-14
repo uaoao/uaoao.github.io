@@ -5,7 +5,7 @@ cover: img/bookmarks.webp
 comments: false
 ---
 
-- [Rust 程序设计语言](https://kaisery.github.io/trpl-zh-cn/title-page.html)
+- [Rust 程序设计语言](https://kaisery.github.io/trpl-zh-cn/)
 - [Rust 设计模式](https://chuxiuhong.com/chuxiuhong-rust-patterns-zh/)
 - [Rust 秘典（死灵书）](https://nomicon.purewhite.io/)
 - [轻松学 Rust](https://rustycab.github.io/LearnRustEasy/)
@@ -24,4 +24,4 @@ comments: false
 - [ctjhoa/rust-learning: A bunch of links to blog posts, articles, videos, etc for learning Rust](https://github.com/ctjhoa/rust-learning)
 > 合集
 - [Rust Atomics and Locks by Mara Bos](https://marabos.nl/atomics/)
-
+- [游戏开发基础 - Rust编写推箱子游戏教程](https://sokoban.iolivia.me/zh_cn/c01-00-intro)
