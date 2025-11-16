@@ -5,6 +5,7 @@ cover: img/bookmarks.webp
 comments: false
 ---
 
+- [World / Rust / gtk-rust-template · GitLab](https://gitlab.gnome.org/World/Rust/gtk-rust-template)
 - [GNOME Gtk4](https://docs.gtk.org/gtk4/index.html)
 - [GNOME Developer Documentation](https://developer.gnome.org/documentation/index.html)
 - [GNOME Human Interface Guidelines](https://developer.gnome.org/hig/index.html)

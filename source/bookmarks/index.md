@@ -12,11 +12,12 @@ comments: false
 - [线上社交讨论](线上社交讨论)
 - [关注的软件项目](关注的软件项目)
 - [在线工具](在线工具)
-- [线上服务](线上服务)
+- [服务供应商](服务供应商)
 - [通用技术文档](通用技术文档)
 - [娱乐文档和百科](娱乐文档和百科)
 - [计算机操作系统](计算机操作系统)
 - [新闻杂志周刊](新闻杂志周刊)
+- [图书、图片、BT网盘资源](图书、图片、BT网盘资源)
 
 # 专题合集
 
@@ -30,12 +31,10 @@ comments: false
 - [软件包索引](subjects/软件包索引)
 - [Android操作系统相关](subjects/Android操作系统相关)
 
-
 ## 树莓派
 
 - [树莓派引脚定义](https://pinout.vvzero.com/)
 - [Almalinux RPI 安装教程](https://wiki.almalinux.org/documentation/raspberry-pi.html#installation-steps)
-
 
 ## 应用商店/下载站
 
@@ -45,9 +44,9 @@ comments: false
 - [Appimagehub.com](https://www.appimagehub.com/)
 - [index.html – AppImages](https://appimage.github.io/)
 
-
 ## 某国特色权威网
 
 - [学信网](https://www.chsi.com.cn/)
 - [智慧团建](https://zhtj.youth.cn/zhtj/)
+- [全国组织机构统一社会信用代码查询平台 - 全国组织机构统一社会信用代码数据服务中心](https://www.cods.org.cn/gscx/)
 
