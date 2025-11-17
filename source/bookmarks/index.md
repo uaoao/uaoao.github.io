@@ -22,11 +22,10 @@ comments: false
 # 专题合集
 
 - [HTTPS与TLS实现原理相关文章合集](subjects/HTTPS与TLS实现原理相关文章合集)
-- [浏览器油猴插件脚本](subjects/浏览器油猴插件脚本)
 - [Minecraft和沙盒游戏相关](subjects/Minecraft和沙盒游戏相关)
 - [视频字幕下载](subjects/视频字幕下载)
 - [Rust-Crate代码库文档](subjects/Rust-Crate代码库文档)
-- [Rust编程语言教程](subjects/Rust编程语言教程)
+- [Rust编程语言](subjects/Rust编程语言)
 - [GTK软件开发](subjects/GTK软件开发)
 - [软件包索引](subjects/软件包索引)
 - [Android操作系统相关](subjects/Android操作系统相关)

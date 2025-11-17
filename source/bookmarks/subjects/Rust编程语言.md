@@ -1,10 +1,11 @@
 ---
-title: Rust编程语言教程
+title: Rust编程语言
 type: bookmarks
 cover: img/bookmarks.webp
 comments: false
 ---
 
+- [Rust Playground 2024 Edition](https://play.rust-lang.org/?version=stable&mode=debug&edition=2024)
 - [Rust 程序设计语言](https://kaisery.github.io/trpl-zh-cn/)
 - [Rust 设计模式](https://chuxiuhong.com/chuxiuhong-rust-patterns-zh/)
 - [Rust 秘典（死灵书）](https://nomicon.purewhite.io/)
