@@ -25,3 +25,17 @@ comments: false
 > 合集
 - [Rust Atomics and Locks by Mara Bos](https://marabos.nl/atomics/)
 - [游戏开发基础 - Rust编写推箱子游戏教程](https://sokoban.iolivia.me/zh_cn/c01-00-intro)
+
+## 微信公众号专辑
+
+- [coding到灯火阑珊 #Rust](https://mp.weixin.qq.com/mp/appmsgalbum?action=getalbum&album_id=2361592668113420289)
+- [TinyZ #tokio](https://mp.weixin.qq.com/mp/appmsgalbum?action=getalbum&album_id=2907113224062418945)
+- [TinyZ #Rust语言从入门到精通系列](https://mp.weixin.qq.com/mp/appmsgalbum?action=getalbum&album_id=2841026999577001989)
+- [Rust学习日记 #Rust进阶教程](https://mp.weixin.qq.com/mp/appmsgalbum?action=getalbum&album_id=2864697328462200835)
+- [Rust碎碎念 #Rust翻译文章集合](https://mp.weixin.qq.com/mp/appmsgalbum?action=getalbum&album_id=1339908758553837568)
+- [码小菜 #Rust](https://mp.weixin.qq.com/mp/appmsgalbum?action=getalbum&album_id=1512385911328669699)
+- [全栈之巅-梦兽编程 #Rust](https://mp.weixin.qq.com/mp/appmsgalbum?action=getalbum&album_id=3179433038586363904)
+- [Rust语言中文社区 #Rust日报](https://mp.weixin.qq.com/mp/appmsgalbum?action=getalbum&album_id=1832971445459615749)
+- [Rust语言中文社区 #Rust笔记](https://mp.weixin.qq.com/mp/appmsgalbum?action=getalbum&album_id=2170724251283095557)
+- [Rust语言中文社区 #大家的项目](https://mp.weixin.qq.com/mp/appmsgalbum?action=getalbum&album_id=1421148486887768066)
+

@@ -36,14 +36,6 @@ comments: false
 - [树莓派引脚定义](https://pinout.vvzero.com/)
 - [Almalinux RPI 安装教程](https://wiki.almalinux.org/documentation/raspberry-pi.html#installation-steps)
 
-## 应用商店/下载站
-
-- [SourceForge](https://sourceforge.net/)
-- [Flathub](https://flathub.org/)
-- [果核剥壳 - 还原软件的本质](https://www.ghxi.com/)
-- [Appimagehub.com](https://www.appimagehub.com/)
-- [index.html – AppImages](https://appimage.github.io/)
-
 ## 某国特色权威网
 
 - [学信网](https://www.chsi.com.cn/)
