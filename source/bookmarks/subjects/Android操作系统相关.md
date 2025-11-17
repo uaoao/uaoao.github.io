@@ -15,6 +15,8 @@ comments: false
 - [Lenovo BootLoader Unlock Tool-NekoYuzu-Meow Mobile](https://lenovobl.neko.ink/)
 - [cainiao524/some-little-shit-backup](https://github.com/cainiao524/some-little-shit-backup)
 - [nikgapps.com](https://nikgapps.com/)
+- [GitHub - oxygen-updater/oxygen-updater: Oxygen Updater is a third-party app for OnePlus devices that allows you to install official OTA (over-the-air) updates ASAP. Ensure your device is up-to-date — it's quick, easy, and free!](https://github.com/oxygen-updater/oxygen-updater)
+- [高通方案的Android设备几种开机模式的进入与退出 - sunrain_hjb - 博客园](https://www.cnblogs.com/we-hjb/p/9784659.html)
 
 # App Store
 
@@ -50,12 +52,17 @@ comments: false
 - [APatch Docs](https://apatch.dev/)
     - [GitHub - bmax121/APatch: The patching of Android kernel and Android system](https://github.com/bmax121/APatch)
 - [Releases · LSPosed/LSPosed.github.io](https://github.com/LSPosed/LSPosed.github.io/releases)
+> 这个是 Shamiko
 - [Releases · Dr-TSNG/ZygiskNext](https://github.com/Dr-TSNG/ZygiskNext/releases)
 - [Releases · eritpchy/FingerprintPay](https://github.com/eritpchy/FingerprintPay/releases)
+> 感觉不好用
 - [Releases · LSPosed/LSPosed](https://github.com/LSPosed/LSPosed/releases)
 - [Home | KernelSU](https://kernelsu.org/)
 - [topjohnwu/Magisk: The Magic Mask for Android](https://github.com/topjohnwu/Magisk)
     - [Magisk Documentation | Magisk](https://topjohnwu.github.io/Magisk/)
 - [GitHub - rsuntk/KernelSU: KernelSU with MagicMount, support GKI and Non-GKI. Updates: https://t.me/rsukrnlsu](https://github.com/rsuntk/KernelSU)
 - [首页 | LuckyTool](https://luckyzyx.gitlab.io/LuckyTool_Doc/)
+- [GitHub - 5ec1cff/TrickyStore](https://github.com/5ec1cff/TrickyStore)
+> 解决 TEE 问题必备
+- [GitHub - taamarin/box_for_magisk: Transparent Proxy for Android(root)](https://github.com/taamarin/box_for_magisk)
 
