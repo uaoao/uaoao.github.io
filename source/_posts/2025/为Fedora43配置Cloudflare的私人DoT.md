@@ -69,7 +69,7 @@ EOF
 > ```txt
 > gitee.com: resolve call failed: DNSSEC validation failed: no-signature
 > ```
-> 可以设置 `DNSSEC=no` 禁用加密 DNS。由于 TLS 协议会对数据进行加密，所以在 Cloudflare DNS 服务器与客户端之间的通信依然加密，只不过DNS服务器进行递归查询时有被篡改的风险。
+> 可以设置 `DNSSEC=no` 禁用 DNS 签名。由于 TLS 协议会对数据进行加密，所以在 Cloudflare DNS 服务器与客户端之间的通信依然加密，只不过DNS服务器进行递归查询时有被篡改的风险。
 
 下一步则利用上面创建的脚本配置 `systemd-resolved`：
 
