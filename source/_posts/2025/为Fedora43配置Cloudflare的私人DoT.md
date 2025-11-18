@@ -65,6 +65,12 @@ EOF
 
 脚本的输出是 `systemd-resolved` 的配置，其中包含通过 `DNS=` 和 `FallbackDNS=` 设置的 DNS 服务器，使用 `Domains=~.` 将它们作为默认域处理器。使用 `DNSOverTLS=yes`，启用DoT；使用 `DNSSEC=yes` 强制 [DNSSEC](https://en.wikipedia.org/wiki/Domain_Name_System_Security_Extensions)。这样确保全局默认设置安全，且实际使用 `abc123.cloudflare-gateway.com`。
 
+> 如果遇到查询某些域名报错的情况，比如查询 `juejin.cn` `gitee.com` 有以下报错信息：
+> ```txt
+> gitee.com: resolve call failed: DNSSEC validation failed: no-signature
+> ```
+> 可以设置 `DNSSEC=no` 禁用加密 DNS。由于 TLS 协议会对数据进行加密，所以在 Cloudflare DNS 服务器与客户端之间的通信依然加密，只不过DNS服务器进行递归查询时有被篡改的风险。
+
 下一步则利用上面创建的脚本配置 `systemd-resolved`：
 
 ```bash
