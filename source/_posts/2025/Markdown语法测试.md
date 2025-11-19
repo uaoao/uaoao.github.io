@@ -52,7 +52,7 @@ tags:
 > ```c
 > #include <stdio.h>
 >
-> int main(char* args[]) {
+> int main(char* argv[]) {
 >     printf("Hello, world!\n");
 >     return 0;
 > }
@@ -141,14 +141,9 @@ tags:
 
 ---
 
-第十四小节测试，使用注脚一[^1]标记文本内容。使用注脚footnote[^footnote]标记文本内容。
+第十四小节测试，使用注脚十一[^11]标记文本内容。使用注脚footnote[^footnote]标记文本内容。
 
-[^1]: 这是注脚一的文本内容
-[^footnote]: 这是注脚footnote的文本内容
-    这里使用了缩进。
-    与footnote注脚属于同一块内容。
-
-以上注脚可能不会显示在小节中，而是显示在文章底部。
+以上注脚可能不会显示在小节中，而是显示在文章底部或者变成链接。
 
 ---
 
@@ -207,4 +202,7 @@ https://example.com
 
 ---
 
-测试结束，这是文章的最后一行，末尾没有换行符。
+测试结束，下面是第十四小节的两个注脚。
+
+[^1]: 这是注脚一的文本内容
+[^footnote]: 这是注脚footnote的文本内容
