@@ -32,7 +32,7 @@ UAOAO 对本博客内容保留所有权，以 CC-BY-NC-SA 4.0 协议分享、转
 
 主页背景图是 UAOAO 读大学的时候拿室友电脑跑 AI 大模型生成的。当时弄了好几张图片，就这个看起来最正常😂
 
-其他背景图来自 [clean-blog](https://github.com/klugjo/hexo-theme-clean-blog) Hexo 主题自带的图片。
+~~其他背景图来自 [clean-blog](https://github.com/klugjo/hexo-theme-clean-blog) Hexo 主题自带的图片。~~
 
 ## 关于以前的 UAOAO
 
