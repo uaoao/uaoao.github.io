@@ -43,7 +43,6 @@ comments: false
 - [Crontab](https://crontab.guru/)
 - [MicroBlock | 听力数字专练](https://microblock.cc/learn/number)
 - [食用手册](https://cook.yunyoujun.cn/)
-- [树莓派引脚定义](https://pinout.vvzero.com/)
 - [漢典](https://www.zdic.net/)
 - [prompts.chat — awesome AI prompts](https://prompts.chat/)
 - [A Real Me - 简体中文](https://www.arealme.com/cn)
