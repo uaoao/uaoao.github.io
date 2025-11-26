@@ -46,10 +46,13 @@ Fedora Sliverblue 默认装有 Toolbox 和 Podman。容器默认使用 Fedora Co
 2. 将以下内容保存成可执行脚本 `~/.local/bin/tbox`，设置可执行权限755：
 
 ```bash
-#!/bin/bash
+#!/usr/bin/bash
 
-install -dm700 $HOME/TboxHome
-toolbox run env HOME=$HOME/TboxHome bash
+if [ $# == 0 ]; then
+    exec toolbox run env HOME=$HOME/TboxHome bash
+else
+    exec toolbox run env HOME=$HOME/TboxHome bash -c "$*"
+fi
 
 ```
 
@@ -93,7 +96,13 @@ sudo dnf install \
 3. 将镜像文件移动到 `~/TboxHome/.local/bin/` 目录中，并赋予755可执行权限。
 4. 进入容器，执行命令 `code` 打开VSCode。
 
-> 或者按照 [官方文档](https://code.visualstudio.com/docs/setup/linux#_rhel-fedora-and-centos-based-distributions) 添加软件仓库，用包管理器安装。
+> 或者按照 [官方文档](https://code.visualstudio.com/docs/setup/linux#_rhel-fedora-and-centos-based-distributions) 在容器内添加软件仓库，用包管理器安装。
+>
+> ```bash
+> sudo rpm --import https://packages.microsoft.com/keys/microsoft.asc
+> echo -e "[code]\nname=Visual Studio Code\nbaseurl=https://packages.microsoft.com/yumrepos/vscode\nenabled=1\nautorefresh=1\ntype=rpm-md\ngpgcheck=1\ngpgkey=https://packages.microsoft.com/keys/microsoft.asc" | sudo tee /etc/yum.repos.d/vscode.repo > /dev/null
+>
+> ```
 
 
 ## VSCode 安装必要插件

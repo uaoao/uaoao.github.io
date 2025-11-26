@@ -463,9 +463,9 @@ install -dm755 $LOCAL_PATH
 #!/usr/bin/bash
 
 if [ $# == 0 ]; then
-    toolbox run env HOME=$HOME/TboxHome bash
+    exec toolbox run env HOME=$HOME/TboxHome bash
 else
-    toolbox run env HOME=$HOME/TboxHome bash -c "$*"
+    exec toolbox run env HOME=$HOME/TboxHome bash -c "$*"
 fi
 
 ```
@@ -476,7 +476,7 @@ fi
 #!/usr/bin/bash
 
 install -dD $HOME/.cache $HOME/Public
-nohup /usr/bin/python3 -m http.server 8888 -d $HOME/Public >>$HOME/.cache/pyserver.log 2>&1 &
+nohup /usr/bin/python3 -m http.server 8888 -d $HOME/Public >> $HOME/.cache/pyserver.log 2>&1 &
 
 ```
 
