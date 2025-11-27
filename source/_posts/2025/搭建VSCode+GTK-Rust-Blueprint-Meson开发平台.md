@@ -48,11 +48,14 @@ Fedora Sliverblue 默认装有 Toolbox 和 Podman。容器默认使用 Fedora Co
 ```bash
 #!/usr/bin/bash
 
+install -dm700 $HOME/TboxHome
+
 if [ $# == 0 ]; then
-    exec toolbox run env HOME=$HOME/TboxHome bash
+    /usr/bin/toolbox run env HOME=$HOME/TboxHome bash
 else
-    exec toolbox run env HOME=$HOME/TboxHome bash -c "$*"
+    /usr/bin/toolbox run env HOME=$HOME/TboxHome bash -c "$*"
 fi
+
 
 ```
 
@@ -66,7 +69,7 @@ fi
 1. 安装以下 Flatpak 运行时和开发包
 
 ```bash
-flatpak install flathub \
+flatpak install --system flathub \
   org.gnome.Platform \
   org.gnome.Sdk \
   org.freedesktop.Sdk \

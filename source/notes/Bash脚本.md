@@ -462,10 +462,12 @@ install -dm755 $LOCAL_PATH
 ```bash
 #!/usr/bin/bash
 
+install -dm700 $HOME/TboxHome
+
 if [ $# == 0 ]; then
-    exec toolbox run env HOME=$HOME/TboxHome bash
+    /usr/bin/toolbox run env HOME=$HOME/TboxHome bash
 else
-    exec toolbox run env HOME=$HOME/TboxHome bash -c "$*"
+    /usr/bin/toolbox run env HOME=$HOME/TboxHome bash -c "$*"
 fi
 
 ```
