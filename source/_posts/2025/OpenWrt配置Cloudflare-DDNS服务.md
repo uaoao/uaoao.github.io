@@ -13,8 +13,6 @@ tags:
   - 主题-DDNS
 ---
 
-## 前言
-
 一般来说，如果需要对外开放HTTP/HTTPS服务，最合适的方式是[配置Cloudflare隧道](https://uaoao.github.io/2025/5/27/OpenWrt%E9%85%8D%E7%BD%AECloudflare%E9%9A%A7%E9%81%93.html)。因为CF提供的隧道可以提供证书加密且配置简单。但隧道不适合所有场合，比如说使用IPv6 SSH时就不必再套一层CF，而且直连延迟低、丢包率低、带宽取决于双方的上下行带宽。
 
 我家最初还有动态公网IPv4时，一直使用的是DDNS服务，SSH直连到家。后来动态公网IPv4被回收，只能用第三方内网穿透服务（国内IP）。最近这个服务到期需要再次缴费，我决定抛弃这个服务，转而使用纯IPv6连接或CF隧道穿透。
@@ -46,7 +44,7 @@ tags:
 
 ### 安装 DDNS 服务软件
 
-1. 安装 `luci-app-ddns` `ddns-scripts-cloudflare` `ca-bundle` `curl` 和 `bind-host`（这个可以用其他软件包替换）
+1. 安装 `luci-app-ddns` `ddns-scripts-cloudflare` 和 `bind-host`（这个可以用其他软件包替换）
 2. 注销重新登陆 OpenWrt，进入 Services —— Dynamic DNS，确保 State 是 **DDNS Autostart enabled**
 3. 点击 Update DDns Services List
 4. 删除原有的两个模板，点击 Add new services
@@ -59,7 +57,7 @@ tags:
 1. Lookup Hostname 填写 `openwrt.example.com`，IP地址版本选 IPv6
 2. Domain 注意用`@`分割子域名，这里则填入 `openwrt@example.com`
 3. Username 填写账号 `Bearer`，这个是API Token的默认账号。Password 填写前面小节复制的令牌
-4. 勾选 Use HTTP Secure，在 Path to CA-Certificate 中填入 `/etc/ssl/certs/ca-certificates.crt`
+4. 勾选 Use HTTP Secure，在 Path to CA-Certificate 中填入 `/etc/ssl/certs`
 5. 点击 Advanced Settings 选项卡。IP address source 保持默认 Network。Network接口选择虚拟接口 `xxxx_6`（如果是Openwrt拨号）或 `lan`
 6. 点击保存并应用。等待几分钟用手机或其他与Openwrt不在同一个局域网内的电脑 `ping -6 -c 4 openwrt.example.com` 命令检查是否成功。如果失败，重启 DDNS 服务试试。
 

@@ -18,34 +18,31 @@ tags:
 
 ```bash
 opkg update
-opkg install luci-app-dockerman kmod-macvlan
+opkg install luci-app-dockerman
 reboot
 ```
 
 ## 配置镜像服务器
 
-由于众所周知的原因，某些地区无法直接访问Docker Hub，所以需要配置镜像服务器。而曾经某些高校和企业提供的镜像服务器也由于某些不可抗力因素停止服务。我这里提供几个截至2025年6月可用的镜像服务器配置和可用的订阅，不保证永久可用。
-
-在添加配置之前，先尝试用浏览器打开网站，看是否能正常访问。
+由于众所周知的原因，某些地区无法直接访问Docker Hub，所以需要配置镜像服务器。而曾经某些高校和企业提供的镜像服务器也由于某些不可抗力因素停止服务。在添加配置之前，先尝试用浏览器打开网站，看是否能正常访问。我这里提供几个截至 ***2025年11月*** 可用的镜像服务器配置和可用的订阅，不保证永久可用。
 
 - 在`/etc/config/dockerd`中配置镜像服务器，**注意缩进整齐**（或者网页 Docker -> Configuration 配置）：
 
 ```txt
-list registry_mirrors 'https://lispy.org'
-list registry_mirrors 'https://docker.xiaogenban1993.com'
 list registry_mirrors 'https://docker.yomansunter.com'
 list registry_mirrors 'https://666860.xyz'
-list registry_mirrors 'https://a.ussh.net'
+list registry_mirrors 'https://docker-0.unsee.tech'
 list registry_mirrors 'https://docker.1ms.run'
-list registry_mirrors 'https://dytt.online'
 list registry_mirrors 'https://docker.1panel.live'
-list registry_mirrors 'https://dockerproxy.com'
+list registry_mirrors 'https://docker.xuanyuan.me'
 ```
 
 - 订阅网站：
 
-1. https://github.com/dongyubin/DockerHub
-2. https://github.com/cmliu/CF-Workers-docker.io
+1. <https://github.com/dongyubin/DockerHub>
+2. 自己搭建 <https://github.com/cmliu/CF-Workers-docker.io>
+
+测试可用的镜像服务器：以 `https://666860.xyz` 为例子，执行 `curl -v https://666860.xyz` 输出大量内容说明没被墙。也可以 `docker pull 666860.xyz/library/busybox:latest` 拉取一个镜像试试。
 
 ## 配置 OpenWrt 防火墙允许 wan 区域转发进入 docker0
 
