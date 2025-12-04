@@ -17,12 +17,12 @@ cover: img/notes.webp
 # 自定义脚本执行日志存放位置
 user_log_path=/tmp/boot_script.log
 # 脚本版本号
-user_script_ver="v1.0"
+user_script_ver="v1.1"
 
 ###################################
 ######### 脚本开始执行 ############
 ###################################
-sleep 60s
+sleep 40s
 echo -e "[$(date +%Y/%m/%d) $(date +%H:%M:%S)] INFO:\tUser boot script ${user_script_ver} start!" >> $user_log_path
 
 ###################################
@@ -38,9 +38,11 @@ user_net_loop=0
 
 while [[ "$(ip a | awk '/inet6 2/ {print $0}')" == "" ]]
 do
-    if [[ $user_net_loop == "3" ]]
+    if [[ $user_net_loop == "4" ]]
     then
-        echo -e "[$(date +%Y/%m/%d) $(date +%H:%M:%S)] ERROR:\tCanot resume network over 3 times!" >> $user_log_path
+        echo -e "[$(date +%Y/%m/%d) $(date +%H:%M:%S)] ERROR:\tCanot resume network over 4 times!" >> $user_log_path
+        echo -e "[$(date +%Y/%m/%d) $(date +%H:%M:%S)] ERROR:\tIgnore network checking!" >> $user_log_path
+        user_net_loop=-1
         break
     fi
 
@@ -49,16 +51,20 @@ do
     user_net_loop=$((${user_net_loop}+1))
     /etc/init.d/network restart >> $user_log_path 2>&1
     echo -e "[$(date +%Y/%m/%d) $(date +%H:%M:%S)] INFO:\tNetwork restart finishd!" >> $user_log_path
-    sleep 60s
+    sleep 40s
     /etc/init.d/network status >> $user_log_path 2>&1
 done
 
-echo -e "[$(date +%Y/%m/%d) $(date +%H:%M:%S)] INFO:\tNetwork check finishd!" >> $user_log_path
+if [[ $user_net_loop != "-1" ]]
+then
+    echo -e "[$(date +%Y/%m/%d) $(date +%H:%M:%S)] INFO:\tNetwork check finished!" >> $user_log_path
+fi
+
 echo >> $user_log_path
 unset user_net_loop
 
 
-###### 此处编写自定义内容  #########
+###### 此处添加自定义内容  #########
 
 
 ###################################
