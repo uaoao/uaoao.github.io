@@ -8,7 +8,7 @@ cover: img/notes.webp
 - [Bash脚本](Bash脚本)
 - [OpenWrt配置](OpenWrt配置)
 - [Android-App配置](Android-App配置)
-- [Docker-Compose](Docker-Compose)
+- [Docker-Service](Docker-Service)
 
 # DNS
 
@@ -21,4 +21,10 @@ https://dns.alidns.com/dns-query
 2400:3200:baba::1
 2400:3200::1
 ```
+
+## DNS Over Https
+
+- <https://dns-doh.dnsforfamily.com/dns-query>
+- <https://xxx.ddd.oaifree.com/query-dns>
+- <https://doh.mullvad.net/dns-query>
 
