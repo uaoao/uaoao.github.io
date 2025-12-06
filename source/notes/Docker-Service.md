@@ -32,7 +32,6 @@ docker run \
   -e DIFFICULTY="hard" \
   -e MODE="survival" \
   -e VIEW_DISTANCE=14 \
-  -e ENABLE_AUTOSTOP="TRUE" \
   -e MAX_BUILD_HEIGHT=512 \
   -e LEVEL_TYPE="minecraft:large_biomes" \
   -d itzg/minecraft-server:java21-graalvm
