@@ -13,6 +13,8 @@ docker run \
   --name minecraft \
   --restart=unless-stopped \
   --network bridge \
+  --dns 223.6.6.6 \
+  --dns 223.5.5.5 \
   -p 25565:25565 \
   -v /root/minecraft/data:/data \
   -v /root/minecraft/mods:/mods \
@@ -38,9 +40,34 @@ docker run \
 
 ```
 
+### Server MOD List
+
+- 【Carry on】
+- 【Create】
+- 【Dungeons and taverns】
+- 【Grave Stone】
+- 【Sit】
+- 【Touhou Little Maid】
+- 【UnionLib】【Antique Atlas】
+- 【The Twilight Forest】
+
+### Client MOD List
+
+- 【Apple Skin】
+- 【Carry On】
+- 【Clean Swing】
+- 【Create】
+- 【Grave Stone】
+- 【Iris】【Sodium】
+- 【Just Enough Items】
+- 【Sit】
+- 【Touhou Little Maid】
+- 【UnionLib】【Antique Atlas】
+- 【The Twilight Forest】
+
 ## qBittorrent
 
-需要用公网 IPv6 所以不能桥接。
+需要用公网 IPv6 所以不能桥接。不要同时开启 Nikki服务。
 
 ```bash
 #!/bin/sh
