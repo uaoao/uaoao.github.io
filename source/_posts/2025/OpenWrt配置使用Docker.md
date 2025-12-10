@@ -12,6 +12,9 @@ tags:
   - 主题-Linux
 ---
 
+> 另请关注 Podman GUI 项目的进展：<https://github.com/Zerogiven-OpenWRT-Packages/luci-app-podman>
+> Podman 完全支持 `nftables`，非常推荐尝试。
+
 ## 安装
 
 安装全套软件包，建议不要在网页上安装，可能会有一些奇怪的问题。使用以下命令安装全套Docker软件包：

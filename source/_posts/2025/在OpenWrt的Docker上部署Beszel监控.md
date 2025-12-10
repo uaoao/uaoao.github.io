@@ -73,7 +73,7 @@ docker run \
   -v /var/run/docker.sock:/var/run/docker.sock:ro \
   -e TZ=Asia/Shanghai \
   -e LISTEN=/beszel_socket/beszel.sock \
-  -e HUB_URL="https://monitor.example.com:443" \
+  -e HUB_URL="https://monitor.example.com" \
   -e TOKEN="xxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx" \
   -e KEY="ssh-ed25519 xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx" \
   -d henrygd/beszel-agent:latest

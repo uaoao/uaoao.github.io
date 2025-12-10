@@ -10,6 +10,7 @@ tags:
   - 主题-OpenWrt
   - 主题-Cloudflare
   - 主题-Linux
+  - 主题-建站
 ---
 
 Cloudflare Zero Trust 为免费用户提供了隧道功能，可以将内网设备一些特定的端口和服务暴露在公网环境中。方便直接的部署、无需配置防火墙、约等于内网穿透的互联网访问能力、IPv4和IPv6皆可访问，这些优势或许比DDNS服务绑定动态公网IPv6地址还要简单稳定。而且，本地主机到Cloudflare服务器之间的通信完全加密；若主机对外提供的是HTTP服务，Cloudflare还会自动为这个域名提供HTTPS认证服务，相当便捷。

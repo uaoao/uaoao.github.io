@@ -11,6 +11,7 @@ tags:
   - 主题-OpenWrt
   - 主题-Linux
   - 主题-DDNS
+  - 主题-建站
 ---
 
 一般来说，如果需要对外开放HTTP/HTTPS服务，最合适的方式是[配置Cloudflare隧道](https://uaoao.github.io/2025/5/27/OpenWrt%E9%85%8D%E7%BD%AECloudflare%E9%9A%A7%E9%81%93.html)。因为CF提供的隧道可以提供证书加密且配置简单。但隧道不适合所有场合，比如说使用IPv6 SSH时就不必再套一层CF，而且直连延迟低、丢包率低、带宽取决于双方的上下行带宽。
