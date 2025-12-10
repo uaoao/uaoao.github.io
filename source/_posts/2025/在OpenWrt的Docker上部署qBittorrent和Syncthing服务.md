@@ -51,6 +51,8 @@ docker run \
 
 由于 Docker 网口不支持动态 IPv6，我们只能用 `Host` 网络模式部署服务。之后用 Cloudflare Tunnel 反向代理 `http://localhost:8384` 即可。
 
+如果是**客户端**侧，推荐使用系统的软件包管理器安装并将以下指令加入`~/.bash_profile`文件实现登录自启：`nohup syncthing serve >> /tmp/syncthing.log 2>1&`（或点击App图标）。请勿使用容器部署，可能会出现权限异常。使用 chmod 和 chown 命令可以手动修改文件权限。
+
 ```bash
 #!/bin/sh
 
