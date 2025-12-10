@@ -17,12 +17,12 @@ cover: img/notes.webp
 # 自定义脚本执行日志存放位置
 user_log_path=/tmp/boot_script.log
 # 脚本版本号
-user_script_ver="v1.1"
+user_script_ver="v1.2"
 
 ###################################
 ######### 脚本开始执行 ############
 ###################################
-sleep 40s
+sleep 60s
 echo -e "[$(date +%Y/%m/%d) $(date +%H:%M:%S)] INFO:\tUser boot script ${user_script_ver} start!" >> $user_log_path
 
 ###################################
@@ -51,7 +51,7 @@ do
     user_net_loop=$((${user_net_loop}+1))
     /etc/init.d/network restart >> $user_log_path 2>&1
     echo -e "[$(date +%Y/%m/%d) $(date +%H:%M:%S)] INFO:\tNetwork restart finishd!" >> $user_log_path
-    sleep 40s
+    sleep 60s
     /etc/init.d/network status >> $user_log_path 2>&1
 done
 

@@ -45,11 +45,29 @@ docker run \
 - 【Carry on】
 - 【Create】
 - 【Dungeons and taverns】
+- 【Dungeons and Taverns Stronghold Overhaul】
+- 【Dungeons and Taverns Ancient City Overhaul】
 - 【Grave Stone】
 - 【Sit】
 - 【Touhou Little Maid】
 - 【UnionLib】【Antique Atlas】
 - 【The Twilight Forest】
+- 【Distant Horizons】
+- 【Geophilic】
+- 【oωo (owo-lib)】【The Aether】
+- 【Subsurface】
+- 【Traveler's Backpack】
+- 【Structory】
+- 【Structory: Towers】
+- 【Incendium】
+- 【Curios API】
+- 【Tutta's Doors】
+- 【Another Furniture】
+- 【Blueprint / Abnormals Core】【Autumnity】
+- 【Farmer's Delight】
+- 【Immersive Aircraft】
+- 【Storage Drawers】
+- 【RoadWeaver】
 
 ### Client MOD List
 
@@ -64,6 +82,18 @@ docker run \
 - 【Touhou Little Maid】
 - 【UnionLib】【Antique Atlas】
 - 【The Twilight Forest】
+- 【Distant Horizons】
+- 【oωo (owo-lib)】【The Aether】
+- 【Traveler's Backpack】
+- 【Curios API】
+- 【Tutta's Doors】
+- 【Another Furniture】
+- 【Blueprint / Abnormals Core】【Autumnity】
+- 【Farmer's Delight】
+- 【Immersive Aircraft】
+- 【Storage Drawers】
+- 【RoadWeaver】
+- 【I18nUpdateMod】
 
 ## qBittorrent
 
