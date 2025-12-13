@@ -40,7 +40,7 @@ tags:
 可选：
 
 - 显示器
-- HDMI 视频线 和 mini HDMI 转接头
+- HDMI 视频线 和 Micro HDMI 转接头
 
 ## 安装 AlmaLinux 操作系统
 
@@ -71,9 +71,9 @@ enable_uart=1
 
 ```
 
-参数 `usb_max_current_enable=1` 表明启用 USB 最大电流输出；`dtparam=pciex1_gen=1` 用于强制降级 PCIe 速率到 Gen1，防止功耗太高掉盘，如果你用了 PCIe HAT+ 这种有 GPIO 供电的扩展板，可以改成 Gen3 速率（8GT）试试。
+参数 `usb_max_current_enable=1` 表明启用 USB 最大电流输出；`dtparam=pciex1_gen=1` 用于强制降级 PCIe 速率到 Gen1，防止功耗太高掉盘，如果你用了 PCIe HAT+ 这种有 GPIO 供电的扩展板，可以改成 Gen3 速率（8GT）试试（前提是 SSD 支持 Gen3，现在大部分是Gen3 和 Gen4）。
 
-接着修改 `/boot/user-data` 文件，这个是系统第一次启动时初始化用户配置的文件：
+接着修改 `user-data` 文件，这个是系统第一次启动时初始化用户配置的文件：
 
 ```yml
 #cloud-config
@@ -105,7 +105,7 @@ users:
 
 插回 SSD，~~上电，开机，轻松秒杀~~！
 
-SSH 登录，用户名 `almalinux`，密码 `almalinux`，登录成功后先修改密码，安装以下软件：
+登录 OpenWrt 管理页面查看树莓派的 IP 地址，然后 SSH 登录。用户名 `almalinux`，密码 `almalinux`，登录成功后先执行 `passwd` 修改密码，安装以下软件：
 
 ```bash
 sudo dnf update
@@ -116,9 +116,10 @@ sudo dnf install \
     bash-color-prompt \
     bash-completion \
     pciutils
+
 ```
 
-zstd 提供 `tar` 命令可解压的 `.tar.zst` 格式，如果你不用这个格式压缩文件可以忽略；`toolbox` 提供容器化隔离的终端命令（同时会安装 `podman`），比如说你希望安装 `fastfetch` 但是 AlmaLinux 系统软件源里没有，执行 `toolbox create && toolbox enter` 创建一个容器化的 Fedora 就可以用；`bash-color-prompt` 和 `bash-completion` 方便执行命令；`pciutils` 用于检查 PCIe 信息，比如执行 `sudo lspci -vvv` 检查 SSD 的连接速率是不是 2.5GT x1。
+zstd 提供 `tar` 命令可解压的 `.tar.zst` 格式，如果你不用这个格式压缩文件可以忽略；`toolbox` 提供容器化隔离的终端命令（同时会安装 Podman），比如说你希望安装 `fastfetch` 但是 AlmaLinux 系统软件源里没有，执行 `toolbox create && toolbox enter` 创建一个容器化的 Fedora 就可以用；`bash-color-prompt` 和 `bash-completion` 方便执行命令；`pciutils` 用于检查 PCIe 信息，比如执行 `sudo lspci -vvv` 检查 SSD 的连接速率是不是 2.5GT x1。
 
 ## OpenWrt 绑定 IP 地址
 
@@ -279,7 +280,9 @@ podman run \
 
 ```
 
-我的树莓派 5 有 **8G** 内存，如果你的内存只有 4G，建议调低一些参数。其中 `MAX_MEMORY` 不要大于内存的 `90%`。另外，据说有人测试过 `graalvm` 的 JVM 性能优化非常好，~~虽然我看不出来~~。另外还有一些参数可以关闭正版验证，具体参考[容器作者的文档](https://docker-minecraft-server.readthedocs.io/en/latest/)
+我的树莓派 5 有 **8G** 内存，如果你的内存只有 4G，建议调低一些参数。其中 `MAX_MEMORY` 不要大于内存的 `90%`。另外，据说有人测试过 `graalvm` 的 JVM 性能优化非常好，~~虽然我看不出来~~。
+
+另外还有一些参数可以关闭正版验证，具体参考[容器作者的文档](https://docker-minecraft-server.readthedocs.io/en/latest/)。我比较喜欢自己挑选模组而不是用整合包，整合包玩家看文档配置。如果你跟我一样只玩特定几个模组，在服务器安装模组可以右键点击复制 CurseForge/Modrinth 下载链接，在 `minecraft/mods` 目录执行 `curl -O https://https://cdn.modrinth.com/data/ordsPcFz/versions/xxx/xxx-1.1.1.jar`
 
 接着创建 Systemd 服务：
 
@@ -321,62 +324,64 @@ sudo firewall-cmd --list-all
 
 ## Mods
 
-以下是我家服务器和客户端安装的模组列表。
+以下是我家服务器和客户端安装的模组列表，这里的模组在服务器和客户端都必须安装。
 
-### Server
+- 【Carry on（2.2.2.11）】
+- 【Adorable Hamster Pets（3.4.2）】
+    - 【Kotlin for Forge（5.10.0）】
+    - 【Geckolib（4.8.2）】
+    - 【Fzzy Config（0.7.3）】
+    - 【Architectury API（13.0.8）】
+    - 【Patchouli（92）】
+- 【Autumnity（6.0.1）】
+    - 【Blueprint / Abnormals Core（8.0.8）】
+- 【All Tutta's Needs / Tutta's Doors（1.5.2）】
+- 【Another Furniture（4.0.0）】
+- 【Create（6.0.8）】
+    - 【Create: Diesel Generators（1.3.7）】
+- 【Curios API（9.5.1）】
+- 【Distant Horizons（2.3.6-b）】
+- 【Farmer's Delight（1.2.9）】
+- 【Gravestone Mod（1.0.35）】
+- 【Immersive Aircraft（1.4.1）】
+- 【The Aether（1.5.10）】
+    - 【oωo（0.12.15.5）】
+- 【RoadWeaver（2.0.7）】(?)
+- 【Sit（1.4）】
+- 【Storage Drawers（13.11.4）】
+- 【Touhou Little Maid（1.4.5）】
+- 【Traveler's Backpack（10.1.29）】
+- 【The Twilight Forest（4.7.3196）】
+- 【Antique Atlas（8.0.1）】
+    - 【UnionLib（12.0.18）】
 
-- 【Carry on】
-- 【Create】
-- 【Dungeons and taverns】
-- 【Dungeons and Taverns Stronghold Overhaul】
-- 【Dungeons and Taverns Ancient City Overhaul】
-- 【Grave Stone】
-- 【Sit】
-- 【Touhou Little Maid】
-- 【UnionLib】【Antique Atlas】
-- 【The Twilight Forest】
-- 【Distant Horizons】
-- 【Geophilic】
-- 【oωo (owo-lib)】【The Aether】
-- 【Subsurface】
-- 【Traveler's Backpack】
-- 【Structory】
-- 【Structory: Towers】
-- 【Incendium】
-- 【Curios API】
-- 【Tutta's Doors】
-- 【Another Furniture】
-- 【Blueprint / Abnormals Core】【Autumnity】
-- 【Farmer's Delight】
-- 【Immersive Aircraft】
-- 【Storage Drawers】
-- 【RoadWeaver】
+### Server Only
 
-### Client
+这里的模组只在服务器安装。
 
-- 【Apple Skin】
-- 【Carry On】
-- 【Clean Swing】
-- 【Create】
-- 【Grave Stone】
-- 【Iris】【Sodium】
-- 【Just Enough Items】
-- 【Sit】
-- 【Touhou Little Maid】
-- 【UnionLib】【Antique Atlas】
-- 【The Twilight Forest】
-- 【Distant Horizons】
-- 【oωo (owo-lib)】【The Aether】
-- 【Traveler's Backpack】
-- 【Curios API】
-- 【Tutta's Doors】
-- 【Another Furniture】
-- 【Blueprint / Abnormals Core】【Autumnity】
-- 【Farmer's Delight】
-- 【Immersive Aircraft】
-- 【Storage Drawers】
-- 【RoadWeaver】
-- 【I18nUpdateMod】
+- 【Dungeons and taverns（4.4.4）】
+- 【Dungeons and Taverns Stronghold Overhaul（2.1.f）】
+- 【Dungeons and Taverns Ancient City Overhaul（3.2.1）】
+- 【Geophilic（3.4.4）】
+- 【Subsurface（1.0.4）】
+- 【Structory（1.3.12）】
+- 【Structory: Towers（1.0.14）】
+- 【Incendium（5.4.4）】
+- 【Terralith（2.5.8）】
+- 【Tectonic（3.0.17）】
+    - 【Lithostitched（1.5.2）】
+
+### Client Only
+
+这里的模组只在客户端安装。
+
+- 【Apple Skin（3.0.7）】
+- 【Clean Swing（1.9）】
+- 【Iris（1.8.12）】
+    - 【Sodium（0.6.13）】
+- 【Just Enough Items（19.25.1.332）】
+- 【I18nUpdateMod（3.7.0）】
+- 【Jade（15.10.3）】
 
 ## 相关参考链接
 
