@@ -158,7 +158,7 @@ podman run \
   -v /var/run/dbus/system_bus_socket:/var/run/dbus/system_bus_socket:ro \
   -e TZ="Asia/Shanghai" \
   -e LISTEN=45876 \
-  -e HUB_URL="https://monitor.wagada.cc" \
+  -e HUB_URL="https://monitor.example.com" \
   -e TOKEN="xxxxxxxxx-xxxxxxxxxx-xxxxxx-xxxxx-xxxxx" \
   -e KEY="ssh-ed25519 AAAAxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx" \
   -d docker.1panel.live/henrygd/beszel-agent:latest
