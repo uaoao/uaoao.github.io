@@ -265,7 +265,7 @@ podman run \
   -e FORCE_GAMEMODE="TRUE" \
   -e EULA="TRUE" \
   -e MOTD="Welcome to Minecraft" \
-  -e MAX_PLAYERS=50 \
+  -e MAX_PLAYERS=10 \
   -e INIT_MEMORY="512M" \
   -e MAX_MEMORY="6G" \
   -e VERSION=1.21.1 \
@@ -274,7 +274,7 @@ podman run \
   -e DIFFICULTY="hard" \
   -e MODE="survival" \
   -e VIEW_DISTANCE=16 \
-  -e MAX_BUILD_HEIGHT=512 \
+  -e MAX_BUILD_HEIGHT=1024 \
   -e LEVEL_TYPE="minecraft:large_biomes" \
   -d docker.1panel.live/itzg/minecraft-server:java21-graalvm
 
@@ -326,62 +326,79 @@ sudo firewall-cmd --list-all
 
 以下是我家服务器和客户端安装的模组列表，这里的模组在服务器和客户端都必须安装。
 
-- 【Carry on（2.2.2.11）】
-- 【Adorable Hamster Pets（3.4.2）】
-    - 【Kotlin for Forge（5.10.0）】
-    - 【Geckolib（4.8.2）】
-    - 【Fzzy Config（0.7.3）】
-    - 【Architectury API（13.0.8）】
-    - 【Patchouli（92）】
-- 【Autumnity（6.0.1）】
-    - 【Blueprint / Abnormals Core（8.0.8）】
-- 【All Tutta's Needs / Tutta's Doors（1.5.2）】
-- 【Another Furniture（4.0.0）】
-- 【Create（6.0.8）】
-    - 【Create: Diesel Generators（1.3.7）】
-- 【Curios API（9.5.1）】
-- 【Distant Horizons（2.3.6-b）】
-- 【Farmer's Delight（1.2.9）】
-- 【Gravestone Mod（1.0.35）】
-- 【Immersive Aircraft（1.4.1）】
-- 【The Aether（1.5.10）】
-    - 【oωo（0.12.15.5）】
-- 【RoadWeaver（2.0.7）】(?)
-- 【Sit（1.4）】
-- 【Storage Drawers（13.11.4）】
-- 【Touhou Little Maid（1.4.5）】
-- 【Traveler's Backpack（10.1.29）】
-- 【The Twilight Forest（4.7.3196）】
-- 【Antique Atlas（8.0.1）】
-    - 【UnionLib（12.0.18）】
+- Carry on（2.2.2.11）
+- Adorable Hamster Pets（3.4.2）
+    - Kotlin for Forge（5.10.0）
+    - Geckolib（4.8.2）
+    - Fzzy Config（0.7.4）
+    - Architectury API（13.0.8）
+    - Patchouli（92）
+- Autumnity（6.0.1）
+    - Blueprint / Abnormals Core（8.0.8）
+- All Tutta's Needs / Tutta's Doors（1.5.2）
+- Another Furniture（4.0.1）
+- Create（6.0.8）
+    - Create: Diesel Generators（1.3.8）
+    - Create: Connected（1.1.10）
+    - Create Encased（1.7.2-fix2）
+- Curios API（9.5.1）
+- Farmer's Delight（1.2.9）
+- Gravestone Mod（1.0.35）
+- Immersive Aircraft（1.4.1）
+- The Aether（1.5.10）
+    - oωo（0.12.15.5）
+- RoadWeaver（2.0.9）
+- Sit（1.4）
+- Storage Drawers（13.11.4）
+- Touhou Little Maid（1.4.6）
+- Traveler's Backpack（10.1.29）
+- The Twilight Forest（4.7.3196）
+- Antique Atlas（8.0.1）
+    - UnionLib（12.0.18）
+- Biomes O' Plenty（21.1.0.13）
+    - GlitchCore（2.1.0.0）
+    - TerraBlender（4.1.0.8）
+- Everything is Copper（2.4.2）
+- Exp Ore（0.3）
+- Modular Golems（3.1.7）
+    - L2 Library（3.0.7）
+    - Golem Dungeons（2.0.4）
 
 ### Server Only
 
 这里的模组只在服务器安装。
 
-- 【Dungeons and taverns（4.4.4）】
-- 【Dungeons and Taverns Stronghold Overhaul（2.1.f）】
-- 【Dungeons and Taverns Ancient City Overhaul（3.2.1）】
-- 【Geophilic（3.4.4）】
-- 【Subsurface（1.0.4）】
-- 【Structory（1.3.12）】
-- 【Structory: Towers（1.0.14）】
-- 【Incendium（5.4.4）】
-- 【Terralith（2.5.8）】
-- 【Tectonic（3.0.17）】
-    - 【Lithostitched（1.5.2）】
+- Dungeons and taverns（4.4.4）
+- Dungeons and Taverns Stronghold Overhaul（2.1.f）
+- Dungeons and Taverns Ancient City Overhaul（3.2.1）
+- Geophilic（3.4.4）
+- Subsurface（1.0.4）
+- Structory（1.3.12）
+- Structory: Towers（1.0.14）
+- Incendium（5.4.4）
+- Tectonic（3.0.17）
+    - Lithostitched（1.5.2）
+- Yggdrasil（5.2.0）
+- Dungeon Crawl（2.3.15）
+- Epic Structures: Witch Huts（1.2.0）
+- Mo' Structures（1.6.0）
+- Villages&Pillages（1.0.3）
+    - YUNG's API（5.1.6）
+- Sunken Spires（1.0）
+- Lios Seafaring Dungeons（0.0.5）
 
 ### Client Only
 
 这里的模组只在客户端安装。
 
-- 【Apple Skin（3.0.7）】
-- 【Clean Swing（1.9）】
-- 【Iris（1.8.12）】
-    - 【Sodium（0.6.13）】
-- 【Just Enough Items（19.25.1.332）】
-- 【I18nUpdateMod（3.7.0）】
-- 【Jade（15.10.3）】
+- Apple Skin（3.0.7）
+- Clean Swing（1.9）
+- Iris（1.8.12）
+    - Sodium（0.6.13）
+- Just Enough Items（19.25.1.332）
+- I18nUpdateMod（3.7.0）
+- Jade（15.10.3）
+- Distant Horizons（2.4.1-b）
 
 ## 相关参考链接
 
