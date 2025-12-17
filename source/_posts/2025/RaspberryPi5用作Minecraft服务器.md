@@ -31,9 +31,9 @@ tags:
 - OpenWrt 路由器（光猫桥接路由器拨号上网）
 - Raspberry Pi 5 (8G) with Official Power Adaptor
 - 树莓派 PCIe-NVMe 扩展板
-- NVMe 硬盘，不小于 64G，不建议用 TF 卡
+- NVMe 硬盘，不建议用 TF 卡
 - NVMe-USB 硬盘盒，用来刷写系统
-- 一台电脑
+- 一台计算机
 - Cloudflare 托管有可用域名
 - 良好的网络环境和公网 IPv6
 
@@ -282,7 +282,7 @@ podman run \
 
 我的树莓派 5 有 **8G** 内存，如果你的内存只有 4G，建议调低一些参数。其中 `MAX_MEMORY` 不要大于内存的 `90%`。另外，据说有人测试过 `graalvm` 的 JVM 性能优化非常好，~~虽然我看不出来~~。
 
-另外还有一些参数可以关闭正版验证，具体参考[容器作者的文档](https://docker-minecraft-server.readthedocs.io/en/latest/)。我比较喜欢自己挑选模组而不是用整合包，整合包玩家看文档配置。如果你跟我一样只玩特定几个模组，在服务器安装模组可以右键点击复制 CurseForge/Modrinth 下载链接，在 `minecraft/mods` 目录执行 `curl -O https://https://cdn.modrinth.com/data/ordsPcFz/versions/xxx/xxx-1.1.1.jar`
+另外还有一些参数可以关闭正版验证，具体参考[容器作者的文档](https://docker-minecraft-server.readthedocs.io/en/latest/)。我比较喜欢自己挑选模组而不是用整合包，整合包玩家看文档配置。如果你跟我一样只玩特定几个模组，在服务器安装模组可以右键点击复制 CurseForge/Modrinth 下载链接，在 `minecraft/mods` 目录执行 `curl -O https://cdn.modrinth.com/data/ordsPcFz/versions/xxx/xxx-1.1.1.jar`
 
 接着创建 Systemd 服务：
 
