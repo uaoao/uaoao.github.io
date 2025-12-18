@@ -17,7 +17,7 @@ tags:
 
 ## 前言
 
-TODO
+本文是[《使用VSCode搭建基于Forge的Minecraft模组开发环境》](/2020/11/19/使用VSCode搭建基于Forge的Minecraft模组开发环境.html)的附文，由于总的篇幅过长，笔者另起一文以减小正文的阅读成本。
 
 ## Forge模组制作教程推荐（高版本）
 
@@ -80,9 +80,9 @@ Oracle JDK 是基于 OpenJDK 源代码构建的，因此 Oracle JDK 和 OpenJDK 
 
 - 【Chinese (Simplified) Language Pack for Visual Studio Code】提供中文界面支持
 - 【indent-rainbow】使缩进更加明显（强迫症勿用）
-- 【TOML Language Support】提供.toml文件的语法支持
+- 【TOML Language Support】提供 `.toml` 文件的语法支持
 - 【Material Icon Theme】不错的图标主题
-- 【GitLens — Git supercharged】版本控制工具git的扩展，界面化操作git
+- 【GitLens — Git supercharged】版本控制工具 `git` 的扩展，界面化操作 Git
 - 【Project Manager】项目管理器，方便管理多个项目
 
 ## MDK 离线包下载
@@ -110,31 +110,31 @@ Eclipse、IntelliJ IDEA 等专业的 IDE，不仅对大型项目调试有极佳�
 
 经过测试，含有中文等非法字符的**项目名**会造成 Gradle 构建失败（用户文件夹显示为中文，底层却是英文）
 
-![文件夹名称包含中文字符](images/2020/文件夹名称包含中文字符.png)
+![文件夹名称包含中文字符](images/2021/文件夹名称包含中文字符.png)
 
-![项目目录包含中文字符](images/2020/项目目录包含中文字符.png)
+![项目目录包含中文字符](images/2021/项目目录包含中文字符.png)
 
 但是项目存放路径中含有中文名（“新 建 文 件 夹”）可以成功启动游戏（**注意这里说的是能启动游戏，但配置文件中是乱码的，仍然存在其它潜在的问题**）。
 
 ### 导入、构建成功，但是游戏启动失败
 
-![网友问题请教](images/2020/网友问题请教.png)
+![网友问题请教](images/2021/网友问题请教.png)
 
 这个问题一般是 `.gradle` 文件夹挪动了位置，或是使用离线包而导致资源加载错误，手动修改 `.vscode/launch.json` 中**所有有关位置的参数**，然后重启项目试试。仍然不行就用全新的 MDK 重新导入。
 
-![VSCode配置位置参数](images/2020/VSCode配置位置参数.png)
+![VSCode配置位置参数](images/2021/VSCode配置位置参数.png)
 
 ### 中文路径的问题
 
 中文路径问题在前文的问题二和问题三中就已经提到了，但是需要提醒读者：**不要随意移动项目**！**项目路径不要有中文，否则会出现乱码**！（图中是问题二路径包含中文“新 建 文 件 夹”导致的配置文件乱码）
 
-![VSCode配置乱码](images/2020/VSCode配置乱码.png)
+![VSCode配置乱码](images/2021/VSCode配置乱码.png)
 
 ### 修改游戏启动内存
 
 ~~懒得再搞了直接截现成的，配置文件见问题四。~~
 
-![修改游戏启动内存](images/2020/修改游戏启动内存.png)
+![修改游戏启动内存](images/2021/修改游戏启动内存.png)
 
 ### 其它问题
 
