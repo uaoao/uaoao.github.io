@@ -11,6 +11,7 @@ tags:
   - 主题-Fedora
   - 主题-Rust
   - 主题-GTK
+  - 主题-VSCode
   - 主题-编程
 ---
 
