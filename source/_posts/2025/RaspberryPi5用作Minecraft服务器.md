@@ -31,7 +31,7 @@ tags:
 - OpenWrt 路由器（光猫桥接路由器拨号上网）
 - Raspberry Pi 5 (8G) with Official Power Adaptor
 - 树莓派 PCIe-NVMe 扩展板
-- NVMe 硬盘，不建议用 TF 卡
+- NVMe 硬盘、TF 卡各一个。TF 卡（不小于16G）用于备份存档，不建议装系统
 - NVMe-USB 硬盘盒，用来刷写系统
 - 一台计算机
 - Cloudflare 托管有可用域名
@@ -321,6 +321,203 @@ sudo firewall-cmd --list-all
 ## 测试
 
 手机开热点，电脑连热点，检查有没有 IPv6。有就打开 Minecraft，多人联机，添加服务器域名。注意 **服务器端的模组必须与客户端相符**，有些模组不需要客户端/服务端安装，大部分需要客户端和服务端同时安装相同版本。如果模组缺失或版本不符，客户端连接服务器时可能会显示错误【IP 地址簇协议不可用】。建议先不安装模组，原版登录试试。
+
+## 备份
+
+**服务器需要定期备份**！备份的档案应当放在额外的硬盘而非系统盘中。树莓派 5 自带 TF 卡槽，此处使用 TF 卡进行备份。在使用 TF 卡进行下面的操作前，请确保卡中没有重要的数据。
+
+在树莓派上执行 `lsblk -f` 查看现有的硬盘，TF卡一般是 `mmcblk0`。如果有分区和文件系统存在，直接挂载使用也可以。我更倾向于格式化成 F2FS 或 XFS 文件系统来使用。由于 AlmaLinux 默认不包含格式化 F2FS 文件系统的工具，所以下面的操作将格式化原有 F2FS 文件系统成 XFS 文件系统。
+
+```txt
+almalinux@almalinux:~$ 
+almalinux@almalinux:~$ 
+almalinux@almalinux:~$
+almalinux@almalinux:~$ lsblk -f
+NAME FSTYPE FSVER LABEL  UUID                                 FSAVAIL FSUSE% MOUNTPOINTS
+mmcblk0
+│                                                                            
+└─mmcblk0p1
+     f2fs   1.16  sdcard 69260805-7aec-4022-b047-bc40e8379567     14G     6% /mnt
+nvme0n1
+│                                                                            
+├─nvme0n1p1
+│    vfat   FAT16 CIDATA B5DB-43D2                             364.5M    24% /boot
+└─nvme0n1p2
+     ext4   1.0   _/     0a52f693-6076-41b1-953a-2d86321e7d80  110.9G     5% /
+
+
+almalinux@almalinux:~$ # 注意
+almalinux@almalinux:~$ # 重新创建分区前先备份数据
+almalinux@almalinux:~$ # 如果已经挂载请先取消挂载
+almalinux@almalinux:~$ sudo fdisk /dev/mmcblk0
+
+Welcome to fdisk (util-linux 2.40.2).
+Changes will remain in memory only, until you decide to write them.
+Be careful before using the write command.
+
+Command (m for help): m
+
+Help:
+
+  GPT
+   M   enter protective/hybrid MBR
+
+  Generic
+   d   delete a partition
+   F   list free unpartitioned space
+   l   list known partition types
+   n   add a new partition
+   p   print the partition table
+   t   change a partition type
+   v   verify the partition table
+   i   print information about a partition
+   e   resize a partition
+
+  Misc
+   m   print this menu
+   x   extra functionality (experts only)
+
+  Script
+   I   load disk layout from sfdisk script file
+   O   dump disk layout to sfdisk script file
+
+  Save & Exit
+   w   write table to disk and exit
+   q   quit without saving changes
+
+  Create a new label
+   g   create a new empty GPT partition table
+   G   create a new empty SGI (IRIX) partition table
+   o   create a new empty MBR (DOS) partition table
+   s   create a new empty Sun partition table
+
+
+Command (m for help): g
+Created a new GPT disklabel (GUID: 73138C09-3E64-4886-9D58-AAFC9A9BFE4B).
+
+Command (m for help): n
+Partition number (1-128, default 1): 
+First sector (2048-31211486, default 2048): 
+Last sector, +/-sectors or +/-size{K,M,G,T,P} (2048-31211486, default 31209471): 
+
+Created a new partition 1 of type 'Linux filesystem' and of size 14.9 GiB.
+Partition #1 contains a f2fs signature.
+
+Do you want to remove the signature? [Y]es/[N]o: y
+
+The signature will be removed by a write command.
+
+Command (m for help): p
+Disk /dev/mmcblk0: 14.88 GiB, 15980298240 bytes, 31211520 sectors
+Units: sectors of 1 * 512 = 512 bytes
+Sector size (logical/physical): 512 bytes / 512 bytes
+I/O size (minimum/optimal): 512 bytes / 512 bytes
+Disklabel type: gpt
+Disk identifier: 73138C09-3E64-4886-9D58-AAFC9A9BFE4B
+
+Device         Start      End  Sectors  Size Type
+/dev/mmcblk0p1  2048 31209471 31207424 14.9G Linux filesystem
+
+Filesystem/RAID signature on partition 1 will be wiped.
+
+Command (m for help): w
+The partition table has been altered.
+Calling ioctl() to re-read partition table.
+Syncing disks.
+
+
+almalinux@almalinux:~$ 
+almalinux@almalinux:~$ 
+almalinux@almalinux:~$ # 接下来创建 XFS 文件系统
+almalinux@almalinux:~$ lsblk -f
+NAME        FSTYPE FSVER LABEL  UUID                                 FSAVAIL FSUSE% MOUNTPOINTS
+mmcblk0                                                                             
+└─mmcblk0p1                                                                         
+nvme0n1                                                                             
+├─nvme0n1p1 vfat   FAT16 CIDATA B5DB-43D2                             364.5M    24% /boot
+└─nvme0n1p2 ext4   1.0   _/     0a52f693-6076-41b1-953a-2d86321e7d80  110.3G     6% /
+
+
+almalinux@almalinux:~$ 
+almalinux@almalinux:~$ 
+almalinux@almalinux:~$ 
+almalinux@almalinux:~$ sudo mkfs.xfs /dev/mmcblk0p1 
+meta-data=/dev/mmcblk0p1         isize=512    agcount=4, agsize=975232 blks
+         =                       sectsz=512   attr=2, projid32bit=1
+         =                       crc=1        finobt=1, sparse=1, rmapbt=1
+         =                       reflink=1    bigtime=1 inobtcount=1 nrext64=1
+         =                       exchange=0  
+data     =                       bsize=4096   blocks=3900928, imaxpct=25
+         =                       sunit=0      swidth=0 blks
+naming   =version 2              bsize=4096   ascii-ci=0, ftype=1, parent=0
+log      =internal log           bsize=4096   blocks=16384, version=2
+         =                       sectsz=512   sunit=0 blks, lazy-count=1
+realtime =none                   extsz=4096   blocks=0, rtextents=0
+Discarding blocks...Done.
+
+
+almalinux@almalinux:~$ 
+almalinux@almalinux:~$ 
+almalinux@almalinux:~$ # 挂载并设置可读写权限
+almalinux@almalinux:~$ sudo mount /dev/mmcblk0p1 /mnt
+almalinux@almalinux:~$ sudo chmod 777 /mnt
+almalinux@almalinux:~$ lsblk -f
+NAME        FSTYPE FSVER LABEL  UUID                                 FSAVAIL FSUSE% MOUNTPOINTS
+mmcblk0                                                                             
+└─mmcblk0p1 xfs                 0ccab63d-ef08-48d2-9ed8-937b7e5a3009   14.5G     2% /mnt
+nvme0n1                                                                             
+├─nvme0n1p1 vfat   FAT16 CIDATA B5DB-43D2                             364.5M    24% /boot
+└─nvme0n1p2 ext4   1.0   _/     0a52f693-6076-41b1-953a-2d86321e7d80  110.3G     6% /
+
+```
+
+我的 TF 卡只有 16G 存储空间，所以不打算设置 `crontab` 定时任务，只手动执行备份。如果有需要定时备份，请搜索`/etc/fstab` 开机挂载 TF 卡和 CronTab 定时任务教程 。
+
+```txt
+almalinux@almalinux:~$ 
+almalinux@almalinux:~$ 
+almalinux@almalinux:~$ # 备份前先停止服务器运行
+almalinux@almalinux:~$ systemctl --user stop container-minecraft.service
+
+
+almalinux@almalinux:~$ # 使用 sudo 执行压缩以保留文件原始所有权，否则解压后会遇到权限问题
+almalinux@almalinux:~$ # -a 自动识别文件后缀的压缩格式；-c 表示压缩；-f 表示输出的压缩文件名称
+almalinux@almalinux:~$ sudo tar -acf /mnt/minecraft-$(date +%Y%m%d).tar.zst minecraft/
+almalinux@almalinux:~$ sha1sum /mnt/minecraft-$(date +%Y%m%d).tar.zst | tee /mnt/minecraft-$(date +%Y%m%d).tar.zst.sha1
+61b560a903402e1e8642d8134d840f0be769f223  /mnt/minecraft-20251219.tar.zst
+almalinux@almalinux:~$ ls -alh /mnt
+total 1.6G
+drwxrwxrwx.  2 root      root       152 Dec 19 07:23 .
+dr-xr-xr-x. 19 root      root      4.0K Dec 14 05:27 ..
+-rw-r--r--.  1 root      root      641M Dec 19 06:37 minecraft-20251216.tar.zst
+-rw-r--r--.  1 almalinux almalinux   69 Dec 19 06:37 minecraft-20251216.tar.zst.sha1
+-rw-r--r--.  1 root      root      903M Dec 19 07:22 minecraft-20251219.tar.zst
+-rw-r--r--.  1 almalinux almalinux   74 Dec 19 07:23 minecraft-20251219.tar.zst.sha1
+
+# 使用 tar -vtf /mnt/minecraft-$(date +%Y%m%d).tar.zst 查看压缩文件的内容
+# 使用 sha1sum -c /mnt/minecraft-$(date +%Y%m%d).tar.zst.sha1 校验哈希值
+# 使用 sudo tar -axf /mnt/minecraft-$(date +%Y%m%d).tar.zst -C /path/to/data 解压存档到特定目录
+# 注意，sudo 解压会保留文件原始所有权，不推荐使用非特权用户解压。
+
+almalinux@almalinux:~$ 
+almalinux@almalinux:~$ # 恢复服务运行
+almalinux@almalinux:~$ systemctl --user start container-minecraft.service 
+almalinux@almalinux:~$ systemctl --user status container-minecraft.service 
+● container-minecraft.service - Podman container-minecraft.service
+     Loaded: loaded (/home/almalinux/.config/systemd/user/container-minecraft.service; enabled; preset: disabled)
+     Active: active (running) since Fri 2025-12-19 07:46:05 UTC; 1s ago
+ Invocation: 1326c6f502454534bb4490c617cf0062
+       Docs: man:podman-generate-systemd(1)
+    Process: 375036 ExecStart=/usr/bin/podman start minecraft (code=exited, status=0/SUCCESS)
+   Main PID: 375083 (conmon)
+      Tasks: 15 (limit: 50283)
+        CPU: 187ms
+     CGroup: /user.slice/user-1000.slice/user@1000.service/app.slice/container-minecraft.service
+             ├─375066 rootlessport
+             ├─375073 rootlessport-child
+             └─375083 /usr/bin/conmon --api-version 1 -c 138d17ee404884023c2784531870472d41bc941079268cb25cd2299a893bdf60 -u 138d17ee404884>
+
+```
 
 ## Mods
 
