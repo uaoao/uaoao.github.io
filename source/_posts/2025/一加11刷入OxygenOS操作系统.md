@@ -29,9 +29,10 @@ tags:
 3. 电脑装好 android-tools
 4. **刷机前把重要数据备份**
 5. 刷机教程：[全球首发：一加11 ColorOS及氧OS懒人包|TWRP|卡刷包](https://www.daxiaamu.com/8481/) 我的这篇文章只是按照教程实践了一遍，所以在刷机前先看原文。
-6. c636f33129394276a19b0cd42a85f43972c868e8 TWRP-13-14-OP11-Color597-V1.5.img (sha1sum) 下载链接看上面的刷机教程
-7. 22d2552ddc31458940aae2da8a46b35f135c448d Oneplus11_Super_OxygenOS 13.0.0 A.09 GLO.zip (sha1sum) 下载链接看上面的刷机教程
+6. `c636f33129394276a19b0cd42a85f43972c868e8` TWRP-13-14-OP11-Color597-V1.5.img (sha1sum) 下载链接看上面的刷机教程
+7. `22d2552ddc31458940aae2da8a46b35f135c448d` Oneplus11_Super_OxygenOS 13.0.0 A.09 GLO.zip (sha1sum) 下载链接看上面的刷机教程。（2025 年 7 月 2 日，同文件名版本：`70bca27d887cf3eb44339f39a3d096f6fcf590e7`）
 8. **先把文章看几遍再操作**
+9. **记得先解除 Google 账号，重置一次手机后再刷机**
 
 ## 复制OxygenOS卡刷包到手机
 
