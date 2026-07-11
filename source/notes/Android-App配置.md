@@ -15,6 +15,13 @@ adb shell "settings put global captive_portal_https_url https://connect.rom.miui
 
 ```
 
+- 修复系统时间不同步：
+
+```bash
+adb shell "settings put global ntp_server ntp1.aliyun.com"
+
+```
+
 ## 开源自由 App 订阅列表
 
 ### 官方构建
