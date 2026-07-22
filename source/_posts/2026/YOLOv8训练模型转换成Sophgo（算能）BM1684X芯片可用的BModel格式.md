@@ -110,3 +110,4 @@ model_deploy \
 - [Ultralytics Github](https://github.com/ultralytics/ultralytics)
 - [算能技术资料](https://developer.sophgo.com/site/index/material/all/all.html)
 - [sophgo/tpuc_dev DockerHub](https://hub.docker.com/r/sophgo/tpuc_dev/tags)
+- [Get Start PyTorch](pytorch.org/get-started/locally/)
