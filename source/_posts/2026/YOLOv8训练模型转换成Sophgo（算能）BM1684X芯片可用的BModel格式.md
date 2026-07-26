@@ -81,7 +81,12 @@ pip install 'tpu_mlir==1.28.1' -i https://pypi.tuna.tsinghua.edu.cn/simple
 > 你可以下载`yolov8s.pt`试试转成`.bmodel`文件，我试过了，会报错：
 > 
 > ```txt
-> RuntimeError: PytorchStreamReader failed locating file constants.pkl: file not found. This is an internal miniz error. If you are seeing this error, there is a high likelihood that your checkpoint file is corrupted. This can happen if the checkpoint was not saved properly, was transferred incorrectly, or the file was modified after saving.
+> RuntimeError:
+> PytorchStreamReader failed locating file constants.pkl:
+> file not found. This is an internal miniz error.
+> If you are seeing this error, there is a high likelihood that your checkpoint file is corrupted.
+> This can happen if the checkpoint was not saved properly, was transferred incorrectly, or the file was modified after saving.
+> 
 > ```
 
 用`.onnx`就没问题。执行以下代码转换模型，忽略生成的其他文件，只看有没有`xxx.bmodel`文件。
@@ -97,6 +102,7 @@ model_deploy \
   --quantize F32 \
   --processor bm1684x \
   --model yolov8s_1684x_f32.bmodel
+
 ```
 
 如果生成了 `yolov8s_1684x_f32.bmodel` 文件，就可以用公司YOLOv8训练服务器炼化的`.pt`文件转成`.onnx`，再用上述方法转成`.bmodel`，放进项目机子里跑了。
