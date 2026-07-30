@@ -19,6 +19,7 @@ https://dns.alidns.com/dns-query
 223.5.5.5
 2400:3200:baba::1
 2400:3200::1
+
 ```
 
 ## DNS Over Https
@@ -27,3 +28,11 @@ https://dns.alidns.com/dns-query
 - <https://xxx.ddd.oaifree.com/query-dns>
 - <https://doh.mullvad.net/dns-query>
 
+## Win10 跳过联网安装
+
+在选择网络界面按【Shift-F10】打开终端，输入下面的指令创建本地用户账号。
+
+```bash
+start ms-cxh:localonly
+
+```
