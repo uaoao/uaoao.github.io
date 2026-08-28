@@ -69,13 +69,22 @@ ACTION=="remove", ENV{ID_MODEL}=="ThinkPad_Compact_USB_Keyboard_with_TrackPoint"
 
 - [参考链接](https://www.linuxquestions.org/questions/linux-desktop-74/udev-not-doing-remove-rules-841733/#post4146764)
 
-## Fedora SliverBlue 系统自带 Firefox 添加 OpenH264 解码支持
+## Fedora SilverBlue 系统自带 Firefox 添加 OpenH264 解码支持
 
-正常情况下新安装的 SliverBlue 不包含 OpenH264 解码器，Firefox 在某些视频网站无法播放视频。执行以下命令，然后在 Firefox 插件页面启用 OpenH264。
+正常情况下新安装的 SilverBlue 不包含 OpenH264 解码器，Firefox 在某些视频网站无法播放视频。执行以下命令，然后在 Firefox 插件页面启用 OpenH264。
 
 ```bash
 sudo rpm-ostree override remove noopenh264 --install openh264 --install mozilla-openh264
 reboot
+
+```
+
+## Fedora SilverBlue TPM2 自动解密 LUKS 加密分区
+
+PCR值参考 `man systemd-cryptenroll`。
+
+```
+sudo systemd-cryptenroll --tpm2-device=auto --tpm2-pcrs=7,11,14 /dev/disk/by-uuid/xxxxxxxxxx-xxxxxxxxxxxxxxxx-xxxxxxxxx
 
 ```
 
