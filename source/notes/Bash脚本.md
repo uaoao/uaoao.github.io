@@ -4,6 +4,28 @@ type: notes
 cover: img/notes.webp
 ---
 
+## archive-decrypt.sh
+
+```bash
+#!/usr/bin/bash
+
+/usr/bin/test -e "$1" || exit 1
+
+/usr/bin/openssl enc -d -aes-256-cbc -pbkdf2 -in "$1" | /usr/bin/tar --zstd -xf -
+
+```
+
+## archive-encrypt.sh
+
+```bash
+#!/usr/bin/bash
+
+/usr/bin/test -e "$1" || exit 1
+
+/usr/bin/tar --zstd -cf - "$1" | /usr/bin/openssl enc -aes-256-cbc -salt -pbkdf2 -out "$(/usr/bin/basename $1)".tar.zst.enc
+
+```
+
 ## vi
 
 ```bash
