@@ -4,6 +4,49 @@ type: notes
 cover: img/notes.webp
 ---
 
+## large-file-restore.sh
+
+```bash
+#!/usr/bin/bash
+
+if [ ! -f "$1" ]; then
+	echo "[ERROR]: Need a sha1 file to detect original name"
+	exit 1
+fi
+
+if [[ "$1" == *.sha1 ]]; then
+	filename="$(basename -s '.sha1' $1)"
+	sha1sum -c checksum.sha1 || exit 2
+	cat "$filename"_* > "$filename"
+
+	echo '---- Check Sum ----'
+	sha1sum -c "$1"
+else
+	echo "[ERROR] File name suffix is not .sha1"
+	exit 3
+fi
+
+```
+
+## large-file-split.sh
+
+```bash
+#!/usr/bin/bash
+
+# split size default is 3G, for Baidu Netdisk upload limit
+split_size="3G"
+
+if [ ! -f "$1" ]; then
+	echo "[ERROR]: Need a binary file"
+	exit 1
+fi
+
+split -b $split_size "$1" "$1"_ || exit 2
+sha1sum "$1"_* > checksum.sha1
+echo "---DONE---"
+
+```
+
 ## archive-decrypt.sh
 
 ```bash
