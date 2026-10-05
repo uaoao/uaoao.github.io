@@ -15,7 +15,7 @@ tags:
 > 【警告】
 > 本文操作仅适用并测试过高通机型的分区备份操作，联发科设备本人未测试。
 
-早在去年就写了一篇文章【】讲如何备份 Oneplus11，最近发现家里的几台旧手机有网友做了LineageOS非官方版本适配，想刷上去用上最新系统，又担心手机变砖，就把分区备份的操作复盘一下，顺便验证是否能在旧手机上顺利备份。备份需要 **ROOT**权限操作，至少预留 20G 可用存储空间。
+早在去年就写了一篇文章【[一加11Root以及备份分区教程](/2025/4/7/一加11Root以及备份分区教程.html)】讲如何备份 Oneplus11，最近发现家里的几台旧手机有网友做了LineageOS非官方版本适配，想刷上去用上最新系统，又担心手机变砖，就把分区备份的操作复盘一下，顺便验证是否能在旧手机上顺利备份。备份需要 **ROOT**权限操作，至少预留 20G 可用存储空间。
 
 ## 高通机型常见的设备关键分区介绍（AI生成，待考证）
 
@@ -25,11 +25,11 @@ tags:
 - `persist`: 指纹传感器校准、传感器数据、DRM密钥
 - `modem`: 基带固件本身
 - `abl` `xbl` `hyp` `tz`: 安全启动链相关
-- `keymaster` `cmnlib` TEE 安全环境密钥
+- `keymaster` `cmnlib*` TEE 安全环境密钥
 
 设备唯一的数据（IMEI、基带等）分散在多个分区，**必须全部备份、同时恢复**，仅恢复部分分区会导致 IMEI 丢失或信号异常。
 
-采用 UFS 闪存的分区路径在 `/dev/block/bootdevice/by-name/`，比较老的设备和联发科设备在 `/dev/block/by-name`。
+采用 UFS 闪存的分区路径在 `/dev/block/bootdevice/by-name/`，联发科设备可能在 `/dev/block/by-name`。
 
 ## 提权并查看存储空间
 
@@ -39,7 +39,10 @@ tags:
 adb shell
 su
 
+ls /dev/block/bootdevice/by-name/ || exit 1
 df -h /sdcard
+id
+
 ```
 
 ## 读取设备分区信息
@@ -50,7 +53,6 @@ df -h /sdcard
 mkdir /sdcard/000_Backup
 
 ls -1 /dev/block/bootdevice/by-name | grep -ixvE "userdata|cache" | while IFS= read -r name; do echo "dd if=/dev/block/bootdevice/by-name/$name of=/sdcard/000_Backup/$name.img" >> /sdcard/000_Backup/001_Backup.sh; echo "fastboot flash $name $name.img" >> /sdcard/000_Backup/002_Restore.sh; done
-
 
 ```
 
@@ -63,6 +65,8 @@ sh /sdcard/000_Backup/001_Backup.sh
 
 cd /sdcard/000_Backup && sha1sum *.img > /sdcard/000_Backup/003_Checksum.sha1
 
+exit
+
 ```
 
 ## 复制备份的内容到电脑
@@ -70,10 +74,20 @@ cd /sdcard/000_Backup && sha1sum *.img > /sdcard/000_Backup/003_Checksum.sha1
 以下命令在电脑本机操作。
 
 ```bash
-
 adb pull sdcard/000_Backup
 cd ./000_Backup && sha1sum -c ./003_Checksum.sha1
 cd ../ && tar -acf ./your_phone_rom_name.tar.gz ./000_Backup/
+
+```
+
+以下命令在手机Shell中操作，删除手机中已提取到电脑的文件夹。
+
+```bash
+adb shell
+su
+
+rm -r /sdcard/000_Backup
+exit
 
 ```
 
