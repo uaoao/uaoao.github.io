@@ -79,11 +79,11 @@ READ CAPACITY:          0*2048=0
 ## 初始化光盘并刻录文件
 
 ```bash
-growisofs -Z /dev/sr0 -R -J /path/to/file.txt
+growisofs -Z /dev/sr0 -R -J -V 'DVDR_FILE_001' /path/to/file.txt
 
 ```
 
-首次刻录使用 `-Z`，表示初始化光盘并开始第一个会话；`-R`表示启用 Rock Ridge 扩展，保留 Unix 权限、长文件名等；`-J`表示启用 Joliet 扩展，提高 Windows 兼容性；可选的`-V <LABEL_NAME>` 可以设定光盘的名称
+首次刻录使用 `-Z`，表示初始化光盘并开始第一个会话；`-R`表示启用 Rock Ridge 扩展，保留 Unix 权限、长文件名等；`-J`表示启用 Joliet 扩展，提高 Windows 兼容性；可选的`-V <LABEL_NAME>` 可以设定光盘的卷名，其他选项可以参考 `mkisofs` 命令的选项。
 
 刻录显示信息如下所示：
 
