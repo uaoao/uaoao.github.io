@@ -79,12 +79,4 @@ reboot
 
 ```
 
-## Fedora SilverBlue TPM2 自动解密 LUKS 加密分区
-
-PCR值参考 `man systemd-cryptenroll`。
-
-```
-sudo systemd-cryptenroll --tpm2-device=auto --tpm2-pcrs=7,11,14 /dev/disk/by-uuid/xxxxxxxxxx-xxxxxxxxxxxxxxxx-xxxxxxxxx
-
-```
-
+在 Firefox 地址栏输入 `about:support` 向下翻到【Media】这一章节即可看到哪些支持的媒体编解码器。
