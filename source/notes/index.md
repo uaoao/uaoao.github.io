@@ -9,9 +9,9 @@ cover: img/notes.webp
 - [OpenWrt配置](OpenWrt配置)
 - [Android-App配置](Android-App配置)
 
-# DNS
+## DNS 解析
 
-## AliDNS
+阿里 DNS 服务只适用于国内网站的域名解析，或者用于解析 DoT/DoH DNS 的域名。大量无备案域名的IP很少更新，可能解析到无法访问的IP地址。
 
 ```txt
 https://dns.alidns.com/dns-query
@@ -22,11 +22,14 @@ https://dns.alidns.com/dns-query
 
 ```
 
-## DNS Over Https
+可用的海外 DoH 地址
 
-- <https://dns-doh.dnsforfamily.com/dns-query>
-- <https://xxx.ddd.oaifree.com/query-dns>
-- <https://doh.mullvad.net/dns-query>
+```txt
+https://dns-doh.dnsforfamily.com/dns-query
+https://xxx.ddd.oaifree.com/query-dns
+https://doh.mullvad.net/dns-query
+
+```
 
 ## Win10 跳过联网安装
 
