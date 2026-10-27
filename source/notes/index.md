@@ -39,3 +39,29 @@ https://doh.mullvad.net/dns-query
 start ms-cxh:localonly
 
 ```
+
+# 图例
+
+- BIOS快捷键
+
+![BIOS快捷键](/images/notes/BIOS快捷键.webp)
+
+- Linux 常用命令
+
+![Linux 常用命令](/images/notes/Linux 常用命令.webp)
+
+- Linux弃用的命令和替代品
+
+![Linux弃用的命令和替代品](/images/notes/Linux弃用的命令和替代品.webp)
+
+- Vim 键盘布局
+
+![Vim 键盘布局](/images/notes/Vim 键盘布局.webp)
+
+- 数显测电笔使用说明
+
+![数显测电笔使用说明](/images/notes/数显测电笔使用说明.webp)
+
+- 中文编码错误
+
+![中文编码错误](/images/notes/中文编码错误.webp)
