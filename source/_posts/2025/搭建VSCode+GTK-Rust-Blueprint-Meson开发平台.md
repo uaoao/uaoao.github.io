@@ -118,6 +118,28 @@ sudo dnf install \
 5. Meson (作者：mesonbuild)
 6. rust-analyzer (作者：The Rust Programming Language)
 
+> 【警告⚠️】
+> 部分扩展在修复 BUG 后迟迟不 Release，如果你在 VS Code 使用的 Flatpak 扩展版本号不大于 `0.0.38` 请手动编辑扩展代码以修复，否则你可能会遇到：
+> 1. Failed to load RustAnalyzer integration: CodeExpectedError: Unable to write to Workspace Settings because rust-analyzer.files.excludeDirs is not a registered configuration.
+> 2. Failed to discover workspace. Consider adding the Cargo.toml of the workspace to the linkedProjects setting.
+
+1. 修复第一个问题 [Commit d28bd43](https://github.com/bilelmoussaoui/flatpak-vscode/commit/d28bd43cfb3f813b78760e5437834d208344ef13)：编辑 `~/.vscode/extensions/bilelmoussaoui.flatpak-vscode-0.0.38/out/integration/rustAnalyzer.js` 搜索关键字 `files.excludeDirs` 全部替换成 `files.exclude`。
+2. 修复第二个问题 [Commit cfbe7ea](https://github.com/bilelmoussaoui/flatpak-vscode/commit/cfbe7ea2416276f241c5e87c0b79ed11fd3301af)：编辑 `~/.vscode/extensions/bilelmoussaoui.flatpak-vscode-0.0.38/out/manifest.js` 找到第 `449` 行，修改如下内容：
+
+```js
+            let args = [
+                'build',
+                '--with-appdir',
+                '--allow=devel',
+                `--bind-mount=/run/user/${uid}/doc=/run/user/${uid}/doc/by-app/${appId}`,
+                `--filesystem=${this.workspace}`,
+                `--filesystem=${this.repoDir}`,
+                ...this.finishArgs(),
+                '--talk-name=org.freedesktop.portal.*',
+                '--talk-name=org.a11y.Bus',
+            ];
+
+```
 
 ## 添加 VSCode 文件和搜索排除项
 
