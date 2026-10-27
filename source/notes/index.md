@@ -48,7 +48,7 @@ start ms-cxh:localonly
 
 - Linux 常用命令
 
-![Linux 常用命令](/images/notes/Linux 常用命令.webp)
+![Linux 常用命令](/images/notes/Linux常用命令.webp)
 
 - Linux弃用的命令和替代品
 
@@ -56,7 +56,7 @@ start ms-cxh:localonly
 
 - Vim 键盘布局
 
-![Vim 键盘布局](/images/notes/Vim 键盘布局.webp)
+![Vim 键盘布局](/images/notes/Vim键盘布局.webp)
 
 - 数显测电笔使用说明
 
