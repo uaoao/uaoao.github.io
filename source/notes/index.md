@@ -42,6 +42,8 @@ start ms-cxh:localonly
 
 ## Mysql5.7 配置文件
 
+配置文件在 `/etc/mysql/config.d/my.cnf`
+
 ```ini
 [mysqld]
 character-set-server = utf8mb4
