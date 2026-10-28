@@ -40,7 +40,22 @@ start ms-cxh:localonly
 
 ```
 
-# 图例
+## Mysql5.7 配置文件
+
+```ini
+[mysqld]
+character-set-server = utf8mb4
+collation-server = utf8mb4_unicode_ci
+
+[client]
+default-character-set = utf8mb4
+
+[mysql]
+default-character-set = utf8mb4
+
+```
+
+## 图例
 
 - BIOS快捷键
 
