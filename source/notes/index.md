@@ -9,6 +9,15 @@ cover: img/notes.webp
 - [OpenWrt配置](OpenWrt配置)
 - [Android-App配置](Android-App配置)
 
+## 一行 BASH 命令测两机之间的带宽
+
+按 `Ctrl-C` 停止测试，测试一分钟左右就能测出平均传输速率。比如显示`1.9MB/s` 乘以八，就是带宽：`15.2 mbps`。
+
+```bash
+dd if=/dev/urandom status=progress | ssh user@192.168.1.1 'cat > /dev/null'
+
+```
+
 ## DNS 解析
 
 阿里 DNS 服务只适用于国内网站的域名解析，或者用于解析 DoT/DoH DNS 的域名。大量无备案域名的IP很少更新，可能解析到无法访问的IP地址。
