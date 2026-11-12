@@ -9,6 +9,24 @@ cover: img/notes.webp
 - [OpenWrt配置](OpenWrt配置)
 - [Android-App配置](Android-App配置)
 
+## 服务器之间通过管道文件创建TCP持续通信服务
+
+- Server side
+
+```bash
+mkfifo ./fifo && tail -f ./fifo | nc -l 0.0.0.0 5678 &
+
+```
+
+- Client side
+
+```bash
+nc 127.0.0.1 5678
+
+```
+
+服务器端执行 `echo 'hello from server' > ./fifo` 客户端就可以收到消息：`hello from server`。客户端按 `Ctrl-C`，客户端和服务端都同时退出。服务端与客户端只能建立一对一的通信。
+
 ## 一行 BASH 命令测两机之间的带宽
 
 按 `Ctrl-C` 停止测试，测试一分钟左右就能测出平均传输速率。比如显示`1.9MB/s` 乘以八，就是带宽：`15.2 mbps`。
