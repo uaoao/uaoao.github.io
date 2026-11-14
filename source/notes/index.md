@@ -32,7 +32,11 @@ nc 127.0.0.1 5678
 按 `Ctrl-C` 停止测试，测试一分钟左右就能测出平均传输速率。比如显示`1.9MB/s` 乘以八，就是带宽：`15.2 mbps`。
 
 ```bash
-dd if=/dev/urandom status=progress | ssh user@192.168.1.1 'cat > /dev/null'
+# 上行
+dd if=/dev/urandom status=progress | ssh user@192.168.1.1 'dd of=/dev/null'
+
+# 下行
+ssh user@192.168.1.1 'dd if=/dev/urandom' | dd of=/dev/null status=progress
 
 ```
 
